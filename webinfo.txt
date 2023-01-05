@@ -1,0 +1,15 @@
+Author: Pratik More
+Version: 0.1
+Website: https://pratikmore.com
+email: developer@pratikmore.com
+LinkedIn: www.linkedin.com/in/pratikmore2796
+Description: Creating a new project various tech. The portfolio will consist of backend so this will be helpful in editing the website without coding.
+
+## Tech Used ##
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Laravel 9
+2) Node JS v18.12.1
+3) PHP 8.1
+4) PHP GD Extension Added in SERVER as 
+well as Local
+5) Laravel Breeze 
