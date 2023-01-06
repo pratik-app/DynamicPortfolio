@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,17 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Admin Routes 
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/logout', 'destroy')->name('admin.logout');
+});
+
+Route::get('/login', function () {
+    return view('admin.logout');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth','verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
