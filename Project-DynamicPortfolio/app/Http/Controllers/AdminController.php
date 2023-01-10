@@ -23,12 +23,20 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
+        if($id == null || $id == "")
+        {
+            return redirect('/login');
+        }
         return view('admin.admin_profile_view', compact('adminData'));
     }
     public function EditProfile()
     {
         $id = Auth::user()->id;
         $editData = User::find($id);
+        if($id == null || $id == "")
+        {
+            return redirect('/login');
+        }
         return view('admin.admin_profile_edit', compact('editData'));
     }
 }

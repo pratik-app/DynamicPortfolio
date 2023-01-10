@@ -10,6 +10,6 @@ Description: Creating a new project various tech. The portfolio will consist of 
 1) Laravel 9
 2) Node JS v18.12.1
 3) PHP 8.1
-4) PHP GD Extension Added in SERVER as 
-well as Local
-5) Laravel Breeze 
+4) PHP GD Extension Added in SERVER as well as Local
+5) Laravel Breeze
+6) Jquery installed
