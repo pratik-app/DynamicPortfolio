@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{$adminData->name}}</h4>
                         <p class="card-text">{{$adminData->email}}</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-muted">Last Updated at: {{$adminData->updated_at}}</small></p>
                         <a href="{{ route('edit.profile')}}" class="btn btn-primary btn-rounded waves-effect waves-light"> Edit Profile</a>
                     </div>
                 </div>
