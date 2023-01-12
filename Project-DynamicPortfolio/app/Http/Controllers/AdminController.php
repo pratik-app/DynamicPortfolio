@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -24,10 +25,6 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
-        if($id == null || $id == "")
-        {
-            return redirect('/login');
-        }
         return view('admin.admin_profile_view', compact('adminData'));
     }
     // Used to render to Edit Page where user can edit their details in database
@@ -35,10 +32,7 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $editData = User::find($id);
-        if($id == null || $id == "")
-        {
-            return redirect('/login');
-        }
+        
         return view('admin.admin_profile_edit', compact('editData'));
     }
     // Used to update data in Database that user had inserted
@@ -56,6 +50,37 @@ class AdminController extends Controller
             $data['profile_image'] = $filename; // giving the file name to $data['profile_image']
         }
         $data->save(); //Saving whatever is stored in $data to database
-        return redirect()->route('admin.profile'); //Returning user to profile page 
+        // Providing Notification to user
+        $notification = array(
+            'message' => 'Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.profile')->with($notification); //Returning user to profile page 
+    }
+    // Creating new function to Change Password
+    public function ChangePassword(){
+        return view('admin.admin_change_password');
+    }
+    // Creating function to Update the password in Database
+    public function UpdatePassword(Request $request){
+        // Creating Variable to check whether files have a value or not all fields are mendatory
+        $validateData = $request->validate([
+            'OldPassword' => 'required',
+            'NewUpdatedPassword'=> 'required',
+            're-enterNewPassword'=>'required|same:NewUpdatedPassword',
+        ]);
+        $hashedPassword = Auth::user()->password;
+        if(Hash::check($request->OldPassword, $hashedPassword)){
+            $users = User::find(Auth::id());
+            $users->password = bcrypt($request->NewUpdatedPassword);
+            $users->save();
+            session()->flush('message','Password Updated Successfully');
+             return redirect('login');
+        }else
+        {
+            session()->flush('message', 'Old Password is not Match');
+            return redirect()->back();
+        }
+
     }
 }

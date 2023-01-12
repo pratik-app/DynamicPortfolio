@@ -42,8 +42,10 @@
                             </div>
                         </div>
                         <!-- end row -->
-                        <input type="submit" class="btn btn-rounded btn-primary" value="Update Profile"/>
+                        <input type="submit" class="btn btn-rounded btn-primary" value="Update Profile"/></br></br>
                         </form>
+                        <!-- Change password button -->
+                            <a href="{{route('change.password')}}"><button type="button" name="Change_Password" class="btn btn-rounded btn-danger">Change Existing password</button></a>
                     </div>
                 </div>
             </div> <!-- end col -->
