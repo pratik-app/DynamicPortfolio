@@ -39,7 +39,7 @@
                         <div class="row mb-3">
                             <label for="Re-enter New Password" class="col-sm-2 col-form-label">Re-Enter New Password</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name = "re-enterNewPassword" type="password" placeholder="Re-Enter New Password">
+                                <input class="form-control" name = "confirm_password" type="password" placeholder="Re-Enter New Password">
                             </div>
                         </div>
                         <!-- end row -->

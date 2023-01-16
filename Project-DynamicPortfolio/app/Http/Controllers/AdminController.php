@@ -67,18 +67,18 @@ class AdminController extends Controller
         $validateData = $request->validate([
             'OldPassword' => 'required',
             'NewUpdatedPassword'=> 'required',
-            're-enterNewPassword'=>'required|same:NewUpdatedPassword',
+            'confirm_password'=>'required|same:NewUpdatedPassword',
         ]);
         $hashedPassword = Auth::user()->password;
         if(Hash::check($request->OldPassword, $hashedPassword)){
             $users = User::find(Auth::id());
             $users->password = bcrypt($request->NewUpdatedPassword);
             $users->save();
-            session()->flush('message','Password Updated Successfully');
-             return redirect('login');
+            session()->flash('message','Password Updated Successfully');
+             return redirect()->back();
         }else
         {
-            session()->flush('message', 'Old Password is not Match');
+            session()->flash('message', 'Old Password is not Match');
             return redirect()->back();
         }
 
