@@ -10,10 +10,12 @@
                     <div class="card-body">
                         <h4 class="card-title">Home Slide Page</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
-                        <form method="post" action="{{route('store.profile')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('update.slider')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
                         @csrf
                             <!-- NOTE: This token is used to verify the authenticated user -->
+
+                            <input type="hidden" name="id" value="{{ $homeslide->id}}"/>
                         <div class="row mb-3">
                             <label for="Title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
@@ -45,7 +47,7 @@
                         <div class="row mb-3">
                             <label for="showSelectedImg" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                                <img class="rounded-circle avatar-xl" src="{{(!empty($homeslide->home_slide))? url('upload/home_slide/'.$homeslide->home_slide):url('upload/no_image.jpg')}}" name= "currentImage" alt="Current Profile Image/Selected Profile Image" id="showSelectedImg">
+                                <img class="rounded-circle avatar-xl" src="{{(!empty($homeslide->home_slide))? url($homeslide->home_slide):url('upload/no_image.jpg')}}" name= "currentImage" alt="Current Profile Image/Selected Profile Image" id="showSelectedImg">
                             </div>
                         </div>
                         <!-- end row -->
