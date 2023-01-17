@@ -25,19 +25,28 @@ $adminData = App\Models\User::find($id);
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                    <a href="/dashboard" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
-                        <span>Home Slide Setup</span>
+                        <i class="ri-edit-box-line"></i>
+                        <span>Modify Portfolio</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('home.slide')}}">Home Slide</a></li>
+                        <li><a href="{{route('home.slide')}}">Home Section</a></li>
+                        <li><a href="#">About Section</a></li>
+                        <li><a href="#">Service Section</a></li>
+                        <li><a href="#">Portfolio/Work Section</a></li>
+                        <li><a href="#">Partners Section</a></li>
+                        <li><a href="#">FeedBack Section</a></li>
+                        <li><a href="#">Block Section</a></li>
+                        <li><a href="#">Contact Section</a></li>
+                        <li><a href="#">Footer</a></li>
+                        
                     </ul>
                 </li>
 

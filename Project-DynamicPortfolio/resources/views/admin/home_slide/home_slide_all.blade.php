@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Home Slide Page</h4>
+                        <h4 class="card-title">Edit Home and Navigation Bar</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
                         <form method="post" action="{{route('update.slider')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
@@ -57,6 +57,7 @@
                 </div>
             </div> <!-- end col -->
         </div>
+        
     </div>
 </div>
 

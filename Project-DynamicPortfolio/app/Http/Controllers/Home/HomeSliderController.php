@@ -62,4 +62,5 @@ class HomeSliderController extends Controller
 
     }
     //End of Update Slider Function
+    
 }
