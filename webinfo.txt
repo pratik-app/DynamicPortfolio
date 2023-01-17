@@ -13,3 +13,4 @@ Description: Creating a new project various tech. The portfolio will consist of 
 4) PHP GD Extension Added in SERVER as well as Local
 5) Laravel Breeze
 6) Jquery installed
+7) Image Intervention Lib
