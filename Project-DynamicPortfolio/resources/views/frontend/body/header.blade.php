@@ -6,31 +6,22 @@
                             <div class="menu__wrap">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="index.html" class="logo__black"><img src="{{asset('frontend/assets/img/logo/logo_black.png')}}" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="{{asset('frontend/assets/img/logo/logo_white.png')}}" alt=""></a>
+                                        <a href="{{redirect('/')}}" class="logo__black"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
+                                        <a href="{{redirect('/')}}" class="logo__white"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
-                                            <li class="active"><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="services-details.html">Services</a></li>
-                                            <li class="menu-item-has-children"><a href="#">Portfolio</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="#">Our Blog</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Our News</a></li>
-                                                    <li><a href="blog-details.html">News Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">contact me</a></li>
+                                            <li class="active"><a href="{{redirect('/')}}">Home</a></li>
+                                            <li><a href="#aboutSection">About</a></li>
+                                            <li><a href="#services">Services</a></li>
+                                            <li><a href="#WorkProcess">How we Work</a></li>
+                                            <li><a href="#Portfolio">Portfolio</a></li>
+                                            <li><a href="#OurBlog">Our Blog</a></li>
+                                            <li><a href="#ContactUs">contact me</a></li>
                                         </ul>
                                     </div>
                                     <div class="header__btn d-none d-md-block">
-                                        <a href="contact.html" class="btn">Contact me</a>
+                                        <a href="{{route('login')}}" class="btn">Admin Panel</a>
                                     </div>
                                 </nav>
                             </div>

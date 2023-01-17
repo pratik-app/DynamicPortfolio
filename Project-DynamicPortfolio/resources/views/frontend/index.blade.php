@@ -65,7 +65,7 @@
             <!-- about-area-end -->
 
             <!-- services-area -->
-            <section class="services">
+            <section id="services" class="services">
                 <div class="container">
                     <div class="services__title__wrap">
                         <div class="row align-items-center justify-content-between">
@@ -197,7 +197,7 @@
             <!-- services-area-end -->
 
             <!-- work-process-area -->
-            <section class="work__process">
+            <section id="WorkProcess" class="work__process">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
@@ -266,7 +266,7 @@
             <!-- work-process-area-end -->
 
             <!-- portfolio-area -->
-            <section class="portfolio">
+            <section id="Portfolio" class="portfolio">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
@@ -976,7 +976,7 @@
             <!-- testimonial-area-end -->
 
             <!-- blog-area -->
-            <section class="blog">
+            <section id="OurBlog" class="blog">
                 <div class="container">
                     <div class="row gx-0 justify-content-center">
                         <div class="col-lg-4 col-md-6 col-sm-9">
@@ -1033,7 +1033,7 @@
             <!-- blog-area-end -->
 
             <!-- contact-area -->
-            <section class="homeContact">
+            <section id="ContactUs" class="homeContact">
                 <div class="container">
                     <div class="homeContact__wrap">
                         <div class="row">

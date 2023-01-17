@@ -49,4 +49,11 @@
             </x-primary-button>
         </div>
     </form>
+    <div class="flex items-center justify-end mt-4">
+        <a href="/">
+        <x-primary-button class="ml-3">
+            {{ __('Go to Portfolio') }}
+        </x-primary-button>
+        </a>
+    </div>
 </x-guest-layout>
