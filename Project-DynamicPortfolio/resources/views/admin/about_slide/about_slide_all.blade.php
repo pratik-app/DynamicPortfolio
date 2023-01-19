@@ -20,7 +20,7 @@
                         <div class="row mb-3">
                             <label for="Title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name = "title" alt="Heading Title" type="text" value="">
+                                <input class="form-control" name = "title" alt="Heading Title" type="text" value="{{$aboutslide->title}}">
                             </div>
                         </div>
                         
