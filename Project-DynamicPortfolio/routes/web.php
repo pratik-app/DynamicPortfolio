@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\About\AboutSliderController;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -38,8 +39,12 @@ Route::controller(AdminController::class)->group(function(){
 // Home Slide All Routes 
 Route::controller(HomeSliderController::class)->group(function(){
     Route::get('/home/slide', 'HomeSlider')->name('home.slide');
-    Route::post('/home/Updateslider', 'UpdateSlider')->name('update.slider');
-    
+    Route::post('/home/Updateslider', 'UpdateSlider')->name('update.slider');    
+});
+
+// Home Slide All Routes 
+Route::controller(AboutSliderController::class)->group(function(){
+    Route::get('about/slide', 'AboutSlider')->name('about.slide');
 });
 
 Route::get('/login', function () {

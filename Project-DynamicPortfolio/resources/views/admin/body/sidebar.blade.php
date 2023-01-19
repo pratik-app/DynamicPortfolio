@@ -38,7 +38,7 @@ $adminData = App\Models\User::find($id);
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('home.slide')}}">Home Section</a></li>
-                        <li><a href="#">About Section</a></li>
+                        <li><a href="{{route('about.slide')}}">About Section</a></li>
                         <li><a href="#">Service Section</a></li>
                         <li><a href="#">Portfolio/Work Section</a></li>
                         <li><a href="#">Partners Section</a></li>
