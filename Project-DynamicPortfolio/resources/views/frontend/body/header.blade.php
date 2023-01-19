@@ -1,4 +1,10 @@
-            <div id="sticky-header" class="menu__area transparent-header">
+@php
+
+$homeslide = App\Models\HomeSlide::find(1);
+
+@endphp
+
+<div id="sticky-header" class="menu__area transparent-header">
                 <div class="container custom-container">
                     <div class="row">
                         <div class="col-12">
@@ -6,18 +12,18 @@
                             <div class="menu__wrap">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="{{redirect('/')}}" class="logo__black"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
-                                        <a href="{{redirect('/')}}" class="logo__white"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
+                                        <a href="{{redirect('/')}}" class="logo__black"><img src="{{$homeslide->portfolio_img}}" alt="PratikMoreLogo" width="100px" height="auto"></a>
+                                        <a href="{{redirect('/')}}" class="logo__white"><img src="{{$homeslide->portfolio_img}}" width="100px" height="auto"></a>
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
-                                            <li class="active"><a href="{{redirect('/')}}">Home</a></li>
-                                            <li><a href="#aboutSection">About</a></li>
-                                            <li><a href="#services">Services</a></li>
-                                            <li><a href="#WorkProcess">How we Work</a></li>
-                                            <li><a href="#Portfolio">Portfolio</a></li>
-                                            <li><a href="#OurBlog">Our Blog</a></li>
-                                            <li><a href="#ContactUs">contact me</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab1}}">{{$homeslide->nav_tab1}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab2}}">{{$homeslide->nav_tab2}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab3}}">{{$homeslide->nav_tab3}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab4}}">{{$homeslide->nav_tab4}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab5}}">{{$homeslide->nav_tab5}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab6}}">{{$homeslide->nav_tab6}}</a></li>
+                                            <li><a href="#{{$homeslide->nav_tab7}}">{{$homeslide->nav_tab7}}</a></li>
                                         </ul>
                                     </div>
                                     <div class="header__btn d-none d-md-block">

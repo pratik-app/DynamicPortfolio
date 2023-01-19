@@ -4,9 +4,14 @@
             <!-- banner-area -->
             @include('frontend.home_all.home_slide');
             <!-- banner-area-end -->
+            @php
+
+$homeslide = App\Models\HomeSlide::find(1);
+
+@endphp
 
             <!-- about-area -->
-            <section id="aboutSection" class="about">
+            <section id="{{$homeslide->nav_tab2}}" class="about">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
@@ -65,7 +70,7 @@
             <!-- about-area-end -->
 
             <!-- services-area -->
-            <section id="services" class="services">
+            <section id="{{$homeslide->nav_tab3}}" class="services">
                 <div class="container">
                     <div class="services__title__wrap">
                         <div class="row align-items-center justify-content-between">
@@ -197,7 +202,7 @@
             <!-- services-area-end -->
 
             <!-- work-process-area -->
-            <section id="WorkProcess" class="work__process">
+            <section id="{{$homeslide->nav_tab4}}" class="work__process">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
@@ -266,7 +271,7 @@
             <!-- work-process-area-end -->
 
             <!-- portfolio-area -->
-            <section id="Portfolio" class="portfolio">
+            <section id="{{$homeslide->nav_tab5}}" class="portfolio">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
@@ -976,7 +981,7 @@
             <!-- testimonial-area-end -->
 
             <!-- blog-area -->
-            <section id="OurBlog" class="blog">
+            <section id="{{$homeslide->nav_tab6}}" class="blog">
                 <div class="container">
                     <div class="row gx-0 justify-content-center">
                         <div class="col-lg-4 col-md-6 col-sm-9">
@@ -1033,7 +1038,7 @@
             <!-- blog-area-end -->
 
             <!-- contact-area -->
-            <section id="ContactUs" class="homeContact">
+            <section id="{{$homeslide->nav_tab7}}" class="homeContact">
                 <div class="container">
                     <div class="homeContact__wrap">
                         <div class="row">
