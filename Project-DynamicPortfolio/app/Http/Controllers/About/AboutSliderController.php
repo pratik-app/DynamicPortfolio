@@ -23,7 +23,8 @@ class AboutSliderController extends Controller
         $aboutslide = $request->id; //Finding ID
         AboutSlide::findOrFail($aboutslide)->update([
             'title'=>$request->title,
-            'short_title'=>$request->short_title
+            'short_title'=>$request->short_title,
+            'about_description'=> $request->about_description
         ]);
         $notification = array(
             'message' => 'About Slide updated without Image successfully',

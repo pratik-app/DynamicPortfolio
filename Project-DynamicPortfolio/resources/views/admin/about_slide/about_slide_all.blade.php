@@ -29,6 +29,12 @@
                                 <input class="form-control" name = "short_title" alt="Short Title" type="text" value="{{$aboutslide->short_title}}">
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="ShortTitle" class="col-sm-2 col-form-label">Short Title</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="about_description" name = "about_description" alt="Descritption for About US" rows="5" col="50" >{{$aboutslide->about_description}}</textarea>
+                            </div>
+                        </div>
                         
                         <input type="submit" class="btn btn-rounded btn-primary" value="Update Slide"/></br></br>
                         </form>

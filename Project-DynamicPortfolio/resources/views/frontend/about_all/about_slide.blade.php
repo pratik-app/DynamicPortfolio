@@ -51,7 +51,7 @@ $aboutslide = App\Models\AboutSlide::find(1);
                                         <p>{{$aboutslide->short_title}}</p>
                                     </div>
                                 </div>
-                                <p class="desc">I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience. I have been working as a UX Designer</p>
+                                <p class="desc">{{$aboutslide->about_description}}</p>
                                 <a href="about.html" class="btn">Download my resume</a>
                             </div>
                         </div>
