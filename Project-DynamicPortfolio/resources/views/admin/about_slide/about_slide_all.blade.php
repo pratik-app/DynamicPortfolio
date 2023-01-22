@@ -10,17 +10,23 @@
                     <div class="card-body">
                         <h4 class="card-title">Edit About Section</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
-                        <form method="post" action="#" enctype="multipart/form-data">
+                        <form method="post" action="{{route('about.editme')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
-                        @csrf
+                            @csrf
                             <!-- NOTE: This token is used to verify the authenticated user -->
 
-                            <!-- <input type="hidden" name="id" value=""/> -->
+                            <input type="hidden" name="id" value="{{$aboutslide->id}}"/>
                         
                         <div class="row mb-3">
                             <label for="Title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
                                 <input class="form-control" name = "title" alt="Heading Title" type="text" value="{{$aboutslide->title}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="ShortTitle" class="col-sm-2 col-form-label">Short Title</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name = "short_title" alt="Short Title" type="text" value="{{$aboutslide->short_title}}">
                             </div>
                         </div>
                         

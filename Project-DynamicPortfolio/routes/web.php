@@ -44,7 +44,8 @@ Route::controller(HomeSliderController::class)->group(function(){
 
 // Home Slide All Routes 
 Route::controller(AboutSliderController::class)->group(function(){
-    Route::get('about/slide', 'AboutSlider')->name('about.slide');
+    Route::get('/about/slide', 'AboutSlider')->name('about.slide');
+    Route::post('/about/edit', 'EditAbout')->name('about.editme');
 });
 
 Route::get('/login', function () {
