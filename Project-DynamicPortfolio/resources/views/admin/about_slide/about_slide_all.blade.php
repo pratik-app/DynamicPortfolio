@@ -30,12 +30,31 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="ShortTitle" class="col-sm-2 col-form-label">Short Title</label>
+                            <label for="about_description" class="col-sm-2 col-form-label">About Description</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="about_description" name = "about_description" alt="Descritption for About US" rows="5" col="50" >{{$aboutslide->about_description}}</textarea>
                             </div>
                         </div>
-                        
+                        <div class="row mb-3">
+                            <label for="aboutbtn" class="col-sm-2 col-form-label">About Button</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name = "aboutme_btn" alt="Short Title" type="text" value="{{$aboutslide->aboutme_btn}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="About Experience Image" class="col-sm-2 col-form-label">About Experience Icon</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name = "about_exp_img" alt="About Experience Icon" type="file" id= "about_exp_img"/>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <div class="row mb-3">
+                            <label for="About Image display" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <img class="rounded-circle avatar-xl" src="{{(!empty($aboutslide->about_exp_img))? url($aboutslide->about_exp_img):url('upload/no_image.jpg')}}" name= "about_img_disp" alt="Current Profile Image/Selected Profile Image" id="about_img_disp">
+                            </div>
+                        </div>
+                        <!-- end row -->
                         <input type="submit" class="btn btn-rounded btn-primary" value="Update Slide"/></br></br>
                         </form>
                     </div>
@@ -46,22 +65,15 @@
     </div>
 </div>
 
-<!-- <script type="text/javascript">    
+<script type="text/javascript">    
 $(document).ready(function(){
-        $('#home_slide').change(function(e){
+        $('#about_exp_img').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
-                $('#showSelectedImg').attr('src', e.target.result)
-            }
-            reader.readAsDataURL(e.target.files['0'])
-        })
-        $('#portfolio_Logo').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#portfolioImg').attr('src', e.target.result)
+                $('#about_img_disp').attr('src', e.target.result)
             }
             reader.readAsDataURL(e.target.files['0'])
         })
     })
-</script> -->
+</script>
 @endsection

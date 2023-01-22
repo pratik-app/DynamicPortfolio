@@ -45,14 +45,14 @@ $aboutslide = App\Models\AboutSlide::find(1);
                                 </div>
                                 <div class="about__exp">
                                     <div class="about__exp__icon">
-                                        <img src="assets/img/icons/about_icon.png" alt="">
+                                    <img class="rounded-circle avatar-xl" src="{{(!empty($aboutslide->about_exp_img))? url($aboutslide->about_exp_img):url('upload/no_image.jpg')}}" name= "about_img_disp" alt="Current Profile Image/Selected Profile Image" id="about_img_disp">
                                     </div>
                                     <div class="about__exp__content">
                                         <p>{{$aboutslide->short_title}}</p>
                                     </div>
                                 </div>
                                 <p class="desc">{{$aboutslide->about_description}}</p>
-                                <a href="about.html" class="btn">Download my resume</a>
+                                <a href="https://pratikmore.com" class="btn">{{$aboutslide->aboutme_btn}}</a>
                             </div>
                         </div>
                     </div>
