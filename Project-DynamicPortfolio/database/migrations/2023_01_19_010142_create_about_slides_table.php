@@ -18,13 +18,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('short_title')->nullable();
             $table->text('about_description')->nullable();
-            $table->string('img1')->nullable();
-            $table->string('img2')->nullable();
-            $table->string('img3')->nullable();
-            $table->string('img4')->nullable();
-            $table->string('img5')->nullable();
-            $table->string('img6')->nullable();
-            $table->string('img7')->nullable();
+            $table->string('multiple_img')->nullable();
             $table->string('aboutme_btn')->nullable();
             $table->timestamps();
         });

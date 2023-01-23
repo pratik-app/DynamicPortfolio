@@ -54,9 +54,18 @@
                                 <img class="rounded-circle avatar-xl" src="{{(!empty($aboutslide->about_exp_img))? url($aboutslide->about_exp_img):url('upload/no_image.jpg')}}" name= "about_img_disp" alt="Current Profile Image/Selected Profile Image" id="about_img_disp">
                             </div>
                         </div>
+                        <div class="row mb-3"  id= "multiple_img">
+                            <label for="multiple Images" class="col-sm-2 col-form-label">Tech Icons</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name = "multiple_img[]" alt="Select Multiple images to Update Tech" multiple type="file"/>
+                            </div>
+                        </div>
+                        
                         <!-- end row -->
+                        
                         <input type="submit" class="btn btn-rounded btn-primary" value="Update Slide"/></br></br>
                         </form>
+                        <button type="button" class="btn btn-rounded btn-danger" id="EditMultipleICons">Edit the Tech Icons</button>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -65,8 +74,10 @@
     </div>
 </div>
 
-<script type="text/javascript">    
+<script type="text/javascript"> 
+$('#multiple_img').hide();   
 $(document).ready(function(){
+        
         $('#about_exp_img').change(function(e){
             var reader = new FileReader();
             reader.onload = function(e){
@@ -74,6 +85,11 @@ $(document).ready(function(){
             }
             reader.readAsDataURL(e.target.files['0'])
         })
+        
+        $('#EditMultipleICons').click(function(){
+            $('#multiple_img').show();
+        })
+        
     })
 </script>
 @endsection
