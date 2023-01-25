@@ -4,8 +4,10 @@ namespace App\Http\Controllers\About;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutSlide;
+use App\Models\MultipleImage;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AboutSliderController extends Controller
 {
@@ -44,26 +46,29 @@ class AboutSliderController extends Controller
         }
         elseif($request->file('multiple_img'))
         {
-            $aboutslide = $request->id; //Getting ID
+            $editID = $request->id; //Getting ID
             // Experience Icon Code
-            $mul_img = $request->file('about_exp_img'); //getting the selected image
+            $mul_img = $request->file('multiple_img'); //getting the selected image
 
             foreach ($mul_img as $multipleImages)
             {
-                $mul_img_name = hexdec(uniqid()).'.'.$mul_img->getClientOriginalExtension(); // Creating unique image name to store in db and avoid duplication
-                Image::make($mul_img)->resize(220, 220)->save('upload/about_img/Collections/'.$mul_img_name); //Using Image inetervention class to resize the selected image
-                $save_url = 'upload/about_img/Collections/'.$mul_img_name;
+                $mul_img_name = hexdec(uniqid()).'.'.$multipleImages->getClientOriginalExtension(); // Creating unique image name to store in db and avoid duplication
+                Image::make($multipleImages)->resize(220, 220)->save('upload/about_img/Collections/'.$mul_img_name); //Using Image inetervention class to resize the selected image
+                $store_imgs = 'upload/about_img/Collections/'.$mul_img_name;
                 // Updating content
-                AboutSlide::findOrFail($aboutslide)->update([
-                    'multiple_img'=>$save_url,
+                MultipleImage::insert([
+                    'edit_id'=>$aboutslide,
+                    'multiple_images'=>$store_imgs,
+                    'created_at'=>Carbon::now()
                 ]);
-                $notification = array(
-                    'message' => 'About Slide updated with Images successfully',
-                    'alert-type' =>'success'
-                );
-                return redirect()->back()->with($notification);
-            }
-            
+                
+                
+            };
+            $notification = array(
+                'message' => 'All Icons Added Successfully',
+                'alert-type' =>'success'
+            );
+            return redirect()->back()->with($notification);
             
         }
         
