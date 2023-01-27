@@ -1,36 +1,19 @@
 @php
 
 $aboutslide = App\Models\AboutSlide::find(1);
-$modelImages = App\Models\MultipleImage::all();
+$allmulImages = App\Models\MultipleImage::all();
 @endphp
 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <ul class="about__icons__wrap">
                                 
+                               @foreach($allmulImages as $newImage)
+                                <li>
+                                    <img class="light" src="{{asset($newImage->multiple_images)}}" alt="XD">
+                                </li>
+                               @endforeach
                                
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-                                <li>
-                                    <img class="light" src="{{asset($aboutslide->about_exp_img)}}" alt="XD">
-                                </li>
-
 
 
                                 

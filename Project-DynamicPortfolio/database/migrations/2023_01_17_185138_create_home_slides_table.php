@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('home_slides', function (Blueprint $table) {
             $table->id();
+            $table->string('portfolio_img')->nullable();
+            $table->string('nav_tab1')->nullable();
+            $table->string('nav_tab2')->nullable();
+            $table->string('nav_tab3')->nullable();
+            $table->string('nav_tab4')->nullable();
+            $table->string('nav_tab5')->nullable();
+            $table->string('nav_tab6')->nullable();
+            $table->string('nav_tab7')->nullable();
+            $table->string('reCallbtn')->nullable();
             $table->string('title')->nullable();
             $table->string('short_title')->nullable();
             $table->string('home_slide')->nullable();
