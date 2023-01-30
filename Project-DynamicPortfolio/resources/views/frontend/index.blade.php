@@ -1001,11 +1001,12 @@ $homeslide = App\Models\HomeSlide::find(1);
                             </div>
                             <div class="col-lg-6">
                                 <div class="homeContact__form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Enter name*">
-                                        <input type="email" placeholder="Enter mail*">
-                                        <input type="number" placeholder="Enter number*">
-                                        <textarea name="message" placeholder="Enter Massage*"></textarea>
+                                    <form action="{{route('contact.me')}}" method="post">
+                                    @csrf
+                                        <input type="text" name="fullName" placeholder="Enter name*"  require>
+                                        <input type="email" name="client_email" placeholder="Enter mail*" require>
+                                        <input type="number" name="client_mobile" placeholder="Enter number*" require>
+                                        <textarea name="client_message" placeholder="Enter Massage*" require></textarea>
                                         <button type="submit">Send</button>
                                     </form>
                                 </div>

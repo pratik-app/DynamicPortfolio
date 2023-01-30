@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
+use App\Http\Controllers\ClientController;
+use App\Models\Contact;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -34,6 +36,11 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/store/profile', 'UpdateProfile')->name('store.profile');
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/Update/password', 'UpdatePassword')->name('update.password');
+});
+
+// Contact Me Routes
+Route::controller(ClientController::class)->group(function(){
+    Route::post('/contact/admin', 'getClientContact')->name('contact.me');
 });
 
 // Home Slide All Routes 
