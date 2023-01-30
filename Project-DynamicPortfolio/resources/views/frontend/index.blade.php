@@ -1006,7 +1006,7 @@ $homeslide = App\Models\HomeSlide::find(1);
                                         <input type="email" placeholder="Enter mail*">
                                         <input type="number" placeholder="Enter number*">
                                         <textarea name="message" placeholder="Enter Massage*"></textarea>
-                                        <button type="submit">Send Message</button>
+                                        <button type="submit">Send</button>
                                     </form>
                                 </div>
                             </div>
