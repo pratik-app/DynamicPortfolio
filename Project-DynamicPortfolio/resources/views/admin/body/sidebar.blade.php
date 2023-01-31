@@ -56,7 +56,7 @@ $adminData = App\Models\User::find($id);
                         <span>Email</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
+                        <li><a href="{{route('contact.inbox')}}">Inbox</a></li>
                         <li><a href="email-read.html">Read Email</a></li>
                     </ul>
                 </li>

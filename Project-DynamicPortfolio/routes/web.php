@@ -6,7 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\ClientController;
-use App\Models\Contact;
+use App\Http\Controllers\LeadsController;
+use App\Models\LeadStat;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -41,7 +42,16 @@ Route::controller(AdminController::class)->group(function(){
 // Contact Me Routes
 Route::controller(ClientController::class)->group(function(){
     Route::post('/contact/admin', 'getClientContact')->name('contact.me');
+    Route::get('/contact/inbox', 'getallClients')->name('contact.inbox');
+    Route::get('/contact/{id}', 'viewEmail')->name('contact.display');
+    
 });
+// Leads Routes
+Route::controller(LeadsController::class)->group(function(){
+    Route::post('/lead/updatestatus','updateStatus')->name('lead.status');
+    Route::post('/lead/updateAction','updateAction')->name('lead.action');
+});
+
 
 // Home Slide All Routes 
 Route::controller(HomeSliderController::class)->group(function(){
