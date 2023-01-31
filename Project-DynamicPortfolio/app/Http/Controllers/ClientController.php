@@ -44,17 +44,33 @@ class ClientController extends Controller
     }
     public function getallClients()
     {
-        $clients = Contact::all();
-        return view('admin.client_contact.all_client_contacts', compact('clients'));
+        // $clients = Contact::all();
+        return view('admin.client_contact.all_client_contacts');
     }
     public function viewEmail(Request $request)
     {
+
         $id = $request->id;
+        // echo $id;
         $clientId = Contact::find($id);
-        Contact::findOrFail($id)->update([
+        // echo "This is Client ID".$clientId;
+        Contact::findOrFail($clientId['id'])->update([
             'status'=>'1'
         ]);
+        // echo "Data Updated Successfully";
         return view('admin.client_contact.display_email_message',compact('clientId'));
+    }
+    public function DeleteLead(Request $request)
+    {
+        $id = $request->id;
+        $clientId = Contact::find($id);
+        Contact::findOrFail($id)->delete();
+        LeadStat::where('client_Email', '=', $clientId['client_Email'])->delete();
+        $notification = array(
+            'message' => 'Lead Deleted Successfully',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
     }
     
 }

@@ -41,15 +41,17 @@ Route::controller(AdminController::class)->group(function(){
 
 // Contact Me Routes
 Route::controller(ClientController::class)->group(function(){
-    Route::post('/contact/admin', 'getClientContact')->name('contact.me');
-    Route::get('/contact/inbox', 'getallClients')->name('contact.inbox');
-    Route::get('/contact/{id}', 'viewEmail')->name('contact.display');
+    Route::post('/admin/leads', 'getClientContact')->name('contact.me');
+    Route::get('/admin/inbox', 'getallClients')->name('contact.inbox');
+    Route::get('/admin/lead/{id}', 'viewEmail')->name('contact.display');
+    Route::get('/admin/deletelead/{id}', 'DeleteLead')->name('contact.deleteLead');
     
 });
 // Leads Routes
 Route::controller(LeadsController::class)->group(function(){
     Route::post('/lead/updatestatus','updateStatus')->name('lead.status');
     Route::post('/lead/updateAction','updateAction')->name('lead.action');
+    Route::post('/lead/leadAssigned','assignLead')->name('lead.userAssigned');
 });
 
 

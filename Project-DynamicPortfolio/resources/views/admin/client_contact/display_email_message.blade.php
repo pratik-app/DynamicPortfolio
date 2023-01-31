@@ -4,7 +4,7 @@
 
 $currentStatus = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_status;
 $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_action;
-
+$listAllUsers = App\Models\User::all();
 @endphp
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <div class="page-content">
@@ -21,11 +21,11 @@ $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->clien
                                 @php
                                 if($currentStatus == 1)
                                 {
-                                    echo "<small  style='background-color: green; color:#fff;  padding:5px'>Active Lead</small>";
+                                    echo "<small  style='background-color: green; color:#fff;  padding:5px; cursor:pointer;border-radius:20px 20px'>Active Lead</small>";
                                 }
                                 else
                                 {
-                                    echo "<small  style='background-color: red; color:#fff;  padding:5px'>InActive Lead</small>";
+                                    echo "<small  style='background-color: red; color:#fff;  padding:5px; cursor:pointer; border-radius:20px 20px'>InActive Lead</small>";
                                 }
                                 @endphp
                                 
@@ -43,25 +43,25 @@ $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->clien
                             switch($currentAction)
                             {
                                 case "Fresh Lead":
-                                    echo "<i><h5>Lead Events: This lead is {$currentAction} <span style='background-color: red; padding:10px; color:#fff'>(New Lead)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: This lead is {$currentAction} <span style='background-color: red; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (New Lead)</span></h7></i>";
                                 break;
                                 case "Called":
-                                    echo "<i><h5>Lead Events: We {$currentAction} this lead <span style='background-color: green; padding:10px; color:#fff'>(Called)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: We {$currentAction} this lead <span style='background-color: green; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (Called)</span></h7></i>";
                                 break;
                                 case "Emailed":
-                                    echo "<i><h5>Lead Events: We {$currentAction} this lead <span style='background-color: green; padding:10px; color:#fff'>(Emailed)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: We {$currentAction} this lead <span style='background-color: green; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (Emailed)</span></h7></i>";
                                 break;
                                 case "Booked Appointment":
-                                    echo "<i><h5>Lead Events: {$currentAction}  <span style='background-color: green; padding:10px; color:#fff'>(Booked)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: {$currentAction}  <span style='background-color: green; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (Booked)</span></h7></i>";
                                 break;
                                 case "In Progress":
-                                    echo "<i><h5>Lead Events: Lead is {$currentAction}  <span style='background-color: blue; padding:10px; color:#fff'>(In Progress)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: Lead is {$currentAction}  <span style='background-color: blue; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (In Progress)</span></h7></i>";
                                 break;
                                 case "No Response":
-                                    echo "<i><h5>Lead Events: {$currentAction}  <span style='background-color: black; padding:10px; color:#fff'>(Not Responded)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: {$currentAction}  <span style='background-color: black; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (Not Responded)</span></h7></i>";
                                 break;
                                 case "Dead Lead":
-                                    echo "<i><h5>Lead Events: {$currentAction}  <span style='background-color: red; padding:10px; color:#fff'>(Dead Lead)</span></h5></i>";
+                                    echo "<i><h7>Lead Events: {$currentAction}  <span style='background-color: red; padding:5px; color:#fff;cursor:pointer; border-radius:20px 20px'> (Dead Lead)</span></h7></i>";
                                 break;
                             }
                             @endphp
@@ -85,6 +85,9 @@ $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->clien
                             </button>
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#bookAppointment"><i class="fas fa-address-book" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Book new Event</h5>
+                            </button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">Assign New User</h5>
                             </button>
                         </div>
                         <!-- Modal -->
@@ -220,10 +223,68 @@ $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->clien
                                     <div class="modal-body">
                                         <p><iframe src="https://calendly.com/morepratik1616/chat-with-pratik-more" title="Book an Appointment with Pratik More" style="outline:none; display:block" height="800px" width="100%"></iframe></p>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                                    
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                        <div class="modal fade" id="assignUser" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Assign New User</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="{{route('lead.userAssigned')}}" method="POST">
+                                            @csrf
+                                        <div class="modal-body">
+                                            <p>
+                                                <div class="row mb-3" hidden>
+                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="Available Users" class="col-sm-2 col-form-label">Available Users</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="available_user" class="form-control form-select">
+                                                            <option value="">Available Sales Person</option>
+                                                            @foreach($listAllUsers as $user)
+                                                            <option name='available_user' value='{{$user->name}}'>{{$user->name}}</option>;
+                                                            @endforeach
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
+                                        </div>
+                                    </form>
+                                    
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>

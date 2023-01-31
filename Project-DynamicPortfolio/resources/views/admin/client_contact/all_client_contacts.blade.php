@@ -1,5 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
+@php
+$clients = App\Models\Contact::all();
+@endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <div class="page-content">
@@ -50,7 +53,10 @@
                                     
                                 </td>
                                 <td>{{$client->created_at}}</td>
-                                <td><a href="{{route('contact.display',['id' =>$client->id])}}"><button class="btn btn-primary">View</button></a></td>
+                                <td>
+                                    <a href="{{route('contact.display',['id' =>$client->id])}}"><button class="btn btn-primary">View</button></a><br><br>
+                                    <a href="{{route('contact.deleteLead',['id' =>$client->id])}}"><button class="btn btn-danger">Delete Lead</button></a>
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>

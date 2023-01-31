@@ -33,4 +33,17 @@ class LeadsController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+    public function assignLead(Request $request)
+    {
+        $client_currentEmail = $request->client_Email;
+        $id = LeadStat::where('client_Email', '=',$client_currentEmail)->first()->id;
+        LeadStat::find($id)->update([
+            'lead_assigned_to' => $request->available_user,
+        ]);
+        $notification = array(
+            'message' => 'Updated successfully',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }

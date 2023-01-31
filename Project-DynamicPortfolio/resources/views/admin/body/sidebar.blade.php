@@ -53,11 +53,10 @@ $adminData = App\Models\User::find($id);
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Email</span>
+                        <span>Landing Pages Leads</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact.inbox')}}">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
+                        <li><a href="{{route('contact.inbox')}}">Leads</a></li>
                     </ul>
                 </li>
 
