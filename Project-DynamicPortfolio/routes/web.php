@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LeadsController;
+use App\Http\Controllers\ASC\AccountServicesController;
 use App\Models\LeadStat;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -45,13 +46,19 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/admin/inbox', 'getallClients')->name('contact.inbox');
     Route::get('/admin/lead/{id}', 'viewEmail')->name('contact.display');
     Route::get('/admin/deletelead/{id}', 'DeleteLead')->name('contact.deleteLead');
-    
 });
+
 // Leads Routes
 Route::controller(LeadsController::class)->group(function(){
     Route::post('/lead/updatestatus','updateStatus')->name('lead.status');
     Route::post('/lead/updateAction','updateAction')->name('lead.action');
     Route::post('/lead/leadAssigned','assignLead')->name('lead.userAssigned');
+});
+
+// Account Services Routes
+
+Route::controller(AccountServicesController::class)->group(function(){
+    Route::get('accountServices/employeesdashboard', 'GetAllEmpData')->name('accountservices.empdashboard');
 });
 
 

@@ -54,7 +54,7 @@ $clients = App\Models\Contact::all();
                                 </td>
                                 <td>{{$client->created_at}}</td>
                                 <td>
-                                    <a href="{{route('contact.display',['id' =>$client->id])}}"><button class="btn btn-primary">View</button></a><br><br>
+                                    <a href="{{route('contact.display',['id' =>$client->id])}}"><button class="btn btn-primary">View Leads</button></a><br><br>
                                     <a href="{{route('contact.deleteLead',['id' =>$client->id])}}"><button class="btn btn-danger">Delete Lead</button></a>
                                 </td>
                             </tr>
