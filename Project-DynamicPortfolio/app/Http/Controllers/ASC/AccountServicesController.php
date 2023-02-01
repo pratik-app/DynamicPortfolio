@@ -10,4 +10,7 @@ class AccountServicesController extends Controller
     public function GetAllEmpData(){
         return view('admin.account_services.employee_dashboard');
     }
+    public function AddEmployees(){
+        return view('admin.account_services.addNewEmployees');
+    }
 }
