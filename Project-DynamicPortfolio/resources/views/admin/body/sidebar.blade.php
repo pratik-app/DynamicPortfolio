@@ -66,32 +66,41 @@ $adminData = App\Models\User::find($id);
                         <span>Account Services</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">Employee Dashboard</a></li>
                         <li><a href="#">Add New Employee</a></li>
-                        <li><a href="#">Timeline</a></li>
-                        <li><a href="#">Directory</a></li>
-                        <li><a href="#">Invoice</a></li>
-                        <li><a href="#">Error 404</a></li>
-                        <li><a href="#">Error 500</a></li>
+                        <li><a href="#">Manage Teams</a></li>
+                        <li><a href="#">Pay Roles</a></li>
+                        <li><a href="#">Employee Hub</a></li>
+                        <li><a href="#">Manager Hub</a></li>
                     </ul>
                 </li>
-
-                <li class="menu-title">Pages</li>                
+                
+                <li class="menu-title">Essential Hub</li>  
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Project Hub</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Client Hub</span>
+                    </a>
+                </li>              
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-profile-line"></i>
-                        <span>Utility</span>
+                        <i class=" fas fa-address-card"></i>
+                        <span>Company Records</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="pages-starter.html">Starter Page</a></li>
-                        <li><a href="pages-timeline.html">Timeline</a></li>
-                        <li><a href="pages-directory.html">Directory</a></li>
-                        <li><a href="pages-invoice.html">Invoice</a></li>
-                        <li><a href="pages-404.html">Error 404</a></li>
-                        <li><a href="pages-500.html">Error 500</a></li>
+                        <li><a href="#">Income Record</a></li>
+                        <li><a href="#">Expense Record</a></li>
+                        <li><a href="#">Property Record</a></li>
                     </ul>
                 </li>
-
-
+                
+            </ul>
         </div>
         <!-- Sidebar -->
     </div>

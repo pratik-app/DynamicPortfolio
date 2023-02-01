@@ -83,11 +83,11 @@ $listAllUsers = App\Models\User::all();
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addAction"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Add Event</h5>
                             </button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#bookAppointment"><i class="fas fa-address-book" style="font-size: 20px;"></i>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#bookAppointment"><i class="fas fa-calendar-plus" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Book new Event</h5>
                             </button>
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
-                                <h5 class="font-size-14 my-1" style="color:#ffffff">Assign New User</h5>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">Assign to Sales Person</h5>
                             </button>
                         </div>
                         <!-- Modal -->
