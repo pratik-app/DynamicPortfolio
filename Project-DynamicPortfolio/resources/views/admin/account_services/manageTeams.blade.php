@@ -22,19 +22,23 @@
                                         <div class="card-title "><b>Manage Teams</b></div>
                                         <ul id="draggablePanelList" class="list-unstyled">
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-dark" style="color:#ffffff">You can drag this panel.</div>
+                                                <div class="panel-heading bg-dark" style="color:#ffffff">Developers Team</div>
                                                 <div class="panel-body">Content here ...</div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-primary" style="color:#ffffff">You can drag this panel too.</div>
+                                                <div class="panel-heading bg-primary" style="color:#ffffff">Marketing Team</div>
                                                 <div class="panel-body">More content here...</div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-warning" style="color:#ffffff">You can drag this panel too.</div>
+                                                <div class="panel-heading bg-warning" style="color:#ffffff">Support Team</div>
                                                 <div class="panel-body">More blah content here...</div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-danger" style="color:#ffffff">You can drag this panel too.</div>
+                                                <div class="panel-heading bg-danger" style="color:#ffffff">Research & Development Team</div>
+                                                <div class="panel-body">Another content panel here...</div>
+                                            </li>
+                                            <li class="panel" style="cursor: move;">
+                                                <div class="panel-heading bg-success" style="color:#ffffff">Analyst Team</div>
                                                 <div class="panel-body">Another content panel here...</div>
                                             </li>
                                         </ul>
@@ -62,6 +66,7 @@
                                                 <div class="panel-heading bg-danger" style="color:#ffffff">You can drag this panel too.</div>
                                                 <div class="panel-body">Another content panel here...</div>
                                             </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
