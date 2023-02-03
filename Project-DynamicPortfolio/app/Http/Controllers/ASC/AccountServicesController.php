@@ -13,4 +13,7 @@ class AccountServicesController extends Controller
     public function AddEmployees(){
         return view('admin.account_services.addNewEmployees');
     }
+    public function ManageTeams(){
+        return view('admin.account_services.manageTeams');
+    }
 }

@@ -68,7 +68,7 @@ $adminData = App\Models\User::find($id);
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('accountservices.empdashboard')}}">Employees Dashboard</a></li>
                         <li><a href="{{route('accountservices.addnewEmp')}}">Add New Employee</a></li>
-                        <li><a href="#">Manage Teams</a></li>
+                        <li><a href="{{route('accountservices.manageTeam')}}">Manage Teams</a></li>
                         <li><a href="#">Pay Roles</a></li>
                         <li><a href="#">Employee Hub</a></li>
                         <li><a href="#">Manager Hub</a></li>
