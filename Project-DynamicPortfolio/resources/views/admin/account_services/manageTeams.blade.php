@@ -16,15 +16,15 @@
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="card-title "><b>Manage Teams</b></div>
+                                        
                                         <ul id="draggablePanelList" class="list-unstyled">
                                             <li class="panel" style="cursor: move;">
                                                 <div class="panel-heading bg-dark " style="color:#ffffff; padding:10px;">Developers Team</div>
                                                 <div class="panel-body">
                                                     <div class="card">
                                                         <div class="row no-gutters align-items-center">
-                                                            <div class="col-md-4">
-                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            <div class="col-md-4" style="padding:10px;" >
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
@@ -42,8 +42,8 @@
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
-                                                            <div class="col-md-4">
-                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            <div class="col-md-4" style="padding:10px;" >
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
@@ -61,8 +61,8 @@
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
-                                                            <div class="col-md-4">
-                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            <div class="col-md-4" style="padding:10px;" >
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
@@ -80,8 +80,8 @@
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
-                                                            <div class="col-md-4">
-                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            <div class="col-md-4" style="padding:10px;" >
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
@@ -99,8 +99,8 @@
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
-                                                            <div class="col-md-4">
-                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            <div class="col-md-4" style="padding:10px;">
+                                                                <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
