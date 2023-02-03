@@ -10,25 +10,34 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Accordion example</h4>
-                        <p class="card-title-desc">Extend the default collapse behavior to create an accordion.</p>
+                        <h4 class="card-title">Manage Teams</h4>
+                        <p class="card-title-desc">Manage your Teams. Perform actions on teams</p>
                         <div class="custom-accordion">
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <ul id="draggablePanelList" class="list-unstyled">
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-dark " style="color:#ffffff; padding:10px;">Developers Team</div>
+                                            <li class="panel">
+                                                <div class="panel-heading bg-dark " style="color:#ffffff; padding:10px; cursor: move;">Developers Team</div>
                                                 <div class="panel-body">
                                                     <div class="card">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-md-4" style="padding:10px;" >
-                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title">Card title</h5>
-                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <h5 class="card-title">Team Details</h5>
+                                                                    <p class="card-text">
+                                                                        <div>
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                        </div>
+                                                                    </p>
                                                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                                                 </div>
                                                             </div>
@@ -36,65 +45,87 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-primary" style="color:#ffffff; padding:10px;">Marketing Team</div>
+                                            <li class="panel" >
+                                                <div class="panel-heading bg-primary" style="color:#ffffff; padding:10px; cursor: move;">Marketing Team</div>
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-md-4" style="padding:10px;" >
-                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title">Card title</h5>
-                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                <h5 class="card-title">Team Details</h5>
+                                                                    <p class="card-text">
+                                                                        <div>
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                        </div>
+                                                                    </p>
                                                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-warning" style="color:#ffffff ;padding:10px;">Support Team</div>
+                                            <li class="panel">
+                                                <div class="panel-heading bg-warning" style="color:#ffffff ;padding:10px; cursor: move;">Support Team</div>
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-md-4" style="padding:10px;" >
-                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title">Card title</h5>
-                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                <h5 class="card-title">Team Details</h5>
+                                                                    <p class="card-text">
+                                                                        <div>
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                        </div>
+                                                                    </p>
                                                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-danger" style="color:#ffffff; padding:10px;">Research & Development Team</div>
+                                            <li class="panel" >
+                                                <div class="panel-heading bg-danger" style="color:#ffffff; padding:10px;cursor: move;">Research & Development Team</div>
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
                                                             <div class="col-md-4" style="padding:10px;" >
-                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                                <img class="img-thumbnail rounded-circle avatar-xl"  src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="Card image">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title">Card title</h5>
-                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                <h5 class="card-title">Team Details</h5>
+                                                                    <p class="card-text">
+                                                                        <div>
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            
+                                                                        </div>
+                                                                    </p>
                                                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-success" style="color:#ffffff ;padding:10px;">Analyst Team</div>
+                                            <li class="panel">
+                                                <div class="panel-heading bg-success" style="color:#ffffff ;padding:10px;cursor: move;">Analyst Team</div>
                                                 <div class="panel-body">
                                                 <div class="card">
                                                         <div class="row no-gutters align-items-center">
@@ -103,9 +134,18 @@
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
-                                                                    <h5 class="card-title">Card title</h5>
-                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                <h5 class="card-title">Team Details</h5>
+                                                                    <p class="card-text">
+                                                                        <div>
+                                                                            <img src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">  
+                                                                            <img src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                            <img src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                        </div>
+                                                                    </p>
                                                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
                                                                 </div>
                                                             </div>
                                                         </div>
