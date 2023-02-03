@@ -16,7 +16,6 @@
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        
                                         <ul id="draggablePanelList" class="list-unstyled">
                                             <li class="panel" style="cursor: move;">
                                                 <div class="panel-heading bg-dark " style="color:#ffffff; padding:10px;">Developers Team</div>
