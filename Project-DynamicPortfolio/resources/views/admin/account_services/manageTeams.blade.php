@@ -1,11 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
 <!-- Jquery 3.6 -->
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <!-- Google Charts Integration -->
 <div class="page-content">
     <div class="container-fluid">
@@ -22,55 +19,105 @@
                                         <div class="card-title "><b>Manage Teams</b></div>
                                         <ul id="draggablePanelList" class="list-unstyled">
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-dark" style="color:#ffffff">Developers Team</div>
-                                                <div class="panel-body">Content here ...</div>
+                                                <div class="panel-heading bg-dark " style="color:#ffffff; padding:10px;">Developers Team</div>
+                                                <div class="panel-body">
+                                                    <div class="card">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Card title</h5>
+                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-primary" style="color:#ffffff">Marketing Team</div>
-                                                <div class="panel-body">More content here...</div>
+                                                <div class="panel-heading bg-primary" style="color:#ffffff; padding:10px;">Marketing Team</div>
+                                                <div class="panel-body">
+                                                <div class="card">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Card title</h5>
+                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-warning" style="color:#ffffff">Support Team</div>
-                                                <div class="panel-body">More blah content here...</div>
+                                                <div class="panel-heading bg-warning" style="color:#ffffff ;padding:10px;">Support Team</div>
+                                                <div class="panel-body">
+                                                <div class="card">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Card title</h5>
+                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-danger" style="color:#ffffff">Research & Development Team</div>
-                                                <div class="panel-body">Another content panel here...</div>
+                                                <div class="panel-heading bg-danger" style="color:#ffffff; padding:10px;">Research & Development Team</div>
+                                                <div class="panel-body">
+                                                <div class="card">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Card title</h5>
+                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-success" style="color:#ffffff">Analyst Team</div>
-                                                <div class="panel-body">Another content panel here...</div>
+                                                <div class="panel-heading bg-success" style="color:#ffffff ;padding:10px;">Analyst Team</div>
+                                                <div class="panel-body">
+                                                <div class="card">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img img-fluid" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Card title</h5>
+                                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title "><b>Manage Teams</b></div>
-                                        <ul id="draggablePanelList" class="list-unstyled">
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-dark" style="color:#ffffff">You can drag this panel.</div>
-                                                <div class="panel-body">Content here ...</div>
-                                            </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-primary" style="color:#ffffff">You can drag this panel too.</div>
-                                                <div class="panel-body">More content here...</div>
-                                            </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-warning" style="color:#ffffff">You can drag this panel too.</div>
-                                                <div class="panel-body">More blah content here...</div>
-                                            </li>
-                                            <li class="panel" style="cursor: move;">
-                                                <div class="panel-heading bg-danger" style="color:#ffffff">You can drag this panel too.</div>
-                                                <div class="panel-body">Another content panel here...</div>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
