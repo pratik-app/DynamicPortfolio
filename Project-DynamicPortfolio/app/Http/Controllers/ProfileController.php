@@ -16,10 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        if(Auth::guest())
-        {
-            return redirect('/login');
-        }
+        
         return view('profile.edit', [
             'user' => $request->user(),
         ]);

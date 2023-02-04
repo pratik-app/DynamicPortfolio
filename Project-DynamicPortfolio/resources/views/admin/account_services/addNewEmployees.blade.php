@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Add Staff</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
-                        <form method="post" action="#">
+                        <form method="post" action="{{route('accountservices.storeempdetials')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
                         @csrf
                             <!-- NOTE: This token is used to verify the authenticated user -->
@@ -19,31 +19,31 @@
                             <div class="row mb-3">
                                 <label for="Employee Name" class="col-sm-2 col-form-label">Employee Name</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empName" alt="Employee Name" type="text"/>
+                                    <input class="form-control" name = "empName" alt="Employee Name" type="text" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="Employee Postion" class="col-sm-2 col-form-label">Employee Postion</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empPosition" alt="Employee Position" type="text"/>
+                                    <input class="form-control" name = "empPosition" alt="Employee Position" type="text" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="Employee Address" class="col-sm-2 col-form-label">Employee Address</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empAddress" alt="Employee Address" type="text"/>
+                                    <input class="form-control" name = "empAddress" alt="Employee Address" type="text" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="Employee Mobile" class="col-sm-2 col-form-label">Employee Mobile</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empMobile" alt="Employee Mobile" type="text"/>
+                                    <input class="form-control" name = "empMobile" alt="Employee Mobile" type="text" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="Employee Email" class="col-sm-2 col-form-label">Employee Email</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empMobile" alt="Employee Mobile" type="email"/>
+                                    <input class="form-control" name = "empMobile" alt="Employee Mobile" type="email" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -141,14 +141,14 @@
                             <div class="row mb-3">
                                 <label for="Allocated Salary" class="col-sm-2 col-form-label">Allocated Salary</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="allocatedSalary" class="form-control"/>
+                                    <input type="text" name="allocatedSalary" class="form-control" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="Allocated Salary" class="col-sm-2 col-form-label">Start Date</label>
                                 <div class="col-sm-10">
                                     <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
-                                        <input type="text" class="form-control" name="startDate" placeholder="Select Start Date" />
+                                        <input type="text" class="form-control" name="startDate" placeholder="Select Start Date" required />
                                     </div>
                                 </div>
                             </div>

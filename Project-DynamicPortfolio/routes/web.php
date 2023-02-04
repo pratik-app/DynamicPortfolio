@@ -61,6 +61,7 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::get('accountServices/employeesdashboard', 'GetAllEmpData')->name('accountservices.empdashboard');
     Route::get('accountServices/addEmployes','AddEmployees')->name('accountservices.addnewEmp');
     Route::get('accountServices/manageTeams','ManageTeams')->name('accountservices.manageTeam');
+    Route::post('accountServices/addNewEmployee', 'AddNewEMP')->name('accountservices.storeempdetials');
 });
 
 
