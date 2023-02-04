@@ -245,6 +245,37 @@
                         </button>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">All Team All Managers</h2>
+                    </div>
+                </div>                
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                            <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="Card image"> Developers Team
+                        </button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                            <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="Card image"> R & D Team
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                            <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="Card image"> Marketing Team
+                        </button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                            <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image"> Analyst Team
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                            <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="Card image"> Support Team
+                        </button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light" style="padding: 20px;">
+                            <i class="fas fa-plus-square"></i> Add New Team
+                        </button>
+                    </div>
+                </div>
                 
             </div>
         </div>
