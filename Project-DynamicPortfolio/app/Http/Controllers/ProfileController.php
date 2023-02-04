@@ -16,6 +16,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -26,6 +30,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -42,6 +50,10 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);

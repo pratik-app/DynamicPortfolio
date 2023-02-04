@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\LeadStat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeadsController extends Controller
 {
     
     public function updateStatus(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $client_currentEmail = $request->client_Email;
         $id = LeadStat::where('client_Email', '=',$client_currentEmail)->first()->id;
         LeadStat::find($id)->update([
@@ -22,6 +27,10 @@ class LeadsController extends Controller
         return redirect()->back()->with($notification);
     }
     public function updateAction(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $client_currentEmail = $request->client_Email;
         $id = LeadStat::where('client_Email', '=',$client_currentEmail)->first()->id;
         LeadStat::find($id)->update([
@@ -35,6 +44,10 @@ class LeadsController extends Controller
     }
     public function assignLead(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $client_currentEmail = $request->client_Email;
         $id = LeadStat::where('client_Email', '=',$client_currentEmail)->first()->id;
         LeadStat::find($id)->update([

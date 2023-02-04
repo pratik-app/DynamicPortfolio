@@ -37,8 +37,8 @@
                         
                     </div>
                     @php
-                        $id = Auth::user()->id;
-                        $adminData = App\Models\User::find($id);
+                            $id = Auth::user()->id;
+                            $adminData = App\Models\User::find($id);     
                     @endphp
 
                     <div class="d-flex">

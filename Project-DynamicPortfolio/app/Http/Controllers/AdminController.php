@@ -23,6 +23,10 @@ class AdminController extends Controller
     // Used to fetch existing user data from Database 
     public function Profile()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $id = Auth::user()->id;
         $adminData = User::find($id);
         return view('admin.admin_profile_view', compact('adminData'));
@@ -30,6 +34,10 @@ class AdminController extends Controller
     // Used to render to Edit Page where user can edit their details in database
     public function EditProfile()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $id = Auth::user()->id;
         $editData = User::find($id);
         
@@ -38,6 +46,10 @@ class AdminController extends Controller
     // Used to update data in Database that user had inserted
     public function UpdateProfile(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $id = Auth::user()->id; // fetching the existing user
         $data = User::find($id);
         $data->name = $request->name;
@@ -59,11 +71,19 @@ class AdminController extends Controller
     }
     // Creating new function to Change Password
     public function ChangePassword(){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         return view('admin.admin_change_password');
     }
     // Creating function to Update the password in Database
     public function UpdatePassword(Request $request){
         // Creating Variable to check whether files have a value or not all fields are mendatory
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $validateData = $request->validate([
             'OldPassword' => 'required',
             'NewUpdatedPassword'=> 'required',

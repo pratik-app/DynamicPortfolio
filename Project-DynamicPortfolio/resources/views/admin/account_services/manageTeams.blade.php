@@ -12,9 +12,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Manage Teams</h2>
                         <p class="card-title-desc">Dragg Teams to Sort</p>
-                        <div class="card">
-                            <div class="card-body">
-                                <ul id="draggablePanelList" class="list-unstyled">
+                        <ul id="draggablePanelList" class="list-unstyled">
                                     <li class="panel">
                                         <div class="panel-heading bg-info " style="color:#ffffff; padding:10px; cursor: move;">Developers Team</div>
                                         <div class="panel-body">
@@ -162,9 +160,6 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -221,6 +216,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Remove Teams</div>
+                        <p class="card-title-desc">Press on Teams to Remove or click on Add New to Add new Team</p>
                         <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="Card image"> Developers Team
                         </button>&nbsp;&nbsp;
@@ -245,30 +241,28 @@
                         </button>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h2 class="card-title">All Team All Managers</h2>
-                    </div>
-                </div>                
+                                
                 <div class="card">
                     <div class="card-body">
-                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                    <h2 class="card-title">All Team Managers</h2>
+                    <p class="card-title-desc">Click on Manager to View</p>
+                        <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="Card image"> Developers Team
                         </button>&nbsp;&nbsp;
-                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                        <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="Card image"> R & D Team
                         </button>
                     </div>
                     <div class="card-body">
-                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                        <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="Card image"> Marketing Team
                         </button>&nbsp;&nbsp;
-                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                        <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image"> Analyst Team
                         </button>
                     </div>
                     <div class="card-body">
-                        <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light">
+                        <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="Card image"> Support Team
                         </button>&nbsp;&nbsp;
                         <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light" style="padding: 20px;">

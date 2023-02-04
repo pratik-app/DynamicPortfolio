@@ -5,21 +5,33 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HomeSlide;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
 class HomeSliderController extends Controller
 {
-    public function HomeSlider()
+    
+    public function HomeSlider(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $homeslide = HomeSlide::find(1); //Finding ID
+        
         return view('admin.home_slide.home_slide_all', compact('homeslide')); //Sending Object to the page
 
     }
     //End of Home Slider Function
     public function UpdateSlider(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $slide_id = $request->id; //Getting Hidden User ID
+        
 
         // Condition that will check if image is selected or not
 

@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\LeadStat;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class ClientController extends Controller
 {
     public function getClientContact(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         
         $clientEmail = $request->client_email;
         
@@ -45,10 +50,18 @@ class ClientController extends Controller
     public function getallClients()
     {
         // $clients = Contact::all();
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         return view('admin.client_contact.all_client_contacts');
     }
     public function viewEmail(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
 
         $id = $request->id;
         // echo $id;
@@ -62,6 +75,10 @@ class ClientController extends Controller
     }
     public function DeleteLead(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $id = $request->id;
         $clientId = Contact::find($id);
         Contact::findOrFail($id)->delete();

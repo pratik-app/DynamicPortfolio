@@ -38,7 +38,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/store/profile', 'UpdateProfile')->name('store.profile');
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/Update/password', 'UpdatePassword')->name('update.password');
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 // Contact Me Routes
 Route::controller(ClientController::class)->group(function(){

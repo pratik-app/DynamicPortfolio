@@ -8,11 +8,16 @@ use App\Models\MultipleImage;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AboutSliderController extends Controller
 {
     public function AboutSlider()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $aboutslide = AboutSlide::find(1); //Finding ID
         return view('admin.about_slide.about_slide_all', compact('aboutslide')); //Sending Object to the page
 
@@ -22,6 +27,10 @@ class AboutSliderController extends Controller
     // Creating function to edit about page
     public function EditAbout(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $aboutslide = $request->id; //Getting ID
         if($request->file('about_exp_img'))
         {
