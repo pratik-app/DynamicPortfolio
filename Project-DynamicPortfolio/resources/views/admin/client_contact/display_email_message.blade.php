@@ -89,6 +89,9 @@ $listAllUsers = App\Models\User::all();
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Assign to Sales Person</h5>
                             </button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Client</h5>
+                            </button>
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

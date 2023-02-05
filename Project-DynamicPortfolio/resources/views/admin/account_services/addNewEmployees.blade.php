@@ -43,7 +43,7 @@
                             <div class="row mb-3">
                                 <label for="Employee Email" class="col-sm-2 col-form-label">Employee Email</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empMobile" alt="Employee Mobile" type="email" required/>
+                                    <input class="form-control" name = "empEmail" alt="Employee Mobile" type="email" required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -62,30 +62,35 @@
                             <div class="row mb-3" id = "FullTimeEmp">
                                 <label for="Offer Letter" class="col-sm-2 col-form-label">Upload OfferLetter</label>
                                 <div class="col-sm-10">
+                                    <small>Please select PDF only*</small>
                                     <input type="file" name="FTOfferLetter" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "PartTimeEmp">
                                 <label for="Offer Letter" class="col-sm-2 col-form-label">Upload OfferLetter</label>
                                 <div class="col-sm-10">
+                                    <small>Please select PDF only*</small>
                                     <input type="file" name="PTOfferLetter" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "VoluntaryEmp">
                                 <label for="Voluntary Discloser" class="col-sm-2 col-form-label">Upload Voluntary Discloser</label>
                                 <div class="col-sm-10">
+                                    <small>Please select PDF only*</small>
                                     <input type="file" name="VoluntaryDiscloser" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "ContractEmp">
                                 <label for="Employement Contract" class="col-sm-2 col-form-label">Upload Contract</label>
                                 <div class="col-sm-10">
+                                    <small>Please select PDF only*</small>
                                     <input type="file" name="EmpContract" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "TempEmp">
                                 <label for="Temporary Contract" class="col-sm-2 col-form-label">Upload Temporary Contract</label>
                                 <div class="col-sm-10">
+                                    <small>Please select PDF only*</small>
                                     <input type="file" name="TempContract" class="form-control"/>
                                 </div>
                             </div>
@@ -104,24 +109,28 @@
                             <div class="row mb-3" id = "WorkPermitSelection">
                                 <label for="Work Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Work Authorization</label>
                                 <div class="col-sm-10">
+                                    <small>Please select image file only*</small>
                                     <input type="file" name="WorkPermitProof" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "StudyPermitSelection">
                                 <label for="Study Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Study Authorization</label>
                                 <div class="col-sm-10">
+                                    <small>Please select image file only*</small>
                                     <input type="file" name="StudyPermitProof" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "CoopPermitSelection">
                                 <label for="Coop Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Coop Permit</label>
                                 <div class="col-sm-10">
+                                    <small>Please select image file only*</small>
                                     <input type="file" name="CoopPermitProof" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3" id = "CitizenPermitSelection">
                                 <label for="Citizen Authorization" class="col-sm-2 col-form-label">Upload Proof of Citizenship</label>
                                 <div class="col-sm-10">
+                                    <small>Please select image file only*</small>
                                     <input type="file" name="CitizenShipProof" class="form-control"/>
                                 </div>
                             </div>
