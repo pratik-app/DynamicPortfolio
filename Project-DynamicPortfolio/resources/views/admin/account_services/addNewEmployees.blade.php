@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Add Staff</h4>
+                        <h4 class="card-title">Add Staff / Update Staff</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
                         <form method="post" action="{{route('accountservices.storeempdetials')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
@@ -59,39 +59,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row mb-3" id = "FullTimeEmp">
+                            <div class="row mb-3">
                                 <label for="Offer Letter" class="col-sm-2 col-form-label">Upload OfferLetter</label>
                                 <div class="col-sm-10">
                                     <small>Please select PDF only*</small>
-                                    <input type="file" name="FTOfferLetter" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "PartTimeEmp">
-                                <label for="Offer Letter" class="col-sm-2 col-form-label">Upload OfferLetter</label>
-                                <div class="col-sm-10">
-                                    <small>Please select PDF only*</small>
-                                    <input type="file" name="PTOfferLetter" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "VoluntaryEmp">
-                                <label for="Voluntary Discloser" class="col-sm-2 col-form-label">Upload Voluntary Discloser</label>
-                                <div class="col-sm-10">
-                                    <small>Please select PDF only*</small>
-                                    <input type="file" name="VoluntaryDiscloser" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "ContractEmp">
-                                <label for="Employement Contract" class="col-sm-2 col-form-label">Upload Contract</label>
-                                <div class="col-sm-10">
-                                    <small>Please select PDF only*</small>
-                                    <input type="file" name="EmpContract" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "TempEmp">
-                                <label for="Temporary Contract" class="col-sm-2 col-form-label">Upload Temporary Contract</label>
-                                <div class="col-sm-10">
-                                    <small>Please select PDF only*</small>
-                                    <input type="file" name="TempContract" class="form-control"/>
+                                    <input type="file" name="empLetter" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -106,32 +78,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row mb-3" id = "WorkPermitSelection">
+                            <div class="row mb-3" >
                                 <label for="Work Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Work Authorization</label>
                                 <div class="col-sm-10">
                                     <small>Please select image file only*</small>
-                                    <input type="file" name="WorkPermitProof" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "StudyPermitSelection">
-                                <label for="Study Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Study Authorization</label>
-                                <div class="col-sm-10">
-                                    <small>Please select image file only*</small>
-                                    <input type="file" name="StudyPermitProof" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "CoopPermitSelection">
-                                <label for="Coop Permit Authorization" class="col-sm-2 col-form-label">Upload Proof of Coop Permit</label>
-                                <div class="col-sm-10">
-                                    <small>Please select image file only*</small>
-                                    <input type="file" name="CoopPermitProof" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3" id = "CitizenPermitSelection">
-                                <label for="Citizen Authorization" class="col-sm-2 col-form-label">Upload Proof of Citizenship</label>
-                                <div class="col-sm-10">
-                                    <small>Please select image file only*</small>
-                                    <input type="file" name="CitizenShipProof" class="form-control"/>
+                                    <input type="file" name="WorkAuth" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -166,8 +117,8 @@
                                 <input type="submit" class="btn btn-rounded btn-primary" value="Update Slide"/></br></br>
                                 </div>
                             </div>
-                            
                         </form>
+                        <button class="btn btn-warning btn-rounded">Update Employee Details</button>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -178,118 +129,6 @@
 <!-- hidding elements -->
 <script>
     // for WorkPermit
-    $("#WorkPermitSelection").hide();
-    $("#StudyPermitSelection").hide();
-    $("#CoopPermitSelection").hide();
-    $("#CitizenPermitSelection").hide();
-    $("#WorkAuth").change(function(){
-        switch($("#WorkAuth").val())
-        {
-            case "none":
-                alert("Employee is not Authorized to Work")
-                $("#WorkPermitSelection").hide();
-                $("#StudyPermitSelection").hide();
-                $("#CoopPermitSelection").hide();
-                $("#CitizenPermitSelection").hide();
-                break;
-            case "StudyPermit":
-                $("#StudyPermitSelection").show()
-                $("#WorkPermitSelection").hide();
-                $("#CoopPermitSelection").hide();
-                $("#CitizenPermitSelection").hide();
-                break;
-            case "WorkPermit":
-                $("#WorkPermitSelection").show()
-                $("#StudyPermitSelection").hide();
-                $("#CoopPermitSelection").hide();
-                $("#CitizenPermitSelection").hide();
-                break;
-            case "CoopPermit":
-                $("#CoopPermitSelection").show();
-                $("#WorkPermitSelection").hide();
-                $("#StudyPermitSelection").hide();
-                $("#CitizenPermitSelection").hide();
-                break;
-            case "Citizen":
-                $("#CitizenPermitSelection").show();
-                $("#WorkPermitSelection").hide();
-                $("#StudyPermitSelection").hide();
-                $("#CoopPermitSelection").hide();
-                break;
-            case Default:
-                $("#WorkPermitSelection").hide();
-                $("#StudyPermitSelection").hide();
-                $("#CoopPermitSelection").hide();
-                $("#CitizenPermitSelection").hide();
-                break;
-                
-        }
-        
-        
-    })
-    // for Storing Offere letter or any employement related Document
-    $("#FullTimeEmp").hide();
-    $("#PartTimeEmp").hide();
-    $("#VoluntaryEmp").hide();
-    $("#ContractEmp").hide();
-    $("#TempEmp").hide();
-    $("#EmpType").change(function(){
-        switch($("#EmpType").val())
-        {
-            case "none":
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").hide();
-                $("#TempEmp").hide();
-                break;
-            case "FullTime":
-                $("#FullTimeEmp").show();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").hide();
-                $("#TempEmp").hide();
-                break;
-            case "PartTime":
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").show();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").hide();
-                $("#TempEmp").hide();
-                break;
-            case "Voluntary":
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").show();
-                $("#ContractEmp").hide();
-                $("#TempEmp").hide();
-                break;
-            case "Contract":
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").show();
-                $("#TempEmp").hide();
-                break;
-            case "Temporary":
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").hide();
-                $("#TempEmp").show();
-                break;
-            case Default:
-                $("#FullTimeEmp").hide();
-                $("#PartTimeEmp").hide();
-                $("#VoluntaryEmp").hide();
-                $("#ContractEmp").hide();
-                $("#TempEmp").hide();
-                break;
-                
-        }
-        
-        
-    })
     
 
     
