@@ -4,7 +4,8 @@
 
 $currentStatus = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_status;
 $currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_action;
-$listAllUsers = App\Models\User::all();
+$listAllUsers = App\Models\ASC\EmpRecord::all();
+
 @endphp
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <div class="page-content">
@@ -16,7 +17,10 @@ $listAllUsers = App\Models\User::all();
                         <div class="d-flex mb-4">
                             <i class="fas fa-user-circle" style="font-size: 50px;"></i>&nbsp;
                             <div class="flex-1">
-                                <h5 class="font-size-14 my-1">{{$clientId->client_fullName}}</h5>
+                                <h5 class="font-size-14 my-1">{{$clientId->client_fullName}}
+                                
+                                
+                                </h5>
                                 <small class="text-muted">{{$clientId->client_Email}}</small>
                                 @php
                                 if($currentStatus == 1)
@@ -273,9 +277,12 @@ $listAllUsers = App\Models\User::all();
                                                     <div class="col-sm-10">
                                                         <select name="available_user" class="form-control form-select">
                                                             <option value="">Available Sales Person</option>
-                                                            @foreach($listAllUsers as $user)
-                                                            <option name='available_user' value='{{$user->name}}'>{{$user->name}}</option>;
+                                                            @foreach($listAllUsers as $newSales)
+                                                                @if(str_contains($newSales->emp_position,'Sales'))
+                                                                    <option name='available_user' value='{{$newSales->emp_name}}'>{{$newSales->emp_name}}</option>;        
+                                                                @endif
                                                             @endforeach
+                                                            
                                                         </select>
                                                         
                                                     </div>
