@@ -282,7 +282,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                     <option name='available_user' value='{{$newSales->emp_name}}'>{{$newSales->emp_name}}</option>;        
                                                                 @endif
                                                             @endforeach
-                                                            
                                                         </select>
                                                         
                                                     </div>
