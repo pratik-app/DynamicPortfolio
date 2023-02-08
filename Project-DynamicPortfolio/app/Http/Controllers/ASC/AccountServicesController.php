@@ -17,6 +17,23 @@ class AccountServicesController extends Controller
         }
         return view('admin.account_services.employee_dashboard');
     }
+    public function EditEmp(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $empID =  $request->id;
+        $empDetails = EmpRecord::findOrFail($empID);
+        return view('admin.account_services.editEmployees',compact('empDetails'));
+    }
+    public function DisplayEmpUpdatePage(){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $allempRecord = EmpRecord::all();
+        return view('admin.account_services.displayEmpUpdate',compact('allempRecord'));
+    }
     public function AddNewEMP(Request $request){
         // Checking the User
         if(Auth::guest())

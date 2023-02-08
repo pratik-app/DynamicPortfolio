@@ -19,7 +19,7 @@
                             <div class="row mb-3">
                                 <label for="Employee Name" class="col-sm-2 col-form-label">Employee Name</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name = "empName" alt="Employee Name" type="text" required/>
+                                    <input class="form-control" name = "empName" alt="Employee Name" type="text" value="{{$empDetails->emp_name}}"/>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="{{route('accountservices.displayUpdatePage')}}"><button class="btn btn-warning btn-rounded">Update Employee Details</button></a>
+                        
                     </div>
                 </div>
             </div> <!-- end col -->
