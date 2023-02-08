@@ -84,7 +84,7 @@
                                         <td>{{$record->created_at}}</td>
                                         <td>
                                             <a href="{{route('accountservices.editEmp',['id' =>$record->id])}}"><button type="button" name="Update" class="btn btn-warning">Update</button></a>
-                                            <a href="#"><button type="button" name="Delete" class="btn btn-danger">Delete</button></a>
+                                            <a href="{{route('accountservice.deleteEmp',['id' =>$record->id])}}"><button type="button" name="Delete" class="btn btn-danger">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -64,8 +64,10 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::post('accountServices/addNewEmployee', 'AddNewEMP')->name('accountservices.storeempdetials');
     Route::get('accountServices/employeesDesk','EmpDesk')->name('accountservices.empdesk');
     // update employee Starts Here
-    Route::get('accountServices/DisplayUpdatePage','DisplayEmpUpdatePage')->name('accountservices.displayUpdatePage');
+    Route::get('accountServices/viewUpdatePage','DisplayEmpUpdatePage')->name('accountservices.displayUpdatePage');
     Route::get('accountServices/DisplayUpdatePage/{id}','EditEmp')->name('accountservices.editEmp');
+    Route::post('accountServices/UpdateEmployee','UpdateEmployee')->name('accountservices.updateEmp');
+    Route::get('accountSerices/DeleteEmployee','DeleteEmp')->name('accountservice.deleteEmp');
 });
 
 
