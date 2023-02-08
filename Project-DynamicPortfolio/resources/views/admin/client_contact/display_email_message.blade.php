@@ -93,7 +93,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Assign to Sales Person</h5>
                             </button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
+                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#converLeadToClient"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Client</h5>
                             </button>
                         </div>
@@ -238,7 +238,70 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Assign New User</h5>
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Assign Lead to Sales Person</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{route('lead.userAssigned')}}" method="POST">
+                                            @csrf
+                                        <div class="modal-body">
+                                            <p>
+                                                <div class="row mb-3" hidden>
+                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="Available Users" class="col-sm-2 col-form-label">Available Users</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="available_user" class="form-control form-select">
+                                                            <option value="">Available Sales Person</option>
+                                                            @foreach($listAllUsers as $newSales)
+                                                                @if(str_contains($newSales->emp_position,'Sales'))
+                                                                    <option name='available_user' value='{{$newSales->emp_name}}'>{{$newSales->emp_name}}</option>;        
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
+                                        </div>
+                                    </form>
+                                    
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                        <div class="modal fade" id="converLeadToClient" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to Client</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form action="{{route('lead.userAssigned')}}" method="POST">
