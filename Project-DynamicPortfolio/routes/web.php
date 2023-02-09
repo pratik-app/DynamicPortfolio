@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
-use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
-use App\Models\LeadStat;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -40,19 +38,16 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/Update/password', 'UpdatePassword')->name('update.password');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Contact Me Routes
-Route::controller(ClientController::class)->group(function(){
-    Route::post('/admin/leads', 'getClientContact')->name('contact.me');
-    Route::get('/admin/inbox', 'getallClients')->name('contact.inbox');
-    Route::get('/admin/lead/{id}', 'viewEmail')->name('contact.display');
-    Route::get('/admin/deletelead/{id}', 'DeleteLead')->name('contact.deleteLead');
-});
 
 // Leads Routes
 Route::controller(LeadsController::class)->group(function(){
     Route::post('/lead/updatestatus','updateStatus')->name('lead.status');
     Route::post('/lead/updateAction','updateAction')->name('lead.action');
     Route::post('/lead/leadAssigned','assignLead')->name('lead.userAssigned');
+    Route::post('/admin/leads', 'getleadContact')->name('contact.me');
+    Route::get('/admin/inbox', 'getallleads')->name('contact.inbox');
+    Route::get('/admin/lead/{id}', 'viewEmail')->name('contact.display');
+    Route::get('/admin/deletelead/{id}', 'DeleteLead')->name('contact.deleteLead');
 });
 
 // Account Services Routes

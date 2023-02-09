@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 @php
-$clients = App\Models\Contact::all();
+$Leads = App\Models\Contact::all();
 @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -17,27 +17,27 @@ $clients = App\Models\Contact::all();
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
-                                <th hidden>Client ID </th>
-                                <th>Client Name</th>
-                                <th>Client Email</th>
-                                <th>Client Mobile Number</th>
-                                <th>Client Message</th>
+                                <th hidden>Lead ID </th>
+                                <th>Lead Name</th>
+                                <th>Lead Email</th>
+                                <th>Lead Mobile Number</th>
+                                <th>Lead Message</th>
                                 <th>Mail Status</th>
                                 <th>Received on</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($clients as $client)
+                                @foreach($leads as $lead)
                             <tr style="cursor: pointer;"  id="TableData">
                                 
-                                <td>{{$client->client_fullName}}</td>
-                                <td>{{$client->client_Email}}</td>
-                                <td>{{$client->client_Mobile}}</td>
-                                <td>{{$client->client_Message}}</td>
+                                <td>{{$lead->lead_fullName}}</td>
+                                <td>{{$lead->lead_Email}}</td>
+                                <td>{{$lead->lead_Mobile}}</td>
+                                <td>{{$lead->lead_Message}}</td>
                                 <td>
                                     @php
-                                        switch($client->status)
+                                        switch($lead->status)
                                         {
                                             case 0:
                                                 echo "Unread";
@@ -52,10 +52,10 @@ $clients = App\Models\Contact::all();
                                     @endphp
                                     
                                 </td>
-                                <td>{{$client->created_at}}</td>
+                                <td>{{$lead->created_at}}</td>
                                 <td>
-                                    <a href="{{route('contact.display',['id' =>$client->id])}}"><button class="btn btn-primary">View Leads</button></a><br><br>
-                                    <a href="{{route('contact.deleteLead',['id' =>$client->id])}}"><button class="btn btn-danger">Delete Lead</button></a>
+                                    <a href="{{route('contact.display',['id' =>$lead->id])}}"><button class="btn btn-primary">View Leads</button></a><br><br>
+                                    <a href="{{route('contact.deleteLead',['id' =>$lead->id])}}"><button class="btn btn-danger">Delete Lead</button></a>
                                 </td>
                             </tr>
                             @endforeach

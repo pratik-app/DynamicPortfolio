@@ -2,8 +2,8 @@
 @section('admin')
 @php
 
-$currentStatus = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_status;
-$currentAction = App\Models\LeadStat::where('client_Email', '=',$clientId->client_Email)->first()->lead_action;
+$currentStatus = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_status;
+$currentAction = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_action;
 $listAllUsers = App\Models\ASC\EmpRecord::all();
 
 @endphp
@@ -17,11 +17,11 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                         <div class="d-flex mb-4">
                             <i class="fas fa-user-circle" style="font-size: 50px;"></i>&nbsp;
                             <div class="flex-1">
-                                <h5 class="font-size-14 my-1">{{$clientId->client_fullName}}
+                                <h5 class="font-size-14 my-1">{{$leadId->lead_fullName}}
                                 
                                 
                                 </h5>
-                                <small class="text-muted">{{$clientId->client_Email}}</small>
+                                <small class="text-muted">{{$leadId->lead_Email}}</small>
                                 @php
                                 if($currentStatus == 1)
                                 {
@@ -38,7 +38,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
 
                         <h4 class="font-size-16">Message</h4>
 
-                        <p>{{$clientId->client_Message}}</p>
+                        <p>{{$leadId->lead_Message}}</p>
 
                         <hr>
                         
@@ -76,10 +76,10 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                         
                         <div class="flex-1">
                             <button class="btn btn-primary"><i class="fas fas fa-at" style="font-size: 20px;"></i>
-                                <h5 class="font-size-14 my-1" style="color:#ffffff">{{$clientId->client_Email}}</h5>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">{{$leadId->lead_Email}}</h5>
                             </button>
                             <button class="btn btn-primary"><i class="fas fa-phone" style="font-size: 20px;"></i>
-                                <h5 class="font-size-14 my-1" style="color:#ffffff">{{$clientId->client_Mobile}}</h5>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">{{$leadId->lead_Mobile}}</h5>
                             </button>
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-edit" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Modify Status</h5>
@@ -93,8 +93,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#assignUser"><i class="fas fa-plus-circle" style="font-size: 20px;"></i>
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Assign to Sales Person</h5>
                             </button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#converLeadToClient"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
-                                <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Client</h5>
+                            <button type="button" id="CTC" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#confirmation"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Lead</h5>
                             </button>
                         </div>
                         <!-- Modal -->
@@ -110,39 +110,39 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         <div class="modal-body">
                                             <p>
                                                 <div class="row mb-3" hidden>
-                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <label for="lead_id" class="col-sm-2 col-form-label">Lead ID</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                        <input class="form-control" name = "lead_id" alt="lead Name" type="text" value="{{$leadId->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <label for="lead_Name" class="col-sm-2 col-form-label">Lead Name</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row mb-3">
-                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                        <input class="form-control" name = "lead_Name"  alt="lead Name" type="text" value="{{$leadId->lead_fullName}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <label for="lead_Email" class="col-sm-2 col-form-label">Lead Email</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                        <input class="form-control" name = "lead_Email"  alt="lead Email Address" type="text" value="{{$leadId->lead_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="lead_Mobile" class="col-sm-2 col-form-label">Lead Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "lead_Mobile"  alt="lead Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
                                                     <label for="Select Status" class="col-sm-2 col-form-label">Select Status</label>
                                                     <div class="col-sm-10">
-                                                        <select name="client_status" class="form-control form-select">
+                                                        <select name="lead_status" class="form-control form-select">
                                                             <option value="">Select Status</option>
-                                                            <option name="client_status" value="1">Active</option>
-                                                            <option name="client_status" value="0">Inactive</option>
+                                                            <option name="lead_status" value="1">Active</option>
+                                                            <option name="lead_status" value="0">Inactive</option>
                                                         </select>
                                                         
                                                     </div>
@@ -169,29 +169,29 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         <div class="modal-body">
                                             <p>
                                                 <div class="row mb-3" hidden>
-                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <label for="lead_id" class="col-sm-2 col-form-label">lead ID</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                        <input class="form-control" name = "lead_id" alt="lead Name" type="text" value="{{$leadId->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <label for="lead_Name" class="col-sm-2 col-form-label">lead Name</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row mb-3">
-                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                        <input class="form-control" name = "lead_Name"  alt="lead Name" type="text" value="{{$leadId->lead_fullName}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <label for="lead_Email" class="col-sm-2 col-form-label">lead Email</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                        <input class="form-control" name = "lead_Email"  alt="lead Email Address" type="text" value="{{$leadId->lead_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="lead_Mobile" class="col-sm-2 col-form-label">lead Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "lead_Mobile"  alt="lead Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
                                                     </div>
                                                 </div>
                                                 
@@ -246,29 +246,29 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         <div class="modal-body">
                                             <p>
                                                 <div class="row mb-3" hidden>
-                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <label for="lead_id" class="col-sm-2 col-form-label">lead ID</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                        <input class="form-control" name = "lead_id" alt="lead Name" type="text" value="{{$leadId->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <label for="lead_Name" class="col-sm-2 col-form-label">lead Name</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row mb-3">
-                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                        <input class="form-control" name = "lead_Name"  alt="lead Name" type="text" value="{{$leadId->lead_fullName}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <label for="lead_Email" class="col-sm-2 col-form-label">lead Email</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                        <input class="form-control" name = "lead_Email"  alt="lead Email Address" type="text" value="{{$leadId->lead_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="lead_Mobile" class="col-sm-2 col-form-label">lead Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "lead_Mobile"  alt="lead Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
                                                     </div>
                                                 </div>
                                                 
@@ -297,41 +297,60 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>
-                        <div class="modal fade" id="converLeadToClient" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
+                        <div class="modal fade" id="confirmation" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to Client</h5>
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Confirm!</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="{{route('lead.userAssigned')}}" method="POST">
+                                    <div class="modal-body">
+                                            <p>Did We Received Project from this Source?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#convertLeadTolead">Yes</button>
+                                        </div>
+                                    </form>
+                                    
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                        <div class="modal fade" id="convertLeadTolead" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to lead</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="#" method="POST">
                                             @csrf
                                         <div class="modal-body">
                                             <p>
                                                 <div class="row mb-3" hidden>
-                                                    <label for="client_id" class="col-sm-2 col-form-label">Client ID</label>
+                                                    <label for="lead_id" class="col-sm-2 col-form-label">lead ID</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_id" alt="Client Name" type="text" value="{{$clientId->id}}">
+                                                        <input class="form-control" name = "lead_id" alt="lead Name" type="text" value="{{$leadId->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="client_Name" class="col-sm-2 col-form-label">Client Name</label>
+                                                    <label for="lead_Name" class="col-sm-2 col-form-label">lead Name</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Name"  alt="Client Name" type="text" value="{{$clientId->client_fullName}}">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row mb-3">
-                                                    <label for="client_Email" class="col-sm-2 col-form-label">Client Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Email"  alt="Client Email Address" type="text" value="{{$clientId->client_Email}}">
+                                                        <input class="form-control" name = "lead_Name"  alt="lead Name" type="text" value="{{$leadId->lead_fullName}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="client_Mobile" class="col-sm-2 col-form-label">Client Mobile Number</label>
+                                                    <label for="lead_Email" class="col-sm-2 col-form-label">lead Email</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "client_Mobile"  alt="Client Mobile Number" type="text" value="{{$clientId->client_Mobile}}">
+                                                        <input class="form-control" name = "lead_Email"  alt="lead Email Address" type="text" value="{{$leadId->lead_Email}}">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="lead_Mobile" class="col-sm-2 col-form-label">lead Mobile Number</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" name = "lead_Mobile"  alt="lead Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
                                                     </div>
                                                 </div>
                                                 
@@ -369,5 +388,4 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
         </div> <!-- end row -->
     </div>
 </div>
-
 @endsection
