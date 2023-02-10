@@ -398,9 +398,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                         <input id = "client_project_number" class="form-control" name = "client_project_number"  alt="Client Project Project Number" type="text" value="1" required>
                                                     </div>
                                                 </div>
-                                                <div id="ProjectNameMissing" class="row mb-3" style="color:red;">
-                                                    
-                                                </div>
                                             </p>
                                         </div>
                                         <div class="modal-footer">
