@@ -4,6 +4,7 @@
 
 $currentStatus = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_status;
 $currentAction = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_action;
+$leadData = App\Models\LeadStat::where('lead_id', '=',$leadId->id)->first();
 $listAllUsers = App\Models\ASC\EmpRecord::all();
 
 @endphp
@@ -317,7 +318,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             </div><!-- /.modal-dialog -->
                         </div>
                         <div class="modal fade" id="convertLeadTolead" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-dialog ">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to lead</h5>
@@ -325,54 +326,86 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                     </div>
                                     <form action="#" method="POST">
                                             @csrf
-                                        <div class="modal-body">
+                                        <div class="modal-body" style="overflow-y: auto;">
                                             <p>
                                                 <div class="row mb-3" hidden>
-                                                    <label for="lead_id" class="col-sm-2 col-form-label">lead ID</label>
+                                                    <label for="lead_id" class="col-sm-2 col-form-label">Lead ID</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" name = "lead_id" alt="lead Name" type="text" value="{{$leadId->id}}">
+                                                        <input class="form-control" name = "lead_id" alt="lead Name"  type="text" value="{{$leadId->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="lead_Name" class="col-sm-2 col-form-label">lead Name</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "lead_Name"  alt="lead Name" type="text" value="{{$leadId->lead_fullName}}">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="row mb-3">
-                                                    <label for="lead_Email" class="col-sm-2 col-form-label">lead Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "lead_Email"  alt="lead Email Address" type="text" value="{{$leadId->lead_Email}}">
+                                                    <label for="client_Name" class="col-sm-5 col-form-label">Client Name</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" name = "Client_Name"  alt="client Name" type="text" value="{{$leadId->lead_fullName}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="lead_Mobile" class="col-sm-2 col-form-label">lead Mobile Number</label>
-                                                    <div class="col-sm-10">
-                                                        <input class="form-control" name = "lead_Mobile"  alt="lead Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
+                                                    <label for="client_Email" class="col-sm-5 col-form-label">Client Email</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" name = "Client_Email"  alt="client Email Address" type="text" value="{{$leadId->lead_Email}}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row mb-3">
-                                                    <label for="Available Users" class="col-sm-2 col-form-label">Available Users</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="available_user" class="form-control form-select">
-                                                            <option value="">Available Sales Person</option>
-                                                            @foreach($listAllUsers as $newSales)
-                                                                @if(str_contains($newSales->emp_position,'Sales'))
-                                                                    <option name='available_user' value='{{$newSales->emp_name}}'>{{$newSales->emp_name}}</option>;        
-                                                                @endif
-                                                            @endforeach
-                                                        </select>
-                                                        
+                                                    <label for="client_Mobile" class="col-sm-5 col-form-label">Client Mobile Number</label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" name = "Client_Mobile"  alt="client Mobile Number" type="text" value="{{$leadId->lead_Mobile}}">
                                                     </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <label for="client_assigned_to" class="col-sm-5 col-form-label">Client Assigned To </label>
+                                                    <div class="col-sm-12">
+                                                        <input class="form-control" name = "client_assigned_to"  alt="Client Assigned To" type="text" value="{{$leadData->lead_assigned_to}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="client_Project Name" class="col-sm-5 col-form-label">Project Name *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_Project" class="form-control" name = "client_project_name"  alt="Client Project Name" type="text" require/>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="client_Project Price" class="col-sm-5 col-form-label">Project Price *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_Project_Price" class="form-control" name = "client_project_price"  alt="Client Project Price" type="text" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="Dead Line Date" class="col-sm-5 col-form-label">Project Required By *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_Project_deadLine" class="form-control" name = "client_Project_deadLine"  alt="Client Project Dead Line" type="date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="Client Project Cost" class="col-sm-5 col-form-label">Project Cost *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_Project_Cost" class="form-control" name = "client_Project_cost"  alt="Client Project Cost" type="text" required>
+                                                    </div>
+                                                </div>
+                                                 
+                                                <div class="row mb-3">
+                                                    <label for="Client Project Advance Payment" class="col-sm-5 col-form-label">Advance Payment *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_Advance_payment" class="form-control" name = "client_advance_payment"  alt="Client Project Advance Payment" type="text" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="Client Project Number" class="col-sm-5 col-form-label">Client Project Number *</label>
+                                                    <div class="col-sm-12">
+                                                        <input id = "client_project_number" class="form-control" name = "client_project_number"  alt="Client Project Project Number" type="text" value="1" required>
+                                                    </div>
+                                                </div>
+                                                <div id="ProjectNameMissing" class="row mb-3" style="color:red;">
+                                                    
                                                 </div>
                                             </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
+                                            <button id="Warning" type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
+                                            <button id="Convertbtn"type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
                                         </div>
                                     </form>
                                     
@@ -388,4 +421,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
         </div> <!-- end row -->
     </div>
 </div>
+<script>
+
+   
+</script>
 @endsection
