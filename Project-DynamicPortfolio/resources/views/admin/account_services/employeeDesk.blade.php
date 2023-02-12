@@ -65,7 +65,7 @@
                                         <td>{{$record->emp_type}}</td>
                                         <td>{{$record->emp_letter}}</td>
                                         <td>{{$record->emp_work_permit}}</td>
-                                        <td><img class="rounded-circle avatar-xl" src="{{(!empty($record->emp_work_proof))? url($record->emp_work_proof):url('upload/no_image.jpg')}}"/></td>
+                                        <td><a href="{{(!empty($record->emp_work_proof))? url($record->emp_work_proof):url('upload/no_image.jpg')}}"><img class="rounded-circle avatar-xl" src="{{(!empty($record->emp_work_proof))? url($record->emp_work_proof):url('upload/no_image.jpg')}}"/></a></td>
                                         <td>{{$record->emp_experience}}</td>
                                         <td>{{$record->emp_salary}}</td>
                                         <td>{{$record->emp_start_date}}</td>
