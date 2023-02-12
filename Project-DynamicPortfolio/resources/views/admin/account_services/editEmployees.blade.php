@@ -113,6 +113,27 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($empDetails->emp_status == 1)
+                            <div class="row mb-3">
+                                <label for="Allocated Salary" class="col-sm-2 col-form-label">Employee Status</label>
+                                <div class="col-sm-10">
+                                <select class="form-select" name = "empStatus" alt="Employee Status">
+                                    <option name="empExperience" value="{{$empDetails->emp_status}}" selected>Active</option>
+                                    <option name="empExperience" value="0"> Deactive</option>
+                                </select>
+                                </div>
+                            </div>
+                                @else
+                            <div class="row mb-3">
+                                <label for="Allocated Salary" class="col-sm-2 col-form-label">Employee Status</label>
+                                <div class="col-sm-10">
+                                <select class="form-select" name = "empStatus" alt="Employee Status">
+                                    <option name="empExperience" value="{{$empDetails->emp_status}}" selected>Deactive</option>
+                                    <option name="empExperience" value="1"> Active</option>
+                                </select>
+                                </div>
+                            </div>
+                                @endif                            
                             <div class="row mb-3">
                                 <div class="col-sm-10">
                                 <input type="submit" class="btn btn-rounded btn-warning" value="Update Slide"/></br></br>

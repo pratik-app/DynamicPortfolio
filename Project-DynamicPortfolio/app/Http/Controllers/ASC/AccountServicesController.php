@@ -48,6 +48,7 @@ class AccountServicesController extends Controller
             $empExp = $request->empExperience;
             $empSalary = $request->allocatedSalary;
             $empstartDate = $request->startDate;
+            $empStatus = $request->empStatus;
             // checking which file is selected
                 $empTypeproof = $request->file('empLetter');
                 //    Storing PDF and Image on specific Location
@@ -65,6 +66,7 @@ class AccountServicesController extends Controller
                         'emp_work_permit' =>$empWorkAuth,
                         'emp_experience'=>$empExp,
                         'emp_salary'=>$empSalary,
+                        'emp_status'=>$empStatus,
                         'emp_start_date' => $empstartDate
                     ]
                     );
@@ -90,6 +92,7 @@ class AccountServicesController extends Controller
             $empExp = $request->empExperience;
             $empSalary = $request->allocatedSalary;
             $empstartDate = $request->startDate;
+            $empStatus = $request->empStatus;
             // checking which file is selected
             
                 $empWorkAuthproof = $request->file('WorkAuth');
@@ -109,7 +112,8 @@ class AccountServicesController extends Controller
                         'emp_work_proof' => $saveUrl2,
                         'emp_experience'=>$empExp,
                         'emp_salary'=>$empSalary,
-                        'emp_start_date' => $empstartDate
+                        'emp_start_date' => $empstartDate,
+                        'emp_status' => $empStatus
                     ]
                     );
                     // Creating Notification 
@@ -134,6 +138,7 @@ class AccountServicesController extends Controller
             $empExp = $request->empExperience;
             $empSalary = $request->allocatedSalary;
             $empstartDate = $request->startDate;
+            $empStatus = $request->empStatus;
             // checking which file is selected
             
                 $empTypeproof = $request->file('empLetter');
@@ -157,7 +162,8 @@ class AccountServicesController extends Controller
                         'emp_work_proof' => $saveUrl2,
                         'emp_experience'=>$empExp,
                         'emp_salary'=>$empSalary,
-                        'emp_start_date' => $empstartDate
+                        'emp_start_date' => $empstartDate,
+                        'emp_status'=> $empStatus
                     ]
                     );
                     // Creating Notification 
@@ -182,6 +188,7 @@ class AccountServicesController extends Controller
             $empExp = $request->empExperience;
             $empSalary = $request->allocatedSalary;
             $empstartDate = $request->startDate;
+            $empStatus = $request->empStatus;
             // checking which file is selected
             
                 EmpRecord::findOrFail($empid)->update(
@@ -195,7 +202,8 @@ class AccountServicesController extends Controller
                         'emp_work_permit' =>$empWorkAuth,
                         'emp_experience'=>$empExp,
                         'emp_salary'=>$empSalary,
-                        'emp_start_date' => $empstartDate
+                        'emp_start_date' => $empstartDate,
+                        'emp_status'=> $empStatus
                     ]
                     );
                     // Creating Notification 
