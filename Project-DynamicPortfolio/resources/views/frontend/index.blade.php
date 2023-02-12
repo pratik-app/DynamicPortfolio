@@ -1004,9 +1004,9 @@ $homeslide = App\Models\HomeSlide::find(1);
                                     <form action="{{route('contact.me')}}" method="post">
                                     @csrf
                                         <input type="text" name="fullName" placeholder="Enter name*"  require>
-                                        <input type="email" name="client_email" placeholder="Enter mail*" require>
-                                        <input type="number" name="client_mobile" placeholder="Enter number*" require>
-                                        <textarea name="client_message" placeholder="Enter Massage*" require></textarea>
+                                        <input type="email" name="lead_email" placeholder="Enter mail*" require>
+                                        <input type="number" name="lead_mobile" placeholder="Enter number*" require>
+                                        <textarea name="lead_message" placeholder="Enter Massage*" require></textarea>
                                         <button type="submit">Send</button>
                                     </form>
                                 </div>

@@ -114,7 +114,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-10">
-                                <input type="submit" class="btn btn-rounded btn-primary" value="Update Slide"/></br></br>
+                                <input type="submit" class="btn btn-rounded btn-primary" value="Add New Employee"/></br></br>
                                 </div>
                             </div>
                         </form>

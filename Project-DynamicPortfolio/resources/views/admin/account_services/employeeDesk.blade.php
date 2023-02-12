@@ -22,20 +22,14 @@
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-menu dropdown-menu-end" style="padding:20px">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                <a href="{{route('accountservices.addnewEmp')}}" class="dropdown-item">Add/Update Employee</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                <a href="{{route('accountservices.exportEmp')}}" class="dropdown-item">Export All Employees Record</a>
                             </div>
                         </div>
-
                         <h4 class="card-title mb-4">Employement Details</h4>
-
                         <div class="table-responsive">
                             <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                 <thead class="table-light">
@@ -54,6 +48,7 @@
                                         <th>Employee Start Date</th>
                                         <th>Empoyee Status</th>
                                         <th>Empoyee Created ON </th>
+                                        <th></th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -81,12 +76,29 @@
                                             <td><div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-warning align-middle me-2"></i>Deactive</div></td>
                                         @endif
                                         <td>{{$record->created_at}}</td>
+                                        <td>
+                                        <div class="dropdown float-end">
+                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="mdi mdi-dots-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end" style="padding:20px">
+                                                <!-- item-->
+                                                <a href="#" class="dropdown-item">Add This Employee to Team</a>
+                                                <!-- item-->
+                                                <a href="{{route('accountservices.downloadEmpContract',['empName' =>$record->emp_name])}}" class="dropdown-item">Download/View Contract</a>
+                                            </div>
+                                        </div>
+                                        </td>
                                     </tr>
+                                    
                                     @endforeach
                                     
                                     <!-- end -->
                                 </tbody><!-- end tbody -->
                             </table> <!-- end table -->
+                            
+                                    
+                            
                         </div>
                     </div><!-- end card -->
                 </div><!-- end card -->

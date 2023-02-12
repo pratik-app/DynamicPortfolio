@@ -7,7 +7,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
-use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\clientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +58,10 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::get('accountServices/manageTeams','ManageTeams')->name('accountservices.manageTeam');
     Route::post('accountServices/addNewEmployee', 'AddNewEMP')->name('accountservices.storeempdetials');
     Route::get('accountServices/employeesDesk','EmpDesk')->name('accountservices.empdesk');
+    // Creating Route To Download all Employees Record in Excel Sheet
+    Route::get('accountServices/exportEmployeeRecord','expEmployeesRecord')->name('accountservices.exportEmp');
+    // Creating Route to download Employee Contract
+    Route::get('accountServices/downloadEmpContract/{empName}', 'downloadEmpContract')->name('accountservices.downloadEmpContract');
     // update employee Starts Here
     Route::get('accountServices/viewUpdatePage','DisplayEmpUpdatePage')->name('accountservices.displayUpdatePage');
     Route::get('accountServices/DisplayUpdatePage/{id}','EditEmp')->name('accountservices.editEmp');
@@ -65,6 +69,11 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::get('accountSerices/DeleteEmployee','DeleteEmp')->name('accountservice.deleteEmp');
 });
 
+// All Clients Route
+
+Route::controller(clientsController::class)->group(function(){
+    Route::post('client/convertToClient', 'AddNewClient')->name('convert.leadToclient');
+});
 
 // Home Slide All Routes 
 Route::controller(HomeSliderController::class)->group(function(){

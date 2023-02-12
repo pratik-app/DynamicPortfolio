@@ -4,8 +4,8 @@
 
 $currentStatus = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_status;
 $currentAction = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_action;
-$leadData = App\Models\LeadStat::where('lead_id', '=',$leadId->id)->first();
 $listAllUsers = App\Models\ASC\EmpRecord::all();
+$lead_assignedTo = App\Models\LeadStat::where('lead_Email', '=',$leadId->lead_Email)->first()->lead_assigned_to;
 
 @endphp
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -95,7 +95,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                 <h5 class="font-size-14 my-1" style="color:#ffffff">Assign to Sales Person</h5>
                             </button>
                             <button type="button" id="CTC" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#confirmation"><i class=" fas fa-user-tie" style="font-size: 20px;"></i>
-                                <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Lead</h5>
+                                <h5 class="font-size-14 my-1" style="color:#ffffff">Convert To Client</h5>
                             </button>
                         </div>
                         <!-- Modal -->
@@ -317,18 +317,19 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>
+                        
                         <div class="modal fade" id="convertLeadTolead" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog ">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to lead</h5>
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Convert Lead to Client</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="#" method="POST">
+                                    <form action="{{route('convert.leadToclient')}}" method="POST">
                                             @csrf
-                                        <div class="modal-body" style="overflow-y: auto;">
+                                        <div class="modal-body">
                                             <p>
-                                                <div class="row mb-3" hidden>
+                                                <div class="row mb-3" style="display:none">
                                                     <label for="lead_id" class="col-sm-2 col-form-label">Lead ID</label>
                                                     <div class="col-sm-10">
                                                         <input class="form-control" name = "lead_id" alt="lead Name"  type="text" value="{{$leadId->id}}">
@@ -358,13 +359,17 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                 <div class="row mb-3">
                                                     <label for="client_assigned_to" class="col-sm-5 col-form-label">Client Assigned To </label>
                                                     <div class="col-sm-12">
-                                                        <input class="form-control" name = "client_assigned_to"  alt="Client Assigned To" type="text" value="{{$leadData->lead_assigned_to}}">
+                                                        @if($lead_assignedTo == "Unassigned")
+                                                        <span style="color:red"> Please Send Lead to Sales Department! You can't convert the Lead to Client Unless it is Assigned!</span>
+                                                        @else
+                                                        <input class="form-control" name = "client_assigned_to"  alt="Client Assigned To" type="text" value={{$lead_assignedTo}}>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="client_Project Name" class="col-sm-5 col-form-label">Project Name *</label>
                                                     <div class="col-sm-12">
-                                                        <input id = "client_Project" class="form-control" name = "client_project_name"  alt="Client Project Name" type="text" require/>
+                                                        <input id = "client_Project" class="form-control" name = "client_project_name"  alt="Client Project Name" type="text" required/>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -377,12 +382,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                     <label for="Dead Line Date" class="col-sm-5 col-form-label">Project Required By *</label>
                                                     <div class="col-sm-12">
                                                         <input id = "client_Project_deadLine" class="form-control" name = "client_Project_deadLine"  alt="Client Project Dead Line" type="date" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <label for="Client Project Cost" class="col-sm-5 col-form-label">Project Cost *</label>
-                                                    <div class="col-sm-12">
-                                                        <input id = "client_Project_Cost" class="form-control" name = "client_Project_cost"  alt="Client Project Cost" type="text" required>
                                                     </div>
                                                 </div>
                                                  
@@ -402,13 +401,18 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         </div>
                                         <div class="modal-footer">
                                             <button id="Warning" type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
+                                            @if($lead_assignedTo != "Unassigned")
                                             <button id="Convertbtn"type="submit" class="btn btn-primary waves-effect waves-light">Save</button>
+                                            @else
+                                            <button id="Convertbtn"type="submit" class="btn btn-primary waves-effect waves-light" disabled>Save</button>
+                                            @endif
                                         </div>
                                     </form>
                                     
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>
+                        
                         </p>
                         <hr>
                     </div>

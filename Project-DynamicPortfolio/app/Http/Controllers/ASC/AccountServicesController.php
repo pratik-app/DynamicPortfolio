@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\ASC;
 
+use App\Exports\ExportEmpRecord;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ASC\EmpRecord;
+use Barryvdh\DomPDF\PDF as PDF;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 use Intervention\Image\ImageManagerStatic as Image;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AccountServicesController extends Controller
 {
@@ -228,6 +233,21 @@ class AccountServicesController extends Controller
         $allempRecord = EmpRecord::all();
         return view('admin.account_services.displayEmpUpdate',compact('allempRecord'));
     }
+
+    // Creating new function to download the Contract
+
+    public function downloadEmpContract(Request $request)
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $empName = $request->empName;
+        $emprecord = EmpRecord::where('emp_name','=',$empName)->first();
+        header('Content-Type: application/pdf');
+        header('Content-Disposition:attachment;filename=$emprecord->emp_letter');
+        return readfile($emprecord->emp_letter);
+    }
     public function AddNewEMP(Request $request){
         // Checking the User
         if(Auth::guest())
@@ -281,7 +301,15 @@ class AccountServicesController extends Controller
 
         
     }
+    public function expEmployeesRecord(Request $request)
+    {
+        return Excel::download(new ExportEmpRecord, 'AllEmployeesRecord.xlsx');
+    }
     public function EmpDesk(){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $allempRecord = EmpRecord::all();
         
         return view('admin.account_services.employeeDesk',compact('allempRecord'));
