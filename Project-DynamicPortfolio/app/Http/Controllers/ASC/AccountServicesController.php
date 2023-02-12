@@ -7,9 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ASC\EmpRecord;
-use Barryvdh\DomPDF\PDF as PDF;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
 use Intervention\Image\ImageManagerStatic as Image;
 use Maatwebsite\Excel\Facades\Excel;
 
