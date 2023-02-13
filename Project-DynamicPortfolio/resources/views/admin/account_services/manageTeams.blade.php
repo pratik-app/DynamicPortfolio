@@ -20,19 +20,60 @@ $employeeinTeam = App\Models\ASC\EmpRecord::all()
                                         <div class="panel-heading bg-info " style="color:#ffffff; padding:10px; cursor: move;">Developers Team</div>
                                         <div class="panel-body">
                                             <div class="card">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-md-4" style="padding:10px;">
+                                                <div class="row no-gutters align-items-center" style="padding:10px;">
+                                                    <div class="col-md-4" >
                                                         <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">Team Details</h5>
+                                                            <h5 class="card-title">Team Members and Their Details</h5>
                                                             <p class="card-text">
-                                                            <div>
+                                                            <div class="card-body">
                                                                 @foreach($employeeinTeam as $teamMember)
                                                                     @if($teamMember->allocated_in_team == "DTeam")
-
-                                                                        <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                    <div class="card">
+                                                                        <h5 class="card-title"> <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="employee" class="rounded-circle avatar-sm" > {{$teamMember->emp_name}}</h5>
+                                                                        <div class="card-text" style=" padding:10px">Employee Details</div>
+                                                                        <div class="card-body">
+                                                                            @if($teamMember->emp_status == 1)
+                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
+                                                                                <div class="font-size-13">
+                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle "></i>Active Employee
+                                                                                </div>
+                                                                            </div>
+                                                                            @else
+                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
+                                                                                <div class="font-size-13">
+                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle "></i> Deactiveted Employee
+                                                                                </div>
+                                                                            </div>
+                                                                            @endif
+                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
+                                                                                <div class="font-size-13">
+                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>{{$teamMember->emp_position}}
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
+                                                                                <div class="font-size-13">
+                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>{{$teamMember->emp_type}} Employee
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
+                                                                                <div class="font-size-13">
+                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Salary {{$teamMember->emp_salary}}
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row" style="padding:5px">
+                                                                                    <button class="btn btn-danger btn-rounded waves-effect waves-dark">Remove From Team</button><br>
+                                                                            </div>
+                                                                            <div class="row" style="padding:5px">
+                                                                                    <button class="btn btn-success btn-rounded waves-effect waves-dark">Assign To Another Team</button>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                            
+                                                                        
                                                                     @endif
                                                                 @endforeach
                                                             </div>
