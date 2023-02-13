@@ -1,7 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
 @php
-$employeeinTeam = App\Models\ASC\EmpRecord::all()
+$employeeinTeam = App\Models\ASC\EmpRecord::all();
+$storeEmpID = "";
 @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -21,63 +22,76 @@ $employeeinTeam = App\Models\ASC\EmpRecord::all()
                                         <div class="panel-body">
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center" style="padding:10px;">
-                                                    <div class="col-md-4" >
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="Card image">
-                                                    </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-xl-12">
                                                         <div class="card-body">
                                                             <h5 class="card-title">Team Members and Their Details</h5>
-                                                            <p class="card-text">
-                                                            <div class="card-body">
-                                                                @foreach($employeeinTeam as $teamMember)
-                                                                    @if($teamMember->allocated_in_team == "DTeam")
-                                                                    <div class="card">
-                                                                        <h5 class="card-title"> <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="employee" class="rounded-circle avatar-sm" > {{$teamMember->emp_name}}</h5>
-                                                                        <div class="card-text" style=" padding:10px">Employee Details</div>
-                                                                        <div class="card-body">
-                                                                            @if($teamMember->emp_status == 1)
-                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
-                                                                                <div class="font-size-13">
-                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle "></i>Active Employee
+                                                            <div class="row">
+                                                                <p class="card-text">
+                                                                    <div class="card-body">
+                                                                        @foreach($employeeinTeam as $teamMember)
+                                                                            @if($teamMember->allocated_in_team == "DTeam")
+                                                                                <div class="row" style="padding:10px">
+                                                                                    @if($teamMember->emp_status == 1)
+                                                                                    <div class="col-xl-4">
+                                                                                        <button class="btn-primary form-control btn-rounded waves-effect waves-light"  data-bs-toggle="popover" data-bs-trigger="focus" title="Employee Details" data-bs-content="Status: Active | Position: {{$teamMember->emp_position}} | Employement Type: {{$teamMember->emp_type}} Employee | Salary {{$teamMember->emp_salary}}" data-bs-original-title="Dismissible popover"> <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="employee" class="rounded-circle avatar-sm" > {{$teamMember->emp_name}}</button>
+                                                                                    </div>
+                                                                                    @else
+                                                                                    <div class="col-xl-4">
+                                                                                        <button class="btn-primary form-control btn-rounded waves-effect waves-light"  data-bs-toggle="popover" data-bs-trigger="focus" title="Employee Details" data-bs-content="Status: DeActiveted | Position: {{$teamMember->emp_position}} | Employement Type: {{$teamMember->emp_type}} Employee | Salary {{$teamMember->emp_salary}}" data-bs-original-title="Dismissible popover"> <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="employee" class="rounded-circle avatar-sm" > {{$teamMember->emp_name}}</button>
+                                                                                    </div>
+                                                                                    @endif
+                                                                                    <div class="col-xl-4">
+                                                                                        <button class="btn btn-danger form-control btn-rounded waves-effect waves-dark" data-bs-toggle="modal" data-bs-target="#RMFTModal-{{$teamMember->id}}" >Remove Employee From Dev Team</button><br>
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <button class="btn btn-success form-control btn-rounded waves-effect waves-dark" data-bs-toggle="modal" data-bs-target="#RMFTModal-{{$teamMember->id}}">Assign Employee To Another Team</button>
+                                                                                    </div>
+                                                                                    </br>
                                                                                 </div>
-                                                                            </div>
-                                                                            @else
-                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
-                                                                                <div class="font-size-13">
-                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle "></i> Deactiveted Employee
-                                                                                </div>
-                                                                            </div>
-                                                                            @endif
-                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
-                                                                                <div class="font-size-13">
-                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>{{$teamMember->emp_position}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
-                                                                                <div class="font-size-13">
-                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>{{$teamMember->emp_type}} Employee
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="btn-primary btn-rounded waves-effect waves-light" style="padding:10px;">
-                                                                                <div class="font-size-13">
-                                                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Salary {{$teamMember->emp_salary}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row" style="padding:5px">
-                                                                                    <button class="btn btn-danger btn-rounded waves-effect waves-dark">Remove From Team</button><br>
-                                                                            </div>
-                                                                            <div class="row" style="padding:5px">
-                                                                                    <button class="btn btn-success btn-rounded waves-effect waves-dark">Assign To Another Team</button>
-                                                                            </div>
-                                                                            
+                                                                        <div id="RMFTModal-{{$teamMember->id}}"class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="myModalLabel">Remove {{$teamMember->emp_name}} From Developers Team</h5>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form action="{{route('accountservices.addToTeam')}}" method="post">
+                                                                                            <!-- CSRF Token is used for active user session  -->
+                                                                                                @csrf
+                                                                                            <!-- NOTE: This token is used to verify the authenticated user -->
+                                                                                            <input name="id" value="{{$teamMember->id}}" style="display:block"/>
+                                                                                            <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
+                                                                                            <div class="row mb-3">
+                                                                                                <div class="col-xl-12">
+                                                                                                    <select class="form-select" name = "teamAllocated" alt="Allocate Team" id="teamAllocated">
+                                                                                                        <option name="teamAllocated" value="">None</option>
+                                                                                                        <option name="teamAllocated" value="MTeam">Marketing Team</option>
+                                                                                                        <option name="teamAllocated" value="STeam">Support Team</option>
+                                                                                                        <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
+                                                                                                        <option name="teamAllocated" value="ATeam">Analyst Team</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row mb-3">
+                                                                                                <div class="col-sm-10">
+                                                                                                    <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <small style="color:red">*You can keep none if you wish to not assing the employee to any team</small>
+                                                                                    </div>
+                                                                                </div><!-- /.modal-content -->
+                                                                            </div><!-- /.modal-dialog -->
                                                                         </div>
+                                                                                
+                                                                            @endif
+                                                                        @endforeach
                                                                     </div>
-                                                                            
-                                                                        
-                                                                    @endif
-                                                                @endforeach
+                                                                </p>
                                                             </div>
-                                                            </p>
                                                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                                             <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                             <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
@@ -322,9 +336,7 @@ $employeeinTeam = App\Models\ASC\EmpRecord::all()
 
 </div>
 <script>
-    $(".btn-danger").click(function(){
-        confirm("This Team Will Be Deleted | Are you Sure You want to Continue?")
-    })
+    
     jQuery(function($) {
         var panelList = $('#draggablePanelList');
 

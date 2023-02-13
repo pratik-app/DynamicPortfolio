@@ -46,6 +46,7 @@
                                         <th>Employee experience</th>
                                         <th>Employee Salary</th>
                                         <th>Employee Start Date</th>
+                                        <th>Employee Allocated Team</th>
                                         <th>Empoyee Status</th>
                                         <th>Empoyee Created ON </th>
                                         <th></th>
@@ -69,7 +70,7 @@
                                         <td>{{$record->emp_experience}}</td>
                                         <td>{{$record->emp_salary}}</td>
                                         <td>{{$record->emp_start_date}}</td>
-                                        
+                                        <td>{{$record->allocated_in_team}}</td>
                                         @if($record->emp_status === 1)
                                             <td><div class="font-size-13"><i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>Active</div></td>
                                         @else
