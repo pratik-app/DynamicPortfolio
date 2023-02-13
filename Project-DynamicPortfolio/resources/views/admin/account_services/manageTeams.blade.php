@@ -26,7 +26,7 @@
                                                             <h5 class="card-title">Team Details</h5>
                                                             <p class="card-text">
                                                             <div>
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
                                                                 <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
                                                                 <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
                                                                 <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
@@ -50,7 +50,7 @@
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-md-4" style="padding:10px;">
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="Card image">
+                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/MTLogo.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
@@ -78,7 +78,7 @@
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-md-4" style="padding:10px;">
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="Card image">
+                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/STLogo.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
@@ -107,7 +107,7 @@
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-md-4" style="padding:10px;">
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" alt="Card image">
+                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/R&DT.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
@@ -135,7 +135,7 @@
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-md-4" style="padding:10px;">
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/small/img-2.jpg')}}" alt="Card image">
+                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/ATLogo.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">
