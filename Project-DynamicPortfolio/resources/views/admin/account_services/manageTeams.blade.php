@@ -19,7 +19,7 @@
                                             <div class="card">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-md-4" style="padding:10px;">
-                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="Card image">
+                                                        <img class="img-thumbnail rounded-circle avatar-xl" src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="Card image">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="card-body">

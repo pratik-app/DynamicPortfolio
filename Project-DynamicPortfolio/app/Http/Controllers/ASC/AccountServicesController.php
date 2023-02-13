@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class AccountServicesController extends Controller
 {
     // Getting All Employees Details
+    
     public function GetAllEmpData(){
         if(Auth::guest())
         {
@@ -373,4 +374,24 @@ class AccountServicesController extends Controller
         return view('admin.account_services.addEmptoTeam',compact('empRequest'));
     }
 
+    // Adding Employee To The Team
+
+    public function AddToTeam(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $empID = $request->id;
+        EmpRecord::findOrFail($empID)->update(
+            [
+                'allocated_in_team' => $request->teamAllocated
+            ]
+            );
+            $notification = array(
+                'message' => 'Employee Allocated To'.$request->teamAllocated,
+                'alert-type' =>'success'
+            );
+            // redirecting back with notification
+            return redirect()->back()->with($notification);
+    }
 }

@@ -8,14 +8,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Add Staff / Update Staff</h4>
+                        <h4 class="card-title">Add This Employee To Team</h4>
                         <!-- Always use enctype multipart/form-data when dealing with Images -->
-                        <form method="post" action="{{route('accountservices.updateEmp')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('accountservices.addToTeam')}}" enctype="multipart/form-data">
                             <!-- CSRF Token is used for active user session  -->
                         @csrf
                             <!-- NOTE: This token is used to verify the authenticated user -->
 
                             <input name="id" value="{{$empRequest->id}}" style="display:none"/>
+                            <div class="row mb-3">
+                                <label for="Team Selection" class="col-sm-2 col-form-label">Select Team You Wish</label>
+                                <div class="col-sm-10">
+                                <select class="form-select" name = "teamAllocated" alt="Allocate Team" id="teamAllocated" Required>
+                                        <option name="teamAllocated" value="">Select The Team</option>
+                                        <option name="teamAllocated" value="DTeam">Developer Team</option>
+                                        <option name="teamAllocated" value="MTeam">Marketing Team</option>
+                                        <option name="teamAllocated" value="STeam">Support Team</option>
+                                        <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
+                                        <option name="teamAllocated" value="ATeam">Analyst Team</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="row mb-3">
                                 <label for="Employee Name" class="col-sm-2 col-form-label">Employee Name</label>
                                 <div class="col-sm-10">
