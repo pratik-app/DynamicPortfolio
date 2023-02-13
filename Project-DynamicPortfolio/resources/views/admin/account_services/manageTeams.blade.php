@@ -1,5 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
+@php
+$employeeinTeam = App\Models\ASC\EmpRecord::all()
+@endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -26,12 +29,12 @@
                                                             <h5 class="card-title">Team Details</h5>
                                                             <p class="card-text">
                                                             <div>
-                                                                <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
-                                                                <img src="{{asset('backend/assets/images/users/avatar-5.jpg')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                @foreach($employeeinTeam as $teamMember)
+                                                                    @if($teamMember->allocated_in_team == "DTeam")
+
+                                                                        <img src="{{asset('backend/assets/images/Teams/WDLogo.png')}}" alt="avatar-5" class="rounded-circle avatar-sm" style="cursor:pointer">
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                             </p>
                                                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
