@@ -62,6 +62,8 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::get('accountServices/exportEmployeeRecord','expEmployeesRecord')->name('accountservices.exportEmp');
     // Creating Route to download Employee Contract
     Route::get('accountServices/downloadEmpContract/{empName}', 'downloadEmpContract')->name('accountservices.downloadEmpContract');
+    // Creating Route to Add Employee to The Team
+    Route::get('accountServices/addEmpToTeam/{empID}', 'AddEMPtoTEAM')->name('accountservices.addthisemptoteam');
     // update employee Starts Here
     Route::get('accountServices/viewUpdatePage','DisplayEmpUpdatePage')->name('accountservices.displayUpdatePage');
     Route::get('accountServices/DisplayUpdatePage/{id}','EditEmp')->name('accountservices.editEmp');

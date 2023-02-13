@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AccountServicesController extends Controller
 {
+    // Getting All Employees Details
     public function GetAllEmpData(){
         if(Auth::guest())
         {
@@ -19,6 +20,9 @@ class AccountServicesController extends Controller
         }
         return view('admin.account_services.employee_dashboard');
     }
+
+    // Sending user to Edit Page 
+    
     public function EditEmp(Request $request){
         if(Auth::guest())
         {
@@ -28,6 +32,9 @@ class AccountServicesController extends Controller
         $empDetails = EmpRecord::findOrFail($empID);
         return view('admin.account_services.editEmployees',compact('empDetails'));
     }
+    
+    // Code to Update specific Employee Details
+
     public function UpdateEmployee(Request $request)
     {
         if(Auth::guest())
@@ -215,6 +222,9 @@ class AccountServicesController extends Controller
                     return redirect('accountServices/viewUpdatePage')->with($notification);
         }
     }
+
+    // Hard Delete Specific Employee
+
     public function DeleteEmp(Request $request)    
     {
         $id = $request->id;
@@ -230,6 +240,9 @@ class AccountServicesController extends Controller
         // redirecting back with notification
         return redirect()->back()->with($notification);
     }
+
+    // Displaying all Employees Record to Update and Delete the employee from the Company
+
     public function DisplayEmpUpdatePage(){
         if(Auth::guest())
         {
@@ -253,6 +266,9 @@ class AccountServicesController extends Controller
         header('Content-Disposition:attachment;filename=$emprecord->emp_letter');
         return readfile($emprecord->emp_letter);
     }
+
+    // Code to Add New Employee to The Company
+
     public function AddNewEMP(Request $request){
         // Checking the User
         if(Auth::guest())
@@ -306,10 +322,16 @@ class AccountServicesController extends Controller
 
         
     }
+
+    // Generating the Excel Sheet of All Employees
+
     public function expEmployeesRecord(Request $request)
     {
         return Excel::download(new ExportEmpRecord, 'AllEmployeesRecord.xlsx');
     }
+
+    // Displaying all Employees Desk To user (EMPLOYEE HUM)
+
     public function EmpDesk(){
         if(Auth::guest())
         {
@@ -319,6 +341,9 @@ class AccountServicesController extends Controller
         
         return view('admin.account_services.employeeDesk',compact('allempRecord'));
     }
+
+    // Displaying Add New Employee Page
+
     public function AddEmployees(){
         if(Auth::guest())
         {
@@ -326,6 +351,9 @@ class AccountServicesController extends Controller
         }
         return view('admin.account_services.addNewEmployees');
     }
+
+    // Displaying Manage Teams Page
+
     public function ManageTeams(){
         if(Auth::guest())
         {
@@ -333,4 +361,16 @@ class AccountServicesController extends Controller
         }
         return view('admin.account_services.manageTeams');
     }
+
+    // Getting Request To Add Employee to Specific Team
+    public function AddEMPtoTEAM(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $empID = $request->empID;
+        $empRequest = EmpRecord::findorfail($empID);
+        return view('admin.account_services.addEmptoTeam',compact('empRequest'));
+    }
+
 }

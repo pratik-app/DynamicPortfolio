@@ -83,7 +83,7 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end" style="padding:20px">
                                                 <!-- item-->
-                                                <a href="#" class="dropdown-item">Add This Employee to Team</a>
+                                                <a href="{{route('accountservices.addthisemptoteam',['empID' =>$record->id])}}" class="dropdown-item">Add This Employee to Team</a>
                                                 <!-- item-->
                                                 <a href="{{route('accountservices.downloadEmpContract',['empName' =>$record->emp_name])}}" class="dropdown-item">Download/View Contract</a>
                                             </div>
