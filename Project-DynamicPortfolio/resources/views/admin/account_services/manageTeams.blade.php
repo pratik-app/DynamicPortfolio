@@ -75,7 +75,7 @@ $storeEmpID = "";
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -151,7 +151,7 @@ $storeEmpID = "";
                                                                                     <div class="col-xl-12">
                                                                                         <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
                                                                                             <option name="teamAllocated" value="">None</option>
-                                                                                            <option name="teamAllocated" value="MTeam">Marketing Team</option>
+                                                                                            <option name="teamAllocated" value="DTeam">Developers Team</option>
                                                                                             <option name="teamAllocated" value="STeam">Support Team</option>
                                                                                             <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
                                                                                             <option name="teamAllocated" value="ATeam">Analyst Team</option>
@@ -160,7 +160,7 @@ $storeEmpID = "";
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -236,8 +236,8 @@ $storeEmpID = "";
                                                                                     <div class="col-xl-12">
                                                                                         <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
                                                                                             <option name="teamAllocated" value="">None</option>
+                                                                                            <option name="teamAllocated" value="DTeam">Developers Team</option>
                                                                                             <option name="teamAllocated" value="MTeam">Marketing Team</option>
-                                                                                            <option name="teamAllocated" value="STeam">Support Team</option>
                                                                                             <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
                                                                                             <option name="teamAllocated" value="ATeam">Analyst Team</option>
                                                                                         </select>
@@ -245,7 +245,7 @@ $storeEmpID = "";
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -322,16 +322,16 @@ $storeEmpID = "";
                                                                                     <div class="col-xl-12">
                                                                                         <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
                                                                                             <option name="teamAllocated" value="">None</option>
+                                                                                            <option name="teamAllocated" value="DTeam">Developers Team</option>
                                                                                             <option name="teamAllocated" value="MTeam">Marketing Team</option>
                                                                                             <option name="teamAllocated" value="STeam">Support Team</option>
-                                                                                            <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
                                                                                             <option name="teamAllocated" value="ATeam">Analyst Team</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -407,16 +407,16 @@ $storeEmpID = "";
                                                                                     <div class="col-xl-12">
                                                                                         <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
                                                                                             <option name="teamAllocated" value="">None</option>
+                                                                                            <option name="teamAllocated" value="DTeam">Developers Team</option>
                                                                                             <option name="teamAllocated" value="MTeam">Marketing Team</option>
                                                                                             <option name="teamAllocated" value="STeam">Support Team</option>
                                                                                             <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
-                                                                                            <option name="teamAllocated" value="ATeam">Analyst Team</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
@@ -492,6 +492,7 @@ $storeEmpID = "";
                                                                                     <div class="col-xl-12">
                                                                                         <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
                                                                                             <option name="teamAllocated" value="">None</option>
+                                                                                            <option name="teamAllocated" value="DTeam">Developer Team</option>
                                                                                             <option name="teamAllocated" value="MTeam">Marketing Team</option>
                                                                                             <option name="teamAllocated" value="STeam">Support Team</option>
                                                                                             <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
@@ -501,7 +502,7 @@ $storeEmpID = "";
                                                                                 </div>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-sm-10">
-                                                                                        <input type="submit" class="btn btn-rounded btn-danger" value="Remove From Dev Team"></br></br>
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Assign"></br></br>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
