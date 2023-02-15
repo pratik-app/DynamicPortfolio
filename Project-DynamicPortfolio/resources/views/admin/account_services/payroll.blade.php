@@ -204,15 +204,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                     <!-- item-->
                                                     <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#CreatePayRoll-{{$employees->id}}">Create Payroll</a>
                                                     <!-- item -->
-                                                    <a href="#" class="dropdown-item">Add Sin Number</a>
-                                                    <!-- item-->
-                                                    <a href="#" class="dropdown-item">Add Direct Deposit</a>
-                                                    <!-- item -->
-                                                    <a href="#" class="dropdown-item">Add Benifits</a>
-                                                    <!-- item -->
-                                                    <a href="#" class="dropdown-item">Add Number of Working Hours</a>
-                                                    <!-- item -->
-                                                    <a href="#" class="dropdown-item">Add Bonus rate</a>
+                                                    <a href="#" class="dropdown-item">Download Payroll</a>
+                                                    
                                                 </div>
                                             </div>
                                         </td>
@@ -293,11 +286,11 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-3">
-                                                                    <label for="Employee Sin Number" class="col-sm-2 col-form-label">Employee SIN Number</label>
+                                                                    <label for="Employee Sin Number" class="col-sm-2 col-form-label">Employee SIN Number*</label>
                                                                     <div class="col-xl-4">
                                                                         <input class="form-control" name = "empSIN" alt="Employee SIN Number" type="text" required/>
                                                                     </div>
-                                                                    <label for="Employee Work Hours" class="col-sm-2 col-form-label">Employee Worked Hours</label>
+                                                                    <label for="Employee Work Hours" class="col-sm-2 col-form-label">Employee Worked Hours*</label>
                                                                     <div class="col-xl-4">
                                                                         <input class="form-control" name = "empWorkedHours" alt="Employee Worked Hours" type="text" required/>
                                                                     </div>
@@ -305,7 +298,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                 <div class="row mb-3">
                                                                     <div class="col-xl-6">
                                                                         <select class="form-select" name="paymentMethod" alt="Payment Method" id="PaymentMethod" required>
-                                                                            <option name="provinceSelection" value="">Select Payment Method</option>
+                                                                            <option name="provinceSelection" value="">Select Payment Method*</option>
                                                                             <option name="provinceSelection" value="Cheque">Cheque</option>
                                                                         </select>
                                                                     </div>
@@ -356,7 +349,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">View Pay Roll</h4>
-
                         <div class="row">
                             <div class="col-4">
                                 <div class="text-center mt-4">
@@ -381,13 +373,9 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             <!-- end col -->
                         </div>
                         <!-- end row -->
-
-
                     </div>
                     <div class="mt-4" style="position: relative;">
-
                         <div id="pieChart" calss="text-center" style="width:100%;min-height: 264.7px;"></div>
-
                     </div>
                 </div><!-- end card -->
 
