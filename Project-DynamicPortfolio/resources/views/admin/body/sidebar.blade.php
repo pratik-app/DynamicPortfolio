@@ -88,6 +88,12 @@ $adminData = App\Models\User::find($id);
                         <i class="fas fa-user-tie"></i>
                         <span>Client Hub</span>
                     </a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="fas fas fa-suitcase"></i>
+                        <span>Jobs Hub</span>
+                    </a>
                 </li>              
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

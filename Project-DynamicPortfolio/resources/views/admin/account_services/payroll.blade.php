@@ -218,10 +218,10 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         </td>
                                         <td>
                                             <div id="CreatePayRoll-{{$employees->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-                                                <div class="modal-dialog">
+                                                <div class="modal-dialog modal-xl">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="myModalLabel">Remove {{$employees->emp_name}} From Developers Team</h5>
+                                                            <h5 class="modal-title" id="myModalLabel">Generate Payroll for {{$employees->emp_name}}</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -229,28 +229,112 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                 <!-- CSRF Token is used for active user session  -->
                                                                 @csrf
                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                <input name="id" value="{{$employees->id}}" style="display:block" />
-                                                                <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
+                                                                <input name="id" value="{{$employees->id}}" style="display:none" />
+                                                                <h6 for="Employee Type" class="col-xl-12 col-form-label">Add Details</h6>
                                                                 <div class="row mb-3">
                                                                     <div class="col-xl-12">
-                                                                        <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
-                                                                            <option name="teamAllocated" value="">None</option>
-                                                                            <option name="teamAllocated" value="MTeam">Marketing Team</option>
-                                                                            <option name="teamAllocated" value="STeam">Support Team</option>
-                                                                            <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
-                                                                            <option name="teamAllocated" value="ATeam">Analyst Team</option>
+                                                                        <select class="form-select" name="provinceSelection" alt="Allocate Team" id="teamAllocated" required>
+                                                                            <option name="provinceSelection" value="">Select Province For Tax</option>
+                                                                            <option name="provinceSelection" value="Alberta">Alberta</option>
+                                                                            <option name="provinceSelection" value="British Columbia">British Columbia</option>
+                                                                            <option name="provinceSelection" value="Manitoba">Manitoba</option>
+                                                                            <option name="provinceSelection" value="New Brunswick">New Brunswick</option>
+                                                                            <option name="provinceSelection" value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                                                                            <option name="provinceSelection" value="Northwest Territories">Northwest Territories</option>
+                                                                            <option name="provinceSelection" value="Nova Scotia">Nova Scotia</option>
+                                                                            <option name="provinceSelection" value="Nunavut">Nunavut</option>
+                                                                            <option name="provinceSelection" value="Ontario">Ontario</option>
+                                                                            <option name="provinceSelection" value="British Columbia">British Columbia</option>
+                                                                            <option name="provinceSelection" value="Prince Edward Island">Prince Edward Island</option>
+                                                                            <option name="provinceSelection" value="Saskatchewan">Saskatchewan</option>
+                                                                            <option name="provinceSelection" value="Yukon">Yukon</option>
+                                                                            <option name="provinceSelection" value="Quebec">Quebec</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-3">
-                                                                    <div class="col-sm-10">
+                                                                    <label for="Employee Name" class="col-sm-2 col-form-label">Employee Name</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empName" alt="Employee Name" type="text" value="{{$employees->emp_name}}" readonly/>
+                                                                    </div>
+                                                                    <label for="Employee Postion" class="col-sm-2 col-form-label">Employee Postion</label>
+                                                                    <div class="col-xl-4">
+                                                                    <input class="form-control" name = "empPosition" alt="Employee Position" type="text" value="{{$employees->emp_position}}" readonly/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee Salary" class="col-sm-2 col-form-label">Employee Salary</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empSalary" alt="Employee Salary" type="text" value="{{$employees->emp_salary}}" readonly/>
+                                                                    </div>
+                                                                    <label for="Employee Address" class="col-sm-2 col-form-label">Employee Address</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empAddress" alt="Employee Address" type="text" value="{{$employees->emp_address}}" readonly/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee Mobile" class="col-sm-2 col-form-label">Employee Mobile No.</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empMobile" alt="Employee Mobile No" type="text" value="{{$employees->emp_mobile}}" readonly/>
+                                                                    </div>
+                                                                    <label for="Employee Email" class="col-sm-2 col-form-label">Employee Email Address</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empEmail" alt="Employee Email" type="text" value="{{$employees->emp_email}}" readonly/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee EI Deduction" class="col-sm-2 col-form-label">Employee EI Deduction</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input  name = "empEIDeduction" class="form-control" alt="Employee Ei Deduction" type="text" value="1.58%" readonly/>
+                                                                    </div>
+                                                                    <label for="Employee CPP Contribution" class="col-sm-2 col-form-label">Employee CPP Contribution</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input  name = "empCPPContribution" class="form-control" alt="Employee Worked Hours" type="text" value="5.45%" readonly/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee Sin Number" class="col-sm-2 col-form-label">Employee SIN Number</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empSIN" alt="Employee SIN Number" type="text" required/>
+                                                                    </div>
+                                                                    <label for="Employee Work Hours" class="col-sm-2 col-form-label">Employee Worked Hours</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "empWorkedHours" alt="Employee Worked Hours" type="text" required/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-xl-6">
+                                                                        <select class="form-select" name="paymentMethod" alt="Payment Method" id="PaymentMethod" required>
+                                                                            <option name="provinceSelection" value="">Select Payment Method</option>
+                                                                            <option name="provinceSelection" value="Cheque">Cheque</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <label for="Cheque Number" class="col-sm-2 col-form-label">Cheque Number*</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" name = "chequeNumber" alt="Payment Cheque Number" type="text" required/>
+                                                                    </div>
+                                                                </div>
+                                                                @if($employees->emp_status == '1')
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee Status" class="col-sm-2 col-form-label">Employee Status</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" alt="Employee SIN Number" type="text" value="Active" readonly/>
+                                                                    </div>
+                                                                    <div class="col-xl-4">
                                                                         <input type="submit" class="btn btn-rounded btn-success" value="Generate Payroll"></br></br>
                                                                     </div>
                                                                 </div>
+                                                                @else
+                                                                <div class="row mb-3">
+                                                                    <div class="col-sm-10">
+                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Generate Payroll" disabled></br></br>
+                                                                    </div>
+                                                                </div>
+                                                                @endif
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <small style="color:red">*You can keep none if you wish to not assing the employee to any team</small>
+                                                            <small style="color:red">*IF Employee is not Active you Can't Generate payroll</small>
                                                         </div>
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
