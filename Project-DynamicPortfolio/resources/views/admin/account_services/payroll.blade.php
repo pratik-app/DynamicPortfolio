@@ -87,7 +87,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Cost of Employees</p>
+                                <p class="text-truncate font-size-14 mb-2">Total spent on Employees</p>
                                 <h4 class="mb-2">
                                     
                                     {{$newSalary}}
@@ -108,7 +108,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Project Completed</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Payroll Created</p>
                                 <h4 class="mb-2">8246</h4>
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
                             </div>
@@ -202,16 +202,22 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <!-- item-->
-                                                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#GeneratePayroll-{{$employees->id}}">Generate Payroll</a>
-                                                    <!-- item-->
-                                                    <a href="#" class="dropdown-item">Download Payroll</a>
+                                                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#CreatePayRoll-{{$employees->id}}">Create Payroll</a>
                                                     <!-- item -->
-                                                    <a href="#" class="dropdown-item">Upload Direct Deposit</a>
+                                                    <a href="#" class="dropdown-item">Add Sin Number</a>
+                                                    <!-- item-->
+                                                    <a href="#" class="dropdown-item">Add Direct Deposit</a>
+                                                    <!-- item -->
+                                                    <a href="#" class="dropdown-item">Add Benifits</a>
+                                                    <!-- item -->
+                                                    <a href="#" class="dropdown-item">Add Number of Working Hours</a>
+                                                    <!-- item -->
+                                                    <a href="#" class="dropdown-item">Add Bonus rate</a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div id="GeneratePayroll-{{$employees->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                            <div id="CreatePayRoll-{{$employees->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -265,7 +271,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Profit from Employees</h4>
+                        <h4 class="card-title mb-4">View Pay Roll</h4>
 
                         <div class="row">
                             <div class="col-4">
