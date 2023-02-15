@@ -55,7 +55,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Employees Dashboard</h4>
+                    <h4 class="mb-sm-0">Payroll Dashboard</h4>
                 </div>
             </div>
         </div>
@@ -173,6 +173,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                         <th>Employee Status</th>
                                         <th>Start date</th>
                                         <th style="width: 120px;">Salary</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -193,6 +195,62 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                             {{$employees->emp_start_date}}
                                         </td>
                                         <td>{{$employees->emp_salary}}</td>
+                                        <td>
+                                            <div class="dropdown float-end">
+                                                <a href="#" class="dropdown-toggle arrow-none card-drop hide" data-bs-toggle="dropdown">
+                                                    <i class="mdi mdi-dots-vertical"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <!-- item-->
+                                                    <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#GeneratePayroll-{{$employees->id}}">Generate Payroll</a>
+                                                    <!-- item-->
+                                                    <a href="#" class="dropdown-item">Download Payroll</a>
+                                                    <!-- item -->
+                                                    <a href="#" class="dropdown-item">Upload Direct Deposit</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="GeneratePayroll-{{$employees->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">Remove {{$employees->emp_name}} From Developers Team</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="#" method="post">
+                                                                <!-- CSRF Token is used for active user session  -->
+                                                                @csrf
+                                                                <!-- NOTE: This token is used to verify the authenticated user -->
+                                                                <input name="id" value="{{$employees->id}}" style="display:block" />
+                                                                <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-xl-12">
+                                                                        <select class="form-select" name="teamAllocated" alt="Allocate Team" id="teamAllocated">
+                                                                            <option name="teamAllocated" value="">None</option>
+                                                                            <option name="teamAllocated" value="MTeam">Marketing Team</option>
+                                                                            <option name="teamAllocated" value="STeam">Support Team</option>
+                                                                            <option name="teamAllocated" value="RDTeam">Research & Development Team</option>
+                                                                            <option name="teamAllocated" value="ATeam">Analyst Team</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-sm-10">
+                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Generate Payroll"></br></br>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <small style="color:red">*You can keep none if you wish to not assing the employee to any team</small>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div>
+                                        </td>
+                                                            
                                     </tr>
                                     @endforeach
                                     <!-- end -->

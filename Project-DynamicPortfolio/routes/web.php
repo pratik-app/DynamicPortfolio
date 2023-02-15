@@ -70,6 +70,8 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::post('accountServices/UpdateEmployee','UpdateEmployee')->name('accountservices.updateEmp');
     Route::get('accountServices/DeleteEmployee','DeleteEmp')->name('accountservice.deleteEmp');
     Route::post('accountServices/AddEmployeeToTeam','AddToTeam')->name('accountservices.addToTeam');
+    // Payroll Redirection Starts Here
+    Route::get('accountServices/PayrollDashboard','ViewPayrollDash')->name('accountservices.payrollDashboard');
 });
 
 // All Clients Route

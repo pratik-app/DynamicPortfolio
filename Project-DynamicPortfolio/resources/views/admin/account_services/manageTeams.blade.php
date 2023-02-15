@@ -60,7 +60,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -145,7 +145,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -230,7 +230,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -316,7 +316,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -401,7 +401,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -486,7 +486,7 @@ $storeEmpID = "";
                                                                                 <!-- CSRF Token is used for active user session  -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                                <input name="id" value="{{$teamMember->id}}" style="display:block" />
+                                                                                <input name="id" value="{{$teamMember->id}}" style="display:none" />
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Need to Assign To Different Team?</h6>
                                                                                 <div class="row mb-3">
                                                                                     <div class="col-xl-12">
@@ -636,7 +636,7 @@ $storeEmpID = "";
                             <img class="img-thumbnail rounded-circle avatar-sm" src="{{asset('backend/assets/images/users/avatar-3.jpg')}}" alt="Card image"> Support Team
                         </button>&nbsp;&nbsp;
                         <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light" style="padding: 20px;">
-                            <i class="fas fa-plus-square"></i> Add New Team
+                            <i class="fas fa-plus-square"></i> Add Manager
                         </button>
                     </div>
                 </div>

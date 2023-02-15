@@ -394,4 +394,12 @@ class AccountServicesController extends Controller
             // redirecting back with notification
             return redirect()->back()->with($notification);
     }
+    public function ViewPayrollDash()
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        return view('admin.account_services.payroll');
+    }
 }
