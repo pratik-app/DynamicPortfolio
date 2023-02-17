@@ -72,7 +72,6 @@ $adminData = App\Models\User::find($id);
                         <li><a href="{{route('accountservices.manageTeam')}}">Manage Teams</a></li>                        
                         <li><a href="{{route('accountservices.payrollDashboard')}}">Pay Roles</a></li>
                         
-                        <li><a href="#">Manager Hub</a></li>
                     </ul>
                 </li>
                 
