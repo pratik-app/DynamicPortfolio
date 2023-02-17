@@ -10,6 +10,7 @@ use App\Models\ASC\EmpRecord;
 use Intervention\Image\ImageManagerStatic as Image;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\ProvincialTaxes;
+use Dompdf\Dompdf;
 use Illuminate\Support\Arr;
 
 
@@ -412,32 +413,108 @@ class AccountServicesController extends Controller
             return redirect('/login');
         }
         else{
-            $employeeID = $request->emp_id;
-            $employeeProvince = $request->provinceSelection;
-            $employeeSalary = $request->empSalary;
-            $salaryAmount = $request->emp_empSalary;
-            $ProvincialtaxRates = ProvincialTaxes::where('province_Name', $employeeProvince)->get(array('province_income_amount','province_tax_percent'));
             
+            // Taking Form Data
+
+            $employeeID = $request->emp_id;
+            $employeeName = $request->empName;
+            $employeePostion = $request->empPosition;
+            $employeeAddress = $request->empAddress;
+            $employeeMobileNumber = $request->empMobile;
+            $employeeEmail = $request->empEmail;
+            $employeeSINNumber = $request->empSIN;
+            $employeeWorkHrs = $request->empWorkedHours;
+            $employeePayMethod = $request->paymentMethod;
+            $employeePaymentChequeNumber = $request->chequeNumber;
+            $employeeEIDR = $request->empEIDeduction;
+            $employeeCPPR = $request->empCPPContribution;
+
+            // This is Province that User Selects
+            
+            $employeeProvince = $request->provinceSelection;
+            
+            // This is the Gross Salary of Employee
+            
+            $employeeSalary = $request->empSalary;
+            
+            // Converting the Employee Salary to Float
+            
+            $salaryAmount = (float)filter_var(preg_replace('/\D/', '', $employeeSalary));
+            
+            // Calculating EI the formula used is EI fetched from Form and converted to float then divided by 100 and multiploed by Employee Salary
+            
+            $employeeEIDeduction = ((float)(preg_replace('/\D/', '.',$request->empEIDeduction)))/100 * $salaryAmount;
+            
+            // Now Calculating the CPP Contribution same formula used for EI
+
+            $employeeCPPContribution = ((float)(preg_replace('/\D/', '.',$request->empCPPContribution)))/100 * $salaryAmount;
+            
+            // Finding Taxable Income from Gross Income Formula is Employee Salary - (EI Deduction + CPP Contribution)
+
+            $taxableIncome = $salaryAmount-($employeeEIDeduction + $employeeCPPContribution);
+            $generatedTaxableIncome = $taxableIncome;
+            // Calculating Federal Tax 
+            
+            $federalTax = 0;
+                $federalTaxBrackets = array(0.15, 0.205, 0.26, 0.29, 0.33);
+                $federalTaxRates = array(0, 50978, 102040, 151978, 216511);
+            
+                for ($i = count($federalTaxBrackets) - 1; $i >= 0; $i--) {
+                    if ($taxableIncome > $federalTaxRates[$i]) {
+                        $federalTax += ($taxableIncome - $federalTaxRates[$i]) * $federalTaxBrackets[$i];
+                        $taxableIncome = $federalTaxRates[$i];
+                    }
+                }
+
+            // Getting Provincial Tax Rates From Database
+
+            $ProvincialtaxRates = ProvincialTaxes::where('province_Name', $employeeProvince)->get(array('province_income_amount','province_tax_percent'));
             $closest = null;
             foreach ($ProvincialtaxRates as $i=>$compareSalary) {
                 if ($closest === null || abs($salaryAmount - $closest['province_income_amount']) > abs($compareSalary['province_income_amount'] - $salaryAmount)) {
                     $closest = $compareSalary;
                 }
             }
-            $taxAmount = $closest['province_tax_percent'];
-            $employeeName = $request->empName;
-            $employeePostion = $request->empPosition;
-            
-            $employeeAddress = $request->empAddress;
-            $employeeMobileNumber = $request->empMobile;
-            $employeeEmail = $request->empEmail;
-            $employeeEIDeduction = $request->empEIDeduction;
-            $employeeCPPContribution = $request->empCPPContribution;
-            $employeeSINNumber = $request->empSIN;
-            $employeeWorkHrs = $request->empWorkedHours;
-            $employeePayMethod = $request->paymentMethod;
-            $employeePaymentChequeNumber = $request->chequeNumber;
+
+            // Generating provincial Tax after getting provincial tax from database dividing it by 100 as it is percentage  and multiplying it with taxable Income
+
+            $provincialTax = ((float)$closest['province_tax_percent']/100) * $taxableIncome;
+
+            // Total Tax after getting federalTax and Provincial Tax
+
+            $totalTax = $federalTax + $provincialTax;
+
+            // Generating Payroll using HTML content for the PDF
+
+            $html = view('pdf',compact(
+              'employeeID',
+              'employeeName',
+              'employeePostion',
+              'employeeAddress',
+              'employeeMobileNumber',
+              'employeeEmail',
+              'employeeSINNumber',
+              'employeeWorkHrs',
+              'employeePayMethod',
+              'employeePaymentChequeNumber',
+              'employeeProvince',
+              'employeeSalary',
+              'employeeEIDR',
+              'employeeCPPR',
+              'generatedTaxableIncome',
+              'federalTax',
+              'provincialTax',
+              'totalTax'  
+            ));
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4','portrait');
+            $dompdf->render();
+            $filename = 'tax-info-'.date('Y-m-d_H:i:s').'.pdf';
+            return $dompdf->stream($filename);
             
         }
     }
+    
+    
 }

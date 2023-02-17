@@ -282,7 +282,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                     </div>
                                                                     <label for="Employee CPP Contribution" class="col-sm-2 col-form-label">Employee CPP Contribution</label>
                                                                     <div class="col-xl-4">
-                                                                        <input  name = "empCPPContribution" class="form-control" alt="Employee Worked Hours" type="text" value="5.45%" readonly/>
+                                                                        <input  name = "empCPPContribution" class="form-control" alt="Employee Worked Hours" type="text" value="5.95%" readonly/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mb-3">
