@@ -72,6 +72,7 @@ Route::controller(AccountServicesController::class)->group(function(){
     Route::post('accountServices/AddEmployeeToTeam','AddToTeam')->name('accountservices.addToTeam');
     // Payroll Redirection Starts Here
     Route::get('accountServices/PayrollDashboard','ViewPayrollDash')->name('accountservices.payrollDashboard');
+    Route::post('accountServices/GenratePayroll','GeneratePayRoll')->name('accountservices.generatePayroll');
 });
 
 // All Clients Route

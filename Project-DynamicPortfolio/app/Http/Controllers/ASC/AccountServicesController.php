@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ASC\EmpRecord;
 use Intervention\Image\ImageManagerStatic as Image;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\ProvincialTaxes;
+use Illuminate\Support\Arr;
+
 
 class AccountServicesController extends Controller
 {
@@ -401,5 +404,40 @@ class AccountServicesController extends Controller
             return redirect('/login');
         }
         return view('admin.account_services.payroll');
+    }
+    public function GeneratePayRoll(Request $request)
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else{
+            $employeeID = $request->emp_id;
+            $employeeProvince = $request->provinceSelection;
+            $employeeSalary = $request->empSalary;
+            $salaryAmount = $request->emp_empSalary;
+            $ProvincialtaxRates = ProvincialTaxes::where('province_Name', $employeeProvince)->get(array('province_income_amount','province_tax_percent'));
+            
+            $closest = null;
+            foreach ($ProvincialtaxRates as $i=>$compareSalary) {
+                if ($closest === null || abs($salaryAmount - $closest['province_income_amount']) > abs($compareSalary['province_income_amount'] - $salaryAmount)) {
+                    $closest = $compareSalary;
+                }
+            }
+            $taxAmount = $closest['province_tax_percent'];
+            $employeeName = $request->empName;
+            $employeePostion = $request->empPosition;
+            
+            $employeeAddress = $request->empAddress;
+            $employeeMobileNumber = $request->empMobile;
+            $employeeEmail = $request->empEmail;
+            $employeeEIDeduction = $request->empEIDeduction;
+            $employeeCPPContribution = $request->empCPPContribution;
+            $employeeSINNumber = $request->empSIN;
+            $employeeWorkHrs = $request->empWorkedHours;
+            $employeePayMethod = $request->paymentMethod;
+            $employeePaymentChequeNumber = $request->chequeNumber;
+            
+        }
     }
 }

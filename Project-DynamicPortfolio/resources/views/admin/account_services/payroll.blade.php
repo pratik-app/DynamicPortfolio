@@ -218,11 +218,11 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="#" method="post">
+                                                            <form action="{{route('accountservices.generatePayroll')}}" method="post">
                                                                 <!-- CSRF Token is used for active user session  -->
                                                                 @csrf
                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
-                                                                <input name="id" value="{{$employees->id}}" style="display:none" />
+                                                                <input name="emp_id" value="{{$employees->id}}" style="display:none" />
                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">Add Details</h6>
                                                                 <div class="row mb-3">
                                                                     <div class="col-xl-12">
