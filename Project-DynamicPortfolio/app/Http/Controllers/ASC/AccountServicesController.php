@@ -483,9 +483,20 @@ class AccountServicesController extends Controller
             // Total Tax after getting federalTax and Provincial Tax
 
             $totalTax = $federalTax + $provincialTax;
+            
+            // Adding the Data To Database before creating a pdf so it can be downloadable next time and can be reterive easily
+            // *******************
+            // *****************
+            // *****************
+            // *******************
+            // *****************
+            // *****************
+            // *******************
+            // *****************
+            // *****************
 
             // Generating Payroll using HTML content for the PDF
-
+            
             $html = view('pdf',compact(
               'employeeID',
               'employeeName',
