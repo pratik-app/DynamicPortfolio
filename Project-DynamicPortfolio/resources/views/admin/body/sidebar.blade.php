@@ -90,10 +90,16 @@ $adminData = App\Models\User::find($id);
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
-                        <i class="fas fas fa-suitcase"></i>
-                        <span>Jobs Hub</span>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-profile-line"></i>
+                        <span>Company Jobs</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">Create New Posting</a></li>
+                        <li><a href="#">Job Applications</a></li>
+                        <li><a href="#">Hiring Desk</a></li>                        
+                        <li><a href="#">Recruiters Hub</a></li>
+                    </ul>
                 </li>              
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

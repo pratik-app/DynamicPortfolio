@@ -29,3 +29,15 @@
             <td>${{ $generatedTaxableIncome }}</td>
         </tr>
         <tr>
+            <th>Federal Tax</th>
+            <td>${{ $federalTax }}</td>
+        </tr>
+        <tr>
+            <th>Provincial Tax</th>
+            <td>{{$provincialTax}}</td>
+        </tr>
+        <tr>
+            <th>Total Tax</th>
+            <td>{{$totalTax}}</td>
+        </tr>
+        <tr>
