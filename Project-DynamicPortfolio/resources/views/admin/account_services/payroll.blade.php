@@ -13,9 +13,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
     @endphp
     @endif
 @endforeach
-
-<!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
 <!-- Google Charts Integration -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -297,10 +296,25 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                 </div>
                                                                 <div class="row mb-3">
                                                                     <div class="col-xl-6">
+                                                                        <select class="form-select" name="PayStyle" alt="Pay Style" id="PayStyle" required>
+                                                                            <option name="PayStyle" value="">Select Pay Style*</option>
+                                                                            <option name="PayStyle" value="Weekly">Weekly</option>
+                                                                            <option name="PayStyle" value="BiWeekly">Bi-Weekly</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-xl-6">
                                                                         <select class="form-select" name="paymentMethod" alt="Payment Method" id="PaymentMethod" required>
                                                                             <option name="provinceSelection" value="">Select Payment Method*</option>
                                                                             <option name="provinceSelection" value="Cheque">Cheque</option>
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="row mb-3">
+                                                                    <label for="Employee Status" class="col-sm-2 col-form-label">Employee Status</label>
+                                                                    <div class="col-xl-4">
+                                                                        <input class="form-control" alt="Employee SIN Number" type="text" value="Active" readonly/>
                                                                     </div>
                                                                     <label for="Cheque Number" class="col-sm-2 col-form-label">Cheque Number*</label>
                                                                     <div class="col-xl-4">
@@ -309,10 +323,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                                                 </div>
                                                                 @if($employees->emp_status == '1')
                                                                 <div class="row mb-3">
-                                                                    <label for="Employee Status" class="col-sm-2 col-form-label">Employee Status</label>
-                                                                    <div class="col-xl-4">
-                                                                        <input class="form-control" alt="Employee SIN Number" type="text" value="Active" readonly/>
-                                                                    </div>
                                                                     <div class="col-xl-4">
                                                                         <input type="submit" class="btn btn-rounded btn-success" value="Generate Payroll"></br></br>
                                                                     </div>
@@ -384,6 +394,6 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
 
         </div><!-- end row -->
     </div>
-
+    <!-- Jquery 3.6 -->
     @endsection
     

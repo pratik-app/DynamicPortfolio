@@ -428,7 +428,7 @@ class AccountServicesController extends Controller
             $employeePaymentChequeNumber = $request->chequeNumber;
             $employeeEIDR = $request->empEIDeduction;
             $employeeCPPR = $request->empCPPContribution;
-
+            $payStyle = $request->PayStyle;
             // This is Province that User Selects
             
             $employeeProvince = $request->provinceSelection;
@@ -437,9 +437,18 @@ class AccountServicesController extends Controller
             
             $employeeSalary = $request->empSalary;
             
+            // Creating condition for weekly or BiWeekly pay
+            if($payStyle == "Weekly")
+            {
+                $empSal = (float)filter_var(preg_replace('/\D/', '', $employeeSalary))/52;
+            }
+            else{
+                $empSal = (float)filter_var(preg_replace('/\D/', '', $employeeSalary))/26;
+            }
+            
             // Converting the Employee Salary to Float
             
-            $salaryAmount = (float)filter_var(preg_replace('/\D/', '', $employeeSalary));
+            $salaryAmount = $empSal;
             
             // Calculating EI the formula used is EI fetched from Form and converted to float then divided by 100 and multiploed by Employee Salary
             
@@ -483,6 +492,7 @@ class AccountServicesController extends Controller
             // Total Tax after getting federalTax and Provincial Tax
 
             $totalTax = $federalTax + $provincialTax;
+            echo "This is Total Tax: ".$totalTax." This is FedralTax: ".$federalTax." This is Provincial Tax: ".$provincialTax;
             
             // Adding the Data To Database before creating a pdf so it can be downloadable next time and can be reterive easily
             // *******************
@@ -496,33 +506,33 @@ class AccountServicesController extends Controller
             // *****************
 
             // Generating Payroll using HTML content for the PDF
-            
-            $html = view('pdf',compact(
-              'employeeID',
-              'employeeName',
-              'employeePostion',
-              'employeeAddress',
-              'employeeMobileNumber',
-              'employeeEmail',
-              'employeeSINNumber',
-              'employeeWorkHrs',
-              'employeePayMethod',
-              'employeePaymentChequeNumber',
-              'employeeProvince',
-              'employeeSalary',
-              'employeeEIDR',
-              'employeeCPPR',
-              'generatedTaxableIncome',
-              'federalTax',
-              'provincialTax',
-              'totalTax'  
-            ));
-            $dompdf = new Dompdf();
-            $dompdf->loadHtml($html);
-            $dompdf->setPaper('A4','portrait');
-            $dompdf->render();
-            $filename = 'tax-info-'.date('Y-m-d_H:i:s').'.pdf';
-            return $dompdf->stream($filename);
+
+            // $html = view('pdf',compact(
+            //   'employeeID',
+            //   'employeeName',
+            //   'employeePostion',
+            //   'employeeAddress',
+            //   'employeeMobileNumber',
+            //   'employeeEmail',
+            //   'employeeSINNumber',
+            //   'employeeWorkHrs',
+            //   'employeePayMethod',
+            //   'employeePaymentChequeNumber',
+            //   'employeeProvince',
+            //   'employeeSalary',
+            //   'employeeEIDR',
+            //   'employeeCPPR',
+            //   'generatedTaxableIncome',
+            //   'federalTax',
+            //   'provincialTax',
+            //   'totalTax'  
+            // ));
+            // $dompdf = new Dompdf();
+            // $dompdf->loadHtml($html);
+            // $dompdf->setPaper('A4','portrait');
+            // $dompdf->render();
+            // $filename = 'tax-info-'.date('Y-m-d_H:i:s').'.pdf';
+            // return $dompdf->stream($filename);
             
         }
     }
