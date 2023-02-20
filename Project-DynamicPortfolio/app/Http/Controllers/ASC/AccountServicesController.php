@@ -492,7 +492,7 @@ class AccountServicesController extends Controller
             // Total Tax after getting federalTax and Provincial Tax
 
             $totalTax = $federalTax + $provincialTax;
-            echo "This is Total Tax: ".$totalTax." This is FedralTax: ".$federalTax." This is Provincial Tax: ".$provincialTax;
+            echo "This is Total Tax: ".$totalTax." </br>This is FedralTax: ".$federalTax." </br>This is Provincial Tax: ".$provincialTax."</br> This is Taxabale Income: ".$taxableIncome;
             
             // Adding the Data To Database before creating a pdf so it can be downloadable next time and can be reterive easily
             // *******************
