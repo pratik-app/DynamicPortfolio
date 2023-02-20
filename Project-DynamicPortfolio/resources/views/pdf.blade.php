@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>Taxable Income</th>
-            <td>${{ $generatedTaxableIncome }}</td>
+            <td>${{ $salaryAmount }}</td>
         </tr>
         <tr>
             <th>Federal Tax</th>

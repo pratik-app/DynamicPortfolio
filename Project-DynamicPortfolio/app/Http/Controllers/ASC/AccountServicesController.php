@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\ProvincialTaxes;
 use Dompdf\Dompdf;
 use Illuminate\Support\Arr;
-
+use Ramsey\Uuid\Type\Decimal;
 
 class AccountServicesController extends Controller
 {
@@ -436,45 +436,64 @@ class AccountServicesController extends Controller
             // This is the Gross Salary of Employee
             
             $employeeSalary = $request->empSalary;
-            
+            // To Check Employee Salary for comming from the form
+            // echo "This is Employee Salary: ".$employeeSalary."</br>";
             // Creating condition for weekly or BiWeekly pay
             if($payStyle == "Weekly")
             {
-                $empSal = (float)filter_var(preg_replace('/\D/', '', $employeeSalary))/52;
+                $empSal = round(filter_var(preg_replace('/\D/', '', $employeeSalary))/52,2);
             }
             else{
-                $empSal = (float)filter_var(preg_replace('/\D/', '', $employeeSalary))/26;
+                $empSal = round(filter_var(preg_replace('/\D/', '', $employeeSalary))/26,2);
             }
             
             // Converting the Employee Salary to Float
-            
+            // echo "This is EmpSalaray weekly based: ".$empSal."</br>";
             $salaryAmount = $empSal;
             
             // Calculating EI the formula used is EI fetched from Form and converted to float then divided by 100 and multiploed by Employee Salary
             
-            $employeeEIDeduction = ((float)(preg_replace('/\D/', '.',$request->empEIDeduction)))/100 * $salaryAmount;
-            
+            $employeeEIDeduction = round(((float)$request->empEIDeduction/100)*$salaryAmount,2);
+            // Checking EI Deduction
+            // echo "This is EI Deduction: ".$employeeEIDeduction."</br>";
             // Now Calculating the CPP Contribution same formula used for EI
 
-            $employeeCPPContribution = ((float)(preg_replace('/\D/', '.',$request->empCPPContribution)))/100 * $salaryAmount;
-            
+            $employeeCPPContribution = round(((float)$request->empCPPContribution/100)*$salaryAmount,2);
+            // Checking CPP Contribution
+            // echo "This is CPP Deduction: ".$employeeCPPContribution."</br>";
             // Finding Taxable Income from Gross Income Formula is Employee Salary - (EI Deduction + CPP Contribution)
-
-            $taxableIncome = $salaryAmount-($employeeEIDeduction + $employeeCPPContribution);
-            $generatedTaxableIncome = $taxableIncome;
+            echo "This is SalaryAmount: ".$salaryAmount."</br>";
+            echo "This is EI Deduction: ".$employeeEIDeduction."</br>";
+            echo "This is CPP Contribution:  ".$employeeCPPContribution."</br>";
+            // $taxableIncome = round(($salaryAmount-$employeeEIDeduction) + $employeeCPPContribution,2);
+            // echo "This is Taxable Income: ".$taxableIncome."</br>";
+            // $generatedTaxableIncome = $taxableIncome;
             // Calculating Federal Tax 
-            
-            $federalTax = 0;
-                $federalTaxBrackets = array(0.15, 0.205, 0.26, 0.29, 0.33);
-                $federalTaxRates = array(0, 50978, 102040, 151978, 216511);
-            
-                for ($i = count($federalTaxBrackets) - 1; $i >= 0; $i--) {
-                    if ($taxableIncome > $federalTaxRates[$i]) {
-                        $federalTax += ($taxableIncome - $federalTaxRates[$i]) * $federalTaxBrackets[$i];
-                        $taxableIncome = $federalTaxRates[$i];
-                    }
-                }
-
+            // $taxableIncome = $salaryAmount;
+            // $federalTax = null;
+            //     $federalTaxBrackets = array(0.15, 0.205, 0.26, 0.29, 0.33);
+            //     $federalTaxRates = array(0, 50978, 102040, 151978, 216511);
+            if((int)filter_var(preg_replace('/\D/', '', $employeeSalary)) < 50978 )
+            {
+                $federalTax = $salaryAmount * 0.15;
+            }
+            else if((int)filter_var(preg_replace('/\D/', '', $employeeSalary)) >= 50978 && (int)filter_var(preg_replace('/\D/', '', $employeeSalary)) < 102040)
+            {
+                $federalTax = $salaryAmount * 0.205;
+            }
+            else if((int)filter_var(preg_replace('/\D/', '', $employeeSalary)) >= 102040 && (int)filter_var(preg_replace('/\D/', '', $employeeSalary)) < 151978)
+            {
+                $federalTax = $salaryAmount * 0.29;
+            }
+            else if((int)filter_var(preg_replace('/\D/', '', $employeeSalary)) >= 151978 && (int)filter_var(preg_replace('/\D/', '', $employeeSalary)) < 216511)
+            {
+                $federalTax = $salaryAmount * 0.33;
+            }
+            else
+            {
+                $federalTax = $salaryAmount * 0.33;
+            }
+                
             // Getting Provincial Tax Rates From Database
 
             $ProvincialtaxRates = ProvincialTaxes::where('province_Name', $employeeProvince)->get(array('province_income_amount','province_tax_percent'));
@@ -487,12 +506,12 @@ class AccountServicesController extends Controller
 
             // Generating provincial Tax after getting provincial tax from database dividing it by 100 as it is percentage  and multiplying it with taxable Income
 
-            $provincialTax = ((float)$closest['province_tax_percent']/100) * $taxableIncome;
+            $provincialTax = ((float)$closest['province_tax_percent']/100) * $salaryAmount;
 
             // Total Tax after getting federalTax and Provincial Tax
 
             $totalTax = $federalTax + $provincialTax;
-            echo "This is Total Tax: ".$totalTax." </br>This is FedralTax: ".$federalTax." </br>This is Provincial Tax: ".$provincialTax."</br> This is Taxabale Income: ".$taxableIncome;
+            // echo "This is Total Tax: ".$totalTax." </br>This is FedralTax: ".$federalTax." </br>This is Provincial Tax: ".$provincialTax."</br> This is Taxabale Income: ".$salaryAmount;
             
             // Adding the Data To Database before creating a pdf so it can be downloadable next time and can be reterive easily
             // *******************
@@ -507,32 +526,32 @@ class AccountServicesController extends Controller
 
             // Generating Payroll using HTML content for the PDF
 
-            // $html = view('pdf',compact(
-            //   'employeeID',
-            //   'employeeName',
-            //   'employeePostion',
-            //   'employeeAddress',
-            //   'employeeMobileNumber',
-            //   'employeeEmail',
-            //   'employeeSINNumber',
-            //   'employeeWorkHrs',
-            //   'employeePayMethod',
-            //   'employeePaymentChequeNumber',
-            //   'employeeProvince',
-            //   'employeeSalary',
-            //   'employeeEIDR',
-            //   'employeeCPPR',
-            //   'generatedTaxableIncome',
-            //   'federalTax',
-            //   'provincialTax',
-            //   'totalTax'  
-            // ));
-            // $dompdf = new Dompdf();
-            // $dompdf->loadHtml($html);
-            // $dompdf->setPaper('A4','portrait');
-            // $dompdf->render();
-            // $filename = 'tax-info-'.date('Y-m-d_H:i:s').'.pdf';
-            // return $dompdf->stream($filename);
+            $html = view('pdf',compact(
+              'employeeID',
+              'employeeName',
+              'employeePostion',
+              'employeeAddress',
+              'employeeMobileNumber',
+              'employeeEmail',
+              'employeeSINNumber',
+              'employeeWorkHrs',
+              'employeePayMethod',
+              'employeePaymentChequeNumber',
+              'employeeProvince',
+              'employeeSalary',
+              'employeeEIDR',
+              'employeeCPPR',
+              'salaryAmount',
+              'federalTax',
+              'provincialTax',
+              'totalTax'  
+            ));
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4','portrait');
+            $dompdf->render();
+            $filename = 'tax-info-'.date('Y-m-d_H:i:s').'.pdf';
+            return $dompdf->stream($filename);
             
         }
     }
