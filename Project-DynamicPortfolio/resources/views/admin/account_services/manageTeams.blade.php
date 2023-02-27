@@ -96,6 +96,7 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
+                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Project</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,6 +182,7 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
+                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Task</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,6 +269,7 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
+                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Task</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -352,6 +355,7 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
+                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Task</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -437,6 +441,7 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
+                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Task</button></a>
                                                 </div>
                                             </div>
                                         </div>
