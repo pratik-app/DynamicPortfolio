@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LeadsController extends Controller
 {
+    // Update Lead status 
     
     public function updateStatus(Request $request){
         if(Auth::guest())
@@ -27,6 +28,9 @@ class LeadsController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    // Update Lead Action
+
     public function updateAction(Request $request){
         if(Auth::guest())
         {
@@ -43,6 +47,9 @@ class LeadsController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    // Assgin Lead to Available Sales Person
+
     public function assignLead(Request $request)
     {
         if(Auth::guest())
@@ -60,6 +67,9 @@ class LeadsController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    // Geting Lead from Frontend and Storing it in DB
+
     public function getleadContact(Request $request){
         if(Auth::guest())
         {
@@ -98,6 +108,9 @@ class LeadsController extends Controller
         }
         
     }
+
+    // Getting all Leads (Represents Inbox)
+
     public function getallleads()
     {
         $leads = Contact::all();
@@ -107,6 +120,9 @@ class LeadsController extends Controller
         }
         return view('admin.lead_contact.all_lead_contacts',compact('leads'));
     }
+
+    // View Particular Message Generated from Frontend
+
     public function viewEmail(Request $request)
     {
         if(Auth::guest())
@@ -124,6 +140,9 @@ class LeadsController extends Controller
         // echo "Data Updated Successfully";
         return view('admin.lead_contact.display_email_message',compact('leadId'));
     }
+
+    // Delete functionality to Delete Lead if lead have no project
+    
     public function DeleteLead(Request $request)
     {
         if(Auth::guest())

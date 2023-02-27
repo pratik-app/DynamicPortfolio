@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
+    // Function to Add New Client
+
     public function AddNewClient(Request $request){
         if(Auth::guest())
         {
@@ -37,10 +39,11 @@ class ClientsController extends Controller
                 'client_Project_Price'=> $clientProjectPrice,
                 'client_advanced_paid_amount'=>$clientAdvancePayment,
                 'client_number_of_projects'=>$clientProjectNumber,
-                'client_outstanding_amount'=> $outstandingAmount,
+                'client_outstanding_amount'=> "$".$outstandingAmount,
                 'client_project_deadline'=> $clientProjectDeadLine,
                 'client_project_status'=>'initial Stage',
             ]);
+            
             $notification = array(
                 'message' => 'Lead Successfully Converted to Client',
                 'alert-type' =>'success'

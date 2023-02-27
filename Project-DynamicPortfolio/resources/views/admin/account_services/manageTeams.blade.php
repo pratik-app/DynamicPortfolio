@@ -2,6 +2,7 @@
 @section('admin')
 @php
 $employeeinTeam = App\Models\ASC\EmpRecord::all();
+$projectList = App\Models\Clients::all();
 $storeEmpID = "";
 @endphp
 <!-- Jquery 3.6 -->
@@ -96,7 +97,45 @@ $storeEmpID = "";
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send Email</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Book Meeting</button>
                                                     <button type="button" class="btn btn-primary waves-effect waves-light">Send SMS</button>
-                                                    <a href="#"><button type="button" class="btn btn-primary waves-effect waves-light">Assign Project</button></a>
+                                                    <button type="button" class="btn btn-primary waves-effect waves-light"  data-bs-toggle="modal" data-bs-target="#AssginProjectToTeam">Assign Project</button>
+                                                    <div id="AssginProjectToTeam" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="myModalLabel">Assign Project to DTeam</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="#" method="post">
+                                                                                <!-- CSRF Token is used for active user session  -->
+                                                                                @csrf
+                                                                                <!-- NOTE: This token is used to verify the authenticated user -->
+                                                                                <h6 for="Employee Type" class="col-xl-12 col-form-label">List of Clients and Their Projects</h6>
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-xl-12">
+                                                                                        <select class="form-select" name="ProjectName" alt="Project List" id="ProjectName" required>
+                                                                                        <option name="ProjectName" value="">None</option>
+                                                                                        @foreach($projectList as $project)
+                                                                                            @if($project->client_Project_Name != NULL || $project->client_Project_Name != "NULL" )
+                                                                                            <option name="ProjectName" value="{{$project->client_id}}">{{$project->client_name}} | {{$project->client_Project_Name}} | {{$project->client_Project_Price}}</option>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mb-3">
+                                                                                    <div class="col-sm-10">
+                                                                                        <input type="submit" class="btn btn-rounded btn-success" value="Generate This Project and Assign to DTEAM"></br></br>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <small style="color:red">*SELECTED PROJECT WILL BE GENERATED IN PROJECT HUB AFTER ASSIGNING</small>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div>
                                                 </div>
                                             </div>
                                         </div>
