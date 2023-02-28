@@ -81,7 +81,7 @@ $adminData = App\Models\User::find($id);
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('clients.showclientshub')}}" class="waves-effect">
                         <i class="fas fa-user-tie"></i>
                         <span>Client Hub</span>
                     </a>

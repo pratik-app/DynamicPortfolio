@@ -51,4 +51,19 @@ class ClientsController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    // function to display all clients
+
+    public function ShowAllClients()
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else
+        {
+            $allClients = Clients::all();
+            return view('admin.client_hub.clientHub', compact('allClients'));
+        }
+    }
 }
