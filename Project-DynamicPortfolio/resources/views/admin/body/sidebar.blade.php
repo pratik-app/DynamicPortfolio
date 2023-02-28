@@ -75,7 +75,7 @@ $adminData = App\Models\User::find($id);
                 
                 <li class="menu-title">Essential Hub</li>  
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('projects.showprojecthub')}}" class="waves-effect">
                         <i class="fas fa-project-diagram"></i>
                         <span>Project Hub</span>
                     </a>

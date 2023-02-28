@@ -52,4 +52,19 @@ class ProjectController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
+    // View Project Hub or Project Dashboard
+
+    public function ViewProjectHub(){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else
+        {
+            $projectsData = Projects::all();
+
+            return view('admin.project_hub.projectHub', compact('projectsData'));
+        }
+    }
 }

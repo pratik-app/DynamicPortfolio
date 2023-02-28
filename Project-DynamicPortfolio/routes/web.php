@@ -97,6 +97,7 @@ Route::controller(AboutSliderController::class)->group(function(){
 // All Project Routes
 Route::controller(ProjectController::class)->group(function(){
     Route::post('projects/CreateProject','CreateProject')->name('project.createProject');
+    Route::get('projects/ProjectHub','ViewProjectHub')->name('projects.showprojecthub');
 });
 
 // Login Route
