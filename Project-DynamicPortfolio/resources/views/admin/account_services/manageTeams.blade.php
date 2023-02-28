@@ -106,8 +106,8 @@ $storeEmpID = "";
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <form action="#" method="post">
-                                                                                <!-- CSRF Token is used for active user session  -->
+                                                                            <form action="{{route('project.createProject')}}" method="post">
+                                                                                <!-- CSRF Token is used for active user session -->
                                                                                 @csrf
                                                                                 <!-- NOTE: This token is used to verify the authenticated user -->
                                                                                 <h6 for="Employee Type" class="col-xl-12 col-form-label">List of Clients and Their Projects</h6>

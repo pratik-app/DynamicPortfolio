@@ -8,6 +8,7 @@ use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
 use App\Http\Controllers\clientsController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +94,19 @@ Route::controller(AboutSliderController::class)->group(function(){
     Route::post('/about/edit', 'EditAbout')->name('about.editme');
 });
 
+// All Project Routes
+Route::controller(ProjectController::class)->group(function(){
+    Route::post('projects/CreateProject','CreateProject')->name('project.createProject');
+});
+
+// Login Route
+
 Route::get('/login', function () {
     return view('admin.logout');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+// Authentication Route
 
 Route::middleware('auth','verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
