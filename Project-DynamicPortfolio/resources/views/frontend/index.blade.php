@@ -1019,7 +1019,7 @@ $homeslide = App\Models\HomeSlide::find(1);
                             <div class="partner__content">
                                 <div class="section__title">
                                     <span class="sub-title">Join US</span>
-                                    <h2 class="title">Join Us with our Dev Team</h2>
+                                    <h2 class="title">WANT TO JOIN US!</h2>
                                 </div>
                                 <p>Click on View Current openings to view all current openings and join us! </p>
                                 <a href="{{route('companyjobs.jobpostings')}}" class="btn">View Current Openings</a>
