@@ -983,7 +983,52 @@ $homeslide = App\Models\HomeSlide::find(1);
                 </div>
             </section>
             <!-- blog-area-end -->
-
+            <!-- Join US -->
+            <section class="partner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul class="partner__logo__wrap">
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light01.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_01.png')}}" alt="">
+                                </li>
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light02.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_02.png')}}" alt="">
+                                </li>
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light03.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_03.png')}}" alt="">
+                                </li>
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light04.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_04.png')}}" alt="">
+                                </li>
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light05.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_05.png')}}" alt="">
+                                </li>
+                                <li>
+                                    <img class="light" src="{{asset('frontend/assets/img/icons/partner_light06.png')}}" alt="">
+                                    <img class="dark" src="{{asset('frontend/assets/img/icons/partner_06.png')}}" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="partner__content">
+                                <div class="section__title">
+                                    <span class="sub-title">Join US</span>
+                                    <h2 class="title">Join Us with our Dev Team</h2>
+                                </div>
+                                <p>Click on View Current openings to view all current openings and join us! </p>
+                                <a href="{{route('companyjobs.jobpostings')}}" class="btn">View Current Openings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section></br></br></br></br>
+            <!-- Join Us-end -->
             <!-- contact-area -->
             <section id="{{$homeslide->nav_tab7}}" class="homeContact">
                 <div class="container">

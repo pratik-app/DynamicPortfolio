@@ -9,6 +9,7 @@ use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
 use App\Http\Controllers\clientsController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\JobBoardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +101,12 @@ Route::controller(ProjectController::class)->group(function(){
     Route::post('projects/CreateProject','CreateProject')->name('project.createProject');
     Route::get('projects/ProjectHub','ViewProjectHub')->name('projects.showprojecthub');
 });
+
+// Job Routes
+Route::controller(JobBoardController::class)->group(function(){
+    Route::get('CompanyJobs/AvailableJobs','ViewAvailableJobs')->name('companyjobs.jobpostings');
+});
+
 
 // Login Route
 
