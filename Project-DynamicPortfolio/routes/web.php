@@ -106,6 +106,8 @@ Route::controller(ProjectController::class)->group(function(){
 Route::controller(JobBoardController::class)->group(function(){
     Route::get('CompanyJobs/AvailableJobs','ViewAvailableJobs')->name('companyjobs.jobpostings');
     Route::get('CompanyJobs/CreateNewOpportunity','NewOpportunityPage')->name('compnayjobs.createnewopp');
+    Route::post('CompanyJobs/AddNewOpportunity','AddJob')->name('compnayjobs.newJobPost');
+    Route::get('CompanyJobs/ViewAllJobPostings','ViewAllJobPostings')->name('companyjobs.viewalljobs');
 });
 
 
