@@ -12,12 +12,12 @@ $homeslide = App\Models\HomeSlide::find(1);
                             <div class="menu__wrap">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="{{redirect('/')}}" class="logo__black"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
-                                        <a href="{{redirect('/')}}" class="logo__white"><img src="https://pratikmore.com/assets/img/logo.png" width="100px" height="auto"></a>
+                                        <a href="https://pratikmore.com/assets/img/logo.png" class="logo__black"><img src="https://pratikmore.com/assets/img/logo.png" alt="PratikMoreLogo" width="100px" height="auto"></a>
+                                        <a href="https://pratikmore.com/assets/img/logo.png" class="logo__white"><img src="https://pratikmore.com/assets/img/logo.png" width="100px" height="auto"></a>
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
-                                            <li><a href="#{{$homeslide->nav_tab1}}">{{$homeslide->nav_tab1}}</a></li>
+                                            <li><a href="{{route('home.view')}}">{{$homeslide->nav_tab1}}</a></li>
                                             <li><a href="#{{$homeslide->nav_tab2}}">{{$homeslide->nav_tab2}}</a></li>
                                             <li><a href="#{{$homeslide->nav_tab3}}">{{$homeslide->nav_tab3}}</a></li>
                                             <li><a href="#{{$homeslide->nav_tab4}}">{{$homeslide->nav_tab4}}</a></li>

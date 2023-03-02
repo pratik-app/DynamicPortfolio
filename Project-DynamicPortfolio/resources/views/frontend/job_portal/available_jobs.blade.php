@@ -4,7 +4,7 @@
 @php
     $jobs = App\Models\JobOpenings::All()
 @endphp
-    
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <section class="breadcrumb__wrap">
         <div class="container custom-container">
             <div class="row justify-content-center">
@@ -60,18 +60,22 @@
                             <aside class="services__sidebar">
                                 <div class="widget">
                                     <h5 class="title">Send Your Resume Now!</h5>
-                                    <form action="#" class="sidebar__contact">
-                                        <input type="text" placeholder="Enter name*" required/>
-                                        <input type="email" placeholder="Enter your mail*" required/>
-                                        <input type="text" placeholder="Mobile Number*" required/>
+                                    <form action="{{route('companyjobs.applyforjob')}}" method="post" class="sidebar__contact" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="applicant_name" placeholder="Enter name*" required/>
+                                        <input type="email" name="applicant_email" placeholder="Enter your mail*" required/>
+                                        <input type="text" name="applicant_mobile" placeholder="Mobile Number*" required/>
                                             <select class="form-select" name = "applicationfor" alt="job application for" style="border:none" required>
-                                                <option name="applicationfor" value=""><small>Select Job from Available Jobs</small></option>
+                                                <option name="applicationfor" value=""><small>Select Job for sending application</small></option>
                                                 @foreach($jobs as $availableJobs)
                                                     <option name="applicationfor" value="{{$availableJobs->job_title}}">{{$availableJobs->job_title}}</option>
                                                 @endforeach
                                             </select>
                                             </br>
-                                        <textarea name="message" id="message" placeholder="Massage*" required></textarea>
+                                            <label for="Upload Resume">Upload Resume</label>
+                                        <input type="file" name="applicant_resume" class="form-file" placeholder="Upload Resume" required/>
+                                        <textarea name="message" name="applicant_message" id="message" placeholder="Write Cover Letter*" required></textarea>
+                                        
                                         <button type="submit" class="btn">Send Application</button>
                                     </form>
                                 </div>

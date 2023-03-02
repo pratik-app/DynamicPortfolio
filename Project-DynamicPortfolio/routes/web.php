@@ -26,6 +26,13 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+
+// Creating Route for Home Redirection
+
+Route::get('/',function(){
+    return view('frontend.index');
+})->middleware(['auth', 'verified'])->name('home.view');
+
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -111,6 +118,8 @@ Route::controller(JobBoardController::class)->group(function(){
     Route::post('CompanyJobs/UpdateJobPosting','UpdateJobPosting')->name('companyjobs.UpdateJobPosting');
     Route::get('CompanyJobs/DeactivateJobPosting/{job_id}','DeactivateJobPosting')->name('companyjobs.deactivateJob');
     Route::get('CompanyJobs/DeleteJobPosting/{job_id}','DeleteJobPosting')->name('companyjobs.deleteJobPosting');
+    Route::post('CompanyJobs/ApplyforJob','GetJobApplication')->name('companyjobs.applyforjob');
+
     // Creating route for taking resume from frontend
 });
 

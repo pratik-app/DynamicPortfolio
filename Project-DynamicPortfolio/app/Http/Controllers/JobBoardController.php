@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobOpenings;
+use App\Models\JobApplicants;
 use Illuminate\Support\Facades\Auth;
 
 class JobBoardController extends Controller
@@ -12,10 +13,6 @@ class JobBoardController extends Controller
     
     public function ViewAvailableJobs()
     {
-        if(Auth::guest())
-        {
-            return redirect('/login');
-        }
         return view('frontend.job_portal.available_jobs');
     }
 
@@ -72,7 +69,7 @@ class JobBoardController extends Controller
             return redirect('/login');
         }
         $job_id = $request->JobID;
-        $data = JobOpenings::where('job_id','=',$job_id)->update(
+        JobOpenings::where('job_id','=',$job_id)->update(
             [
                 'job_title'=>$request->JobTitle,
                 'job_location'=> $request->JobLocation,
@@ -91,6 +88,36 @@ class JobBoardController extends Controller
         return redirect()->back()->with($notification);
         
         
+    }
+    
+    // Creating function to Get Job Application from Frontend
+
+    public function GetJobApplication(Request $request)
+    {
+        $applicant_Name = $request->applicant_name;
+        $applicant_Email = $request->applicant_email;
+        $applicant_Mobile = $request->applicant_mobile;
+        $applicant_application_for = $request->applicationfor;
+        $applicant_resume = $request->file('applicant_resume');
+        $applicant_message = $request->applicant_message;
+        $get_resume_name = hexdec(uniqid()).'.'.$applicant_resume->getClientOriginalExtension(); 
+        $store_resume = $applicant_resume->move('upload\job_applicants',$get_resume_name);
+        JobApplicants::insert(
+            [
+                'applicant_name' => $applicant_Name,
+                'applicant_email' => $applicant_Email,
+                'applicant_mobile'=> $applicant_Mobile,
+                'applicant_applying_for' =>$applicant_application_for,
+                'applicant_resume'=>$store_resume,
+                'applicant_message'=>$applicant_message
+            ]
+            );
+            $notification = array(
+                'message' => 'Application Submitted Successfully!',
+                'alert-type' =>'success'
+            );
+            return redirect()->back()->with($notification);
+
     }
 
     // Developing Function to View all Job Postings
