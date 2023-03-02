@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobOpenings;
+use Illuminate\Support\Facades\Auth;
 
 class JobBoardController extends Controller
 {
     // Creating view to display available jobs in frontend
-
+    
     public function ViewAvailableJobs()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         return view('frontend.job_portal.available_jobs');
     }
 
@@ -18,12 +23,20 @@ class JobBoardController extends Controller
 
     public function NewOpportunityPage()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         return view('admin.job_portal.create_new_opportunity');
     }
 
     // Creating Function to add new job in Database
 
     public function AddJob(Request $request){
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $jobTitle = $request->JobTitle;
         $jobLocation = $request->JobLocation;
         $jobType = $request->JobType;
@@ -50,11 +63,79 @@ class JobBoardController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    // Creating Function to Update Job Posting
+    
+    public function UpdateJobPosting(Request $request)
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $job_id = $request->JobID;
+        $data = JobOpenings::where('job_id','=',$job_id)->update(
+            [
+                'job_title'=>$request->JobTitle,
+                'job_location'=> $request->JobLocation,
+                'job_type'=>$request->JobType,
+                'job_description'=>$request->JobDescription,
+                'job_pay_range'=>$request->JobPayRange,
+                'job_application_deadline'=>$request->JobApplicationDL,
+                'job_posted_date'=>$request->JobDate,
+                'job_status'=>$request->jobstatus
+            ]
+        );
+        $notification = array(
+            'message' => 'Job Updated and Posted!',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+        
+        
+    }
+
     // Developing Function to View all Job Postings
 
     public function ViewAllJobPostings()
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $allJobs = JobOpenings::all();
         return view('admin.job_portal.view_all_job_postings', compact('allJobs'));
+    }
+
+    // Creating function to deactivate the Job
+
+    public function DeactivateJobPosting(Request $request)
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $id= $request->job_id;
+        JobOpenings::where('job_id','=',$id)->update(
+            [
+                'job_status'=>'Deactivated'
+            ]
+            );
+            $notification = array(
+                'message' => 'Job Deactivated Successfully!',
+                'alert-type' =>'success'
+            );
+            return redirect()->back()->with($notification);
+    }
+
+    // Creating function to Delete Job Posting
+
+    public function DeleteJobPosting(Request $request)
+    {
+        $id = $request->job_id;
+        JobOpenings::where('job_id','=',$id)->delete();
+        $notification = array(
+            'message' => 'Deleted Successfully!',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }

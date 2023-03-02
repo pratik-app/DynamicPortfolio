@@ -108,6 +108,9 @@ Route::controller(JobBoardController::class)->group(function(){
     Route::get('CompanyJobs/CreateNewOpportunity','NewOpportunityPage')->name('compnayjobs.createnewopp');
     Route::post('CompanyJobs/AddNewOpportunity','AddJob')->name('compnayjobs.newJobPost');
     Route::get('CompanyJobs/ViewAllJobPostings','ViewAllJobPostings')->name('companyjobs.viewalljobs');
+    Route::post('CompanyJobs/UpdateJobPosting','UpdateJobPosting')->name('companyjobs.UpdateJobPosting');
+    Route::get('CompanyJobs/DeactivateJobPosting/{job_id}','DeactivateJobPosting')->name('companyjobs.deactivateJob');
+    Route::get('CompanyJobs/DeleteJobPosting/{job_id}','DeleteJobPosting')->name('companyjobs.deleteJobPosting');
 });
 
 
