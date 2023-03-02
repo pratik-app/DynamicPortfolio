@@ -111,6 +111,7 @@ Route::controller(JobBoardController::class)->group(function(){
     Route::post('CompanyJobs/UpdateJobPosting','UpdateJobPosting')->name('companyjobs.UpdateJobPosting');
     Route::get('CompanyJobs/DeactivateJobPosting/{job_id}','DeactivateJobPosting')->name('companyjobs.deactivateJob');
     Route::get('CompanyJobs/DeleteJobPosting/{job_id}','DeleteJobPosting')->name('companyjobs.deleteJobPosting');
+    // Creating route for taking resume from frontend
 });
 
 

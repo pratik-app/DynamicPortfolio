@@ -1,6 +1,9 @@
 
 @extends('frontend.main_master')
 @section('main')
+@php
+    $jobs = App\Models\JobOpenings::All()
+@endphp
     
     <section class="breadcrumb__wrap">
         <div class="container custom-container">
@@ -35,102 +38,21 @@
                         <div class="col-xl-8">
                             <div class="services__style__two__wrap">
                                 <div class="row gx-0">
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                    @foreach($jobs as $job)
+                                    <div class="col-xl-5 col-lg-6 col-md-8">
                                         <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon01.png')}}" alt="">
-                                            </div>
                                             <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Business Strategy</a></h3>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
-                                                
+                                                <h3 class="title">{{$job->job_title}}</h3>
+                                                <p>Job Location: {{$job->job_location}}</p>
+                                                <p>Job Type: {{$job->job_type}}</p>
+                                                <p>Salary Range: {{$job->job_pay_range}}</p>
+                                                <p>Job Description: {{$job->job_description}}</p>
+                                                <p>Job Application Dead Line: {{$job->job_application_deadline}}</p>
+                                                <p>Job Posted On: {{$job->job_posted_date}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon" >
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon02.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Visual Design</a></h3>
-                                                <p>Strategy is a forward-looking plan for your brand’s behavior.Strategy is a forward-looking plan.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon03.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Product Design</a></h3>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon05.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Animation</a></h3>
-                                                <p>Strategy is a forward-looking plan for your brand’s behavior.Strategy is a forward-looking plan.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon06.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Marketing</a></h3>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon05.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Brand strategy</a></h3>
-                                                <p>Strategy is a forward-looking plan for your brand’s behavior.Strategy is a forward-looking plan.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon04.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Graphic Design</a></h3>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6">
-                                        <div class="services__style__two__item" style="border:none">
-                                            <div class="services__style__two__icon">
-                                                <img src="{{asset('frontend/assets/img/icons/services_light_icon07.png')}}" alt="">
-                                            </div>
-                                            <div class="services__style__two__content">
-                                                <h3 class="title"><a href="services-details.html">Visual Design</a></h3>
-                                                <p>Strategy is a forward-looking plan for your brand’s behavior.Strategy is a forward-looking plan.</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -139,9 +61,17 @@
                                 <div class="widget">
                                     <h5 class="title">Send Your Resume Now!</h5>
                                     <form action="#" class="sidebar__contact">
-                                        <input type="text" placeholder="Enter name*">
-                                        <input type="email" placeholder="Enter your mail*">
-                                        <textarea name="message" id="message" placeholder="Massage*"></textarea>
+                                        <input type="text" placeholder="Enter name*" required/>
+                                        <input type="email" placeholder="Enter your mail*" required/>
+                                        <input type="text" placeholder="Mobile Number*" required/>
+                                            <select class="form-select" name = "applicationfor" alt="job application for" style="border:none" required>
+                                                <option name="applicationfor" value=""><small>Select Job from Available Jobs</small></option>
+                                                @foreach($jobs as $availableJobs)
+                                                    <option name="applicationfor" value="{{$availableJobs->job_title}}">{{$availableJobs->job_title}}</option>
+                                                @endforeach
+                                            </select>
+                                            </br>
+                                        <textarea name="message" id="message" placeholder="Massage*" required></textarea>
                                         <button type="submit" class="btn">Send Application</button>
                                     </form>
                                 </div>
