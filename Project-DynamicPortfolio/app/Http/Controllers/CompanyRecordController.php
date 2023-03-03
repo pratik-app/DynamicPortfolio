@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\IncomeRecord;
 use App\Models\ExpenseRecord;
+use App\Models\InvestmentRecord;
 
 class CompanyRecordController extends Controller
 {
@@ -150,6 +151,31 @@ class CompanyRecordController extends Controller
         }
     }
 } 
+
+// Creating function to save investment Record
+
+public function SaveNewInvestmentRecord(Request $request)
+{
+    if(Auth::guest())
+    {
+        return redirect('/login');
+    }
+    else
+    {
+        $InvestmentType = $request->InvestmentRecord;
+        $InvestedAmount = $request->InvestmentAmount;
+        InvestmentRecord::insert([
+            'type_of_investment' => $InvestmentType,
+            'amount' =>$InvestedAmount
+        ]);
+        $notification = array(
+            'message' => 'Saved to Investment Record!',
+            'alert-type' =>'success'
+        );
+        // redirecting back with notification
+        return redirect()->back()->with($notification);
+    }
+}
 
 }
 

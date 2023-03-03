@@ -1,6 +1,10 @@
 @extends('admin.admin_master')
 @section('admin')
+@php 
 
+$getallInvestmentData = App\Models\InvestmentRecord::all();
+$total = 0;
+@endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <!-- Google Charts Integration -->
@@ -63,16 +67,26 @@
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
+                                    @foreach($getallInvestmentData as $data)
+                                    @php $total += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $data->amount)); @endphp
                                     <tr>    
                                         <td>
-                                            <h6 class="mb-0">Investment from Business</h6>
+                                            <h6 class="mb-0">{{$data->type_of_investment}}</h6>
                                         </td>
                                         
                                         <td>
-                                            $250000
+                                            {{$data->amount}}
                                         </td>
                                     </tr>
-                                    
+                                    @endforeach
+                                    <tr>
+                                        <td>
+                                            <h6 class="mb-0">Total</h6>
+                                        </td>
+                                        <td>
+                                            ${{$total}}
+                                        </td>
+                                    </tr>
                                     <!-- end -->
                                 </tbody><!-- end tbody -->
                             </table> <!-- end table -->
@@ -94,32 +108,29 @@
                             <h5 class="modal-title" id="myModalLabel">Add New Investment Record</h5>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="{{route('companyrecord.savenewInvestmentRecord')}}" method="post">
+                                @csrf
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <select class="form-select" name = "InvestmentRecord" alt="InvestmentRecord" required>
-                                            <option name="JobLocation" value="" selected>Please Select Type of Investment</option>
-                                            <option name="JobLocation" value="SalesInvestment">Sales Investment</option>
-                                            <option name="JobLocation" value="InterestInvestment"> Interest Investment</option>
-                                            <option name="JobLocation" value="RentalInvestment"> Rental Investment</option>
-                                            <option name="JobLocation" value="DividendInvestment"> Dividend Investment</option>
-                                            <option name="JobLocation" value="CapitalGains"> Capital Gains</option>
-                                            <option name="JobLocation" value="RoyaltyInvestment"> Royalty Investment</option>
-                                            <option name="JobLocation" value="CommissionInvestment"> Commission Investment</option>
+                                        <select class="form-select" name ="InvestmentRecord" alt="InvestmentRecord" required>
+                                            <option value="" selected>Please Select Type of Investment</option>
+                                            <option value="EquityInvestment">Equity Investment</option>
+                                            <option value="DebtFinancing"> Debt Financing</option>
+                                            <option value="ConvertibleDebt"> Convertible Debt</option>
+                                            <option value="AngelInvestment"> Angel Investment</option>
+                                            <option value="VentureCapital"> Venture Capital</option>
+                                            <option value="Crowdfunding"> Crowd Funding</option>
+                                            <option value="Grants"> Grants</option>
+                                            <option value="PropertyInvestments"> Property Investment</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="BusinessInvestment" class="form-control" value="$0" readonly/>
+                                        <input type="text" name="InvestmentAmount" placeholder = "Enter the Invested Amount" class="form-control" required/>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-10">
-                                        <input type="text" name="otherInvestmentAmount" class="form-control"/>
-                                    </div>
-                                </div>
-                                <input class="btn btn-primary" type="sumbit" name="AddThisRecord" value="Add This Record">
+                                <input class="btn btn-primary" name="AddThisRecord" type="submit" value="Add This Record"/>
                             </form>
                         </div>
                         <div class="modal-footer">
