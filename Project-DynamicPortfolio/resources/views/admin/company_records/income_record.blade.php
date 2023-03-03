@@ -126,6 +126,7 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                                             <option value="CapitalGains"> Capital Gains</option>
                                             <option value="RoyaltyIncome"> Royalty Income</option>
                                             <option value="CommissionIncome"> Commission Income</option>
+                                            <option value="CashIncome"> Cash Income</option>
                                         </select>
                                     </div>
                                 </div>

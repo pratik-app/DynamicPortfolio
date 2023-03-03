@@ -2,12 +2,13 @@
 @section('admin')
 @php
     $totalSalary = 0;
+    $totalamount = 0;
     $empSlaries = App\Models\ASC\EmpRecord::all();
     foreach($empSlaries as $salary)
     {
         $totalSalary += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $salary->emp_salary));
     }   
-    
+    $eachrecord = App\Models\ExpenseRecord::all();
 @endphp
 
 <!-- Jquery 3.6 -->
@@ -66,22 +67,33 @@
                         <div class="table-responsive">
                             <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                 <thead class="table-light">
+                                    
                                     <tr>
                                         <th>Type of Expense</th>
                                         <th style="width: 120px;">Amount</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
+                                @foreach($eachrecord as $record)
+                                @php $totalamount += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $record->amount)) @endphp
                                     <tr>    
                                         <td>
-                                            <h6 class="mb-0">Expense from Business</h6>
+                                            <h6 class="mb-0">{{$record->type_of_expense}}</h6>
                                         </td>
                                         
                                         <td>
-                                            $250000
+                                            {{$record->amount}}
                                         </td>
                                     </tr>
-                                    
+                                @endforeach
+                                <tr>
+                                    <td>
+                                        <h6 class="mb-0">Total</h6>
+                                    </td>
+                                    <td>
+                                        ${{$totalamount}}
+                                    </td>
+                                </tr>
                                     <!-- end -->
                                 </tbody><!-- end tbody -->
                             </table> <!-- end table -->

@@ -126,7 +126,7 @@ class CompanyRecordController extends Controller
             $sumAmount = (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $lightexp)) + (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $gasexp)) + (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $Water));
             ExpenseRecord::insert([
                 'type_of_expense' => $ExpenseType,
-                'amount' => $sumAmount
+                'amount' => '$'.$sumAmount
             ]);
             $notification = array(
                 'message' => 'Saved to expense Record!',
