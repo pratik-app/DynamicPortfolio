@@ -8,6 +8,7 @@ use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
 use App\Http\Controllers\clientsController;
+use App\Http\Controllers\CompanyRecordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\JobBoardController;
 
@@ -122,6 +123,14 @@ Route::controller(JobBoardController::class)->group(function(){
     Route::get('CompanyJobs/ApplicantsHub','ViewJobApplications')->name('companyjobs.viewalljobapplications');
     Route::get('CompanyJobs/DownloadApplicantResume/{id}', 'DownloadApplicantResume')->name('companyjobs.downloadapplicantResume');
     
+});
+
+// Company Record Routes
+
+Route::controller(CompanyRecordController::class)->group(function(){
+    Route::get('CompnayRecord/IncomRecord','ViewIncomeRecord')->name('companyrecord.viewincomerecord');
+    Route::get('CompnayRecord/ExpenseRecord','ViewExpenseRecord')->name('companyrecord.viewexpenserecord');
+    Route::get('CompnayRecord/InvestmentRecord','ViewInvestmentRecord')->name('companyrecord.viewinvestmentrecord');
 });
 
 
