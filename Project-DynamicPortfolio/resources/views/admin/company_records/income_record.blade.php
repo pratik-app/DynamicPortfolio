@@ -69,6 +69,7 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                                     <tr>
                                         <th>Type of Income</th>
                                         <th style="width: 120px;">Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -81,6 +82,9 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                                         
                                         <td>
                                             {{$allincome->amount}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('companyrecord.deleteIncomeRecord',['id'=>$allincome->id])}}"><button class="btn btn-danger" type="button">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endforeach

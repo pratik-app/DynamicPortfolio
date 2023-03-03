@@ -71,6 +71,7 @@
                                     <tr>
                                         <th>Type of Expense</th>
                                         <th style="width: 120px;">Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -83,6 +84,9 @@
                                         
                                         <td>
                                             {{$record->amount}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('companyrecord.deleteExpenseRecord',['id'=>$record->id])}}"><button class="btn btn-danger" type="button">Delete</button></a>
                                         </td>
                                     </tr>
                                 @endforeach

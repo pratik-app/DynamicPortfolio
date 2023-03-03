@@ -132,8 +132,11 @@ Route::controller(CompanyRecordController::class)->group(function(){
     Route::get('CompnayRecord/ExpenseRecord','ViewExpenseRecord')->name('companyrecord.viewexpenserecord');
     Route::get('CompnayRecord/InvestmentRecord','ViewInvestmentRecord')->name('companyrecord.viewinvestmentrecord');
     Route::post('CompanyRecord/NewIncomeRecord','SaveNewIncomeRecord')->name('companyrecord.savenewIncomeRecord');
+    Route::get('CompanyRecord/DeleteIncomeRecord/{id}','DeleteIncomeRecord')->name('companyrecord.deleteIncomeRecord');
     Route::post('CompanyRecord/NewExpenseRecord','SaveNewExpenseRecord')->name('companyrecord.savenewExpenseRecord');
+    Route::get('CompanyRecord/DeleteExpenseRecord/{id}','DeleteExpenseRecord')->name('companyrecord.deleteExpenseRecord');
     Route::post('CompanyRecord/NewInvestmentRecord','SaveNewInvestmentRecord')->name('companyrecord.savenewInvestmentRecord');
+    Route::get('CompanyRecord/DeleteInvestmentRecord/{id}','DeleteInvestmentRecord')->name('companyrecord.deleteInvestmentRecord');
 });
 
 

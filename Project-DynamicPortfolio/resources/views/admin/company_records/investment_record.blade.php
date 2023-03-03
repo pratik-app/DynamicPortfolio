@@ -64,6 +64,7 @@ $total = 0;
                                     <tr>
                                         <th>Type of Investment</th>
                                         <th style="width: 120px;">Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -76,6 +77,9 @@ $total = 0;
                                         
                                         <td>
                                             {{$data->amount}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('companyrecord.deleteInvestmentRecord',['id'=>$data->id])}}"><button class="btn btn-danger" type="button">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endforeach
