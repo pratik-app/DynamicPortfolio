@@ -137,6 +137,7 @@ Route::controller(CompanyRecordController::class)->group(function(){
     Route::get('CompanyRecord/DeleteExpenseRecord/{id}','DeleteExpenseRecord')->name('companyrecord.deleteExpenseRecord');
     Route::post('CompanyRecord/NewInvestmentRecord','SaveNewInvestmentRecord')->name('companyrecord.savenewInvestmentRecord');
     Route::get('CompanyRecord/DeleteInvestmentRecord/{id}','DeleteInvestmentRecord')->name('companyrecord.deleteInvestmentRecord');
+    Route::get('CompanyRecord/GenrateAccountSummary','AccountSummaryPDF')->name('companyrecord.viewaccountSummary');
 });
 
 

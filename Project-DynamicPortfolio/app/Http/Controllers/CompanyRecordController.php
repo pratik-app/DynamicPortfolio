@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\IncomeRecord;
 use App\Models\ExpenseRecord;
 use App\Models\InvestmentRecord;
+use Dompdf\Dompdf;
 
 class CompanyRecordController extends Controller
 {
@@ -244,5 +245,23 @@ class CompanyRecordController extends Controller
         }
     }
 
+    // Creating function to Create Account Summary in PDF Format
+
+    public function AccountSummaryPDF()
+    {
+        $incomeRecordData = IncomeRecord::all();
+        $expenseRecordData = ExpenseRecord::all();
+        $investmentRecordData = InvestmentRecord::all();
+        $html = view('accountSummary', compact(
+            'incomeRecordData',
+            'expenseRecordData',
+            'investmentRecordData'));
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4','portrait');
+            $dompdf->render();
+            $filename = 'Account Summary.pdf';
+            return $dompdf->stream($filename);
+    }
 }
 
