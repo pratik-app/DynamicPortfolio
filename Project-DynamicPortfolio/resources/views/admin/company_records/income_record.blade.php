@@ -1,86 +1,160 @@
 @extends('admin.admin_master')
 @section('admin')
+@php
+$allrecord = App\Models\Projects::all();
+$totalBusinessIncome= 0;
+foreach($allrecord as $record)
+{
+    $totalBusinessIncome += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $record->projectPrice);
+}
+
+
+
+@endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<!-- Google Charts Integration -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Income Records</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center" style="padding:25px">Create New Job opportunity</h4>
-                        <form action="#" method="post">
-                            @csrf
-                            <div class="row mb-3">
-                                <label for="Job title" class="col-sm-2 col-form-label">Job Title</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" name = "JobTitle" alt="Enter Job Title" type="text" id="JobTitle" required/>
-                                </div>
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-truncate font-size-14 mb-2">Total Business Income</p>
+                                <h4 class="mb-2">
+                                <h4 >{{$totalBusinessIncome}}</h4>        
+                                </h4> 
+                                <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                             </div>
-                            <div class="row mb-3">
-                                <label for="Job Location" class="col-sm-2 col-form-label">Job Location</label>
-                                <div class="col-sm-10">
-                                    <select class="form-select" name = "JobLocation" alt="Job Location" id="JobLocation" required>
-                                        <option name="JobLocation" value="">Please Select Location</option>
-                                        <option name="JobLocation" value="Inoffice">At Office Address</option>
-                                        <option name="JobLocation" value="Remote"> Remote In Canada</option>
-                                    </select>
-                                </div>
+                            <div class="avatar-sm">
+                                <span class="avatar-title bg-light text-primary rounded-3">
+                                    <i class="fas fa-user-tie font-size-24"></i>
+                                </span>
                             </div>
-                            <div class="row mb-3">
-                                <label for="Job Type" class="col-sm-2 col-form-label">Job Type</label>
-                                <div class="col-sm-10">
-                                    <select class="form-select" name = "JobType" alt="Job Type" id="JobType" required>
-                                        <option name="JobType" value="">Please Select Job Type</option>
-                                        <option name="JobType" value="FullTime">Full Time</option>
-                                        <option name="JobType" value="PartTime">Part Time</option>
-                                        <option name="JobType" value="VoluntaryWork">Voluntary Work</option>
-                                        <option name="JobType" value="Contract">Contract</option>
-                                        <option name="JobType" value="Temporary">Temporary</option>
-                                    </select>
-                                </div>
+                        </div></br>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#AddNewIncome"><buttone type="button" class="btn form-control btn-primary">Add Another Incomes</buttone></a>
+                    </div><!-- end cardbody -->
+                </div><!-- end card -->
+            </div><!-- end col -->
+            <div class="col-xl-4">
+                <div class="card" id = "ShowTeams">
+                    <div class="card-body">
+                        <div class="dropdown float-end">
+                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-dots-vertical"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a href="javascript:void(0);" id="DisplayEmployees" class="dropdown-item">Download Excel Sheet</a>
+                                <!-- item-->
                             </div>
-                            <div class="row mb-3">
-                                <label for="Job Description" class="col-sm-2 col-form-label">Job Description</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="JobDescription" name="JobDescription" alt="Job Description" rows="5" col="50" placeholder="Write Job Description Here">
-                                    </textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="JobPayRange" class="col-sm-2 col-form-label">Job Pay Range</label>
-                                <div class="col-sm-10">
-                                    <small style="color:red">*Describe Yearly Salary Range for Job</small>
-                                    <input class="form-control" name = "JobPayRange" id="JobPayRange" alt="Salaray Range Yearly" type="text" required/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="Job Application Dead Line" class="col-sm-2 col-form-label">Job Application Dead Line</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" name ="JobApplicationDL" id="JobApplicationDL" alt="Job Application Dead Line" type="date" required/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="Today Date" class="col-sm-2 col-form-label">Today Date</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" name = "JobDate" id="JobDate" alt="Today's Date" type="date" required/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="Job Status" class="col-sm-2 col-form-label">Job Status</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" name = "jobstatus" alt="Job Status" type="text" value="Active" readonly/>
-                                </div>
-                            </div>
-                            <input type="submit" class="form-control btn btn-primary" name="submit" value="Post Job on Portal"/>
+                        </div>
 
-                        </form>
-                    </div>
+                        <h4 class="card-title sm-4">Income Record</h4>
+
+                        <div class="table-responsive">
+                            <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Type of Income</th>
+                                        <th style="width: 120px;">Amount</th>
+                                    </tr>
+                                </thead><!-- end thead -->
+                                <tbody>
+                                    <tr>    
+                                        <td>
+                                            <h6 class="mb-0">Income from Business</h6>
+                                        </td>
+                                        
+                                        <td>
+                                            $250000
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- end -->
+                                </tbody><!-- end tbody -->
+                            </table> <!-- end table -->
+                        </div>
+                    </div><!-- end card -->
                 </div>
-            </div> <!-- end col -->
+                
+                <!-- end card -->
+            </div>
             
-        </div> <!-- end row -->
-    </div>
-</div>
 
-@endsection
+
+        </div><!-- end row -->
+    </div>
+    <div id="AddNewIncome"class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Add New Income Record</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" method="post">
+                                @csrf
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <select class="form-select" name="IncomeRecord" alt="IncomeRecord" required>
+                                            <option name="JobLocation" value="" selected>Please Select Type of Income</option>
+                                            <option name="JobLocation" value="SalesIncome">Sales Income</option>
+                                            <option name="JobLocation" value="InterestIncome"> Interest Income</option>
+                                            <option name="JobLocation" value="RentalIncome"> Rental Income</option>
+                                            <option name="JobLocation" value="DividendIncome"> Dividend Income</option>
+                                            <option name="JobLocation" value="CapitalGains"> Capital Gains</option>
+                                            <option name="JobLocation" value="RoyaltyIncome"> Royalty Income</option>
+                                            <option name="JobLocation" value="CommissionIncome"> Commission Income</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="text" id="totalBusinessIncome" name="BusinessIncome" class="form-control" value="{{$totalBusinessIncome}}" readonly/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="text" id="OtherIncome"name="otherIncomeAmount" class="form-control" value="$0.00" required/>
+                                    </div>
+                                </div>
+                                <input class="btn btn-primary" type="submit" name="AddThisRecord" value="Add This Record">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <small style="color:red">To Update your Income Record of Business select Sales Income and submit</small>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+    <script>
+        $("#totalBusinessIncome").hide();
+        $("#OtherIncome").hide();
+        $('.form-select').on('change', function(){
+            if($('.form-select').val() == 'SalesIncome')
+            {
+                $("#OtherIncome").hide()
+                $("#totalBusinessIncome").show();
+            }
+            else
+            {
+                $("#totalBusinessIncome").hide();
+                $("#OtherIncome").show()
+            }
+        })
+    </script>
+    @endsection
+    
