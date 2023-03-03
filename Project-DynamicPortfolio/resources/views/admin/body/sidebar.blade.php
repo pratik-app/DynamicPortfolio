@@ -94,9 +94,7 @@ $adminData = App\Models\User::find($id);
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('compnayjobs.createnewopp')}}">Create New Posting</a></li>
                         <li><a href="{{route('companyjobs.viewalljobs')}}">All Postings</a></li>
-                        <li><a href="#">Job Applications</a></li>
-                        <li><a href="#">Hiring Desk</a></li>                        
-                        <li><a href="#">Recruiters Hub</a></li>
+                        <li><a href="{{route('companyjobs.viewalljobapplications')}}">Job Applications</a></li>
                     </ul>
                 </li>              
                 <li>

@@ -119,6 +119,24 @@ class JobBoardController extends Controller
             return redirect()->back()->with($notification);
 
     }
+    
+    // Creating funtion that download resume uploaded by user
+
+    public function DownloadApplicantResume(Request $request)
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else
+        {
+            $applicant_id = $request->id;
+            $applicant = JobApplicants::findOrfail($applicant_id)->first();
+            header('Content-Type: application/pdf');
+            header('Content-Disposition:attachment;filename='.$applicant->applicant_resume);
+            return readfile($applicant->applicant_resume);
+        } 
+    }
 
     // Developing Function to View all Job Postings
 
@@ -157,6 +175,10 @@ class JobBoardController extends Controller
 
     public function DeleteJobPosting(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
         $id = $request->job_id;
         JobOpenings::where('job_id','=',$id)->delete();
         $notification = array(
@@ -164,5 +186,17 @@ class JobBoardController extends Controller
             'alert-type' =>'success'
         );
         return redirect()->back()->with($notification);
+    }
+
+    // Creating function to view all Job Applications received from FrontEnd
+
+    public function ViewJobApplications()
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        $allJobApplicants = JobApplicants::all();
+        return view('admin.job_portal.view_all_job_applicants', compact('allJobApplicants'));
     }
 }
