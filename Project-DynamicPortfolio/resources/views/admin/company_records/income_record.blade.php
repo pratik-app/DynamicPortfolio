@@ -3,13 +3,12 @@
 @php
 $allrecord = App\Models\Projects::all();
 $totalBusinessIncome= 0;
+$totalofRecord = 0;
 foreach($allrecord as $record)
 {
     $totalBusinessIncome += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $record->projectPrice);
 }
-
-
-
+$IncomeRecord = App\Models\IncomeRecord::all();
 @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -73,16 +72,26 @@ foreach($allrecord as $record)
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
+                                    @foreach($IncomeRecord as $allincome)
+                                    @php $totalofRecord += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $allincome->amount) @endphp
                                     <tr>    
                                         <td>
-                                            <h6 class="mb-0">Income from Business</h6>
+                                            <h6 class="mb-0">{{$allincome->type_of_income}}</h6>
                                         </td>
                                         
                                         <td>
-                                            $250000
+                                            {{$allincome->amount}}
                                         </td>
                                     </tr>
-                                    
+                                    @endforeach
+                                    <tr>
+                                        <td>
+                                            <h6 class="mb-0">Total</h6>
+                                        </td>
+                                        <td>
+                                            ${{$totalofRecord}}
+                                        </td>
+                                    </tr>
                                     <!-- end -->
                                 </tbody><!-- end tbody -->
                             </table> <!-- end table -->
@@ -104,7 +113,7 @@ foreach($allrecord as $record)
                             <h5 class="modal-title" id="myModalLabel">Add New Income Record</h5>
                         </div>
                         <div class="modal-body">
-                            <form action="#" method="post">
+                            <form action="{{route('companyrecord.savenewIncomeRecord')}}" method="post">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
@@ -122,7 +131,7 @@ foreach($allrecord as $record)
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" id="totalBusinessIncome" name="BusinessIncome" class="form-control" value="{{$totalBusinessIncome}}" readonly/>
+                                        <input type="text" id="totalBusinessIncome" name="BusinessIncome" class="form-control" value="${{$totalBusinessIncome}}" readonly/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
