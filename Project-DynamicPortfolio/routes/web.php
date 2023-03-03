@@ -132,6 +132,7 @@ Route::controller(CompanyRecordController::class)->group(function(){
     Route::get('CompnayRecord/ExpenseRecord','ViewExpenseRecord')->name('companyrecord.viewexpenserecord');
     Route::get('CompnayRecord/InvestmentRecord','ViewInvestmentRecord')->name('companyrecord.viewinvestmentrecord');
     Route::post('CompanyRecord/NewIncomeRecord','SaveNewIncomeRecord')->name('companyrecord.savenewIncomeRecord');
+    Route::post('CompanyRecord/NewExpenseRecord','SaveNewExpenseRecord')->name('companyrecord.savenewExpenseRecord');
 });
 
 

@@ -1,5 +1,14 @@
 @extends('admin.admin_master')
 @section('admin')
+@php
+    $totalSalary = 0;
+    $empSlaries = App\Models\ASC\EmpRecord::all();
+    foreach($empSlaries as $salary)
+    {
+        $totalSalary += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $salary->emp_salary));
+    }   
+    
+@endphp
 
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -22,9 +31,9 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Business Expense</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Salary Expense</p>
                                 <h4 class="mb-2">
-                                <h4 ></h4>        
+                                <h4> ${{$totalSalary}}</h4>        
                                 </h4> 
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                             </div>
@@ -94,32 +103,56 @@
                             <h5 class="modal-title" id="myModalLabel">Add New Expense Record</h5>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="{{route('companyrecord.savenewExpenseRecord')}}" method="post">
+                                @csrf
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <select class="form-select" name = "ExpenseRecord" alt="ExpenseRecord" required>
-                                            <option name="JobLocation" value="" selected>Please Select Type of Expense</option>
-                                            <option name="JobLocation" value="SalesExpense">Sales Expense</option>
-                                            <option name="JobLocation" value="InterestExpense"> Interest Expense</option>
-                                            <option name="JobLocation" value="RentalExpense"> Rental Expense</option>
-                                            <option name="JobLocation" value="DividendExpense"> Dividend Expense</option>
-                                            <option name="JobLocation" value="CapitalGains"> Capital Gains</option>
-                                            <option name="JobLocation" value="RoyaltyExpense"> Royalty Expense</option>
-                                            <option name="JobLocation" value="CommissionExpense"> Commission Expense</option>
+                                            <option value="" selected>Please Select Type of Expense</option>
+                                            <option value="SalaryExpense">Salary Expense</option>
+                                            <option value="AccountingExpense"> Accounting Expense</option>
+                                            <option value="AdvertisingExpense"> Advertising Expense</option>
+                                            <option value="AmortizationExpense"> Amortization Expense</option>
+                                            <option value="AutoExpense"> Auto Expense</option>
+                                            <option value="InsuranceExpense"> Insurance Expense</option>
+                                            <option value="InterestExpense"> Interest Expense</option>
+                                            <option value="LegalExpense">Legal Expense</option>
+                                            <option value="OfficeExpense"> Office Expense</option>
+                                            <option value="RentExpense"> Rent Expense</option>
+                                            <option value="RepairandMaintenanceExpense"> Repair and Maintenance Expense</option>
+                                            <option value="OfficeSuppliesExpense"> Office Supplies Expense</option>
+                                            <option value="TelephoneExpense"> Telephone Expense</option>
+                                            <option value="TravelExpense"> Travel Expense</option>
+                                            <option value="UtilitiesExpense"> Utilities Expense</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="BusinessExpense" class="form-control" value="$0" readonly/>
+                                        <input type="text" name="SalaryExpense" id = "SalaryInput"class="form-control" value="{{$totalSalary}}" readonly/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="otherExpenseAmount" class="form-control"/>
+                                        <input type="text" id="otherExpenseAmount" name="otherExpenseAmount" value="$0.00" class="form-control" required/>
                                     </div>
                                 </div>
-                                <input class="btn btn-primary" type="sumbit" name="AddThisRecord" value="Add This Record">
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="text" id="ElecExp" name="Electricity" placeholder="Enter Electricity Expense" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="text" id="GasExp" name="Gas" placeholder="Enter Gas Expense" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-10">
+                                        <input type="text" id="WatExp" name="Water" placeholder="Enter Water Expense" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <input class="btn btn-primary" type="submit" name="AddThisRecord" value="Add This Record">
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -129,5 +162,43 @@
                 </div><!-- /.modal-dialog -->
         </div>
     </div>
+    <script>
+        $("#SalaryInput").hide();
+        $("#ElecExp").hide();
+        $("#GasExp").hide();
+        $("#WatExp").hide();
+        $("#otherExpenseAmount").hide();
+        $(".form-select").on('change',function(){
+            if($(".form-select").val() == 'SalaryExpense')
+            {
+                $("#SalaryInput").show();
+                $("#otherExpenseAmount").hide();
+                $("#ElecExp").val('$0.00')
+                $("#ElecExp").hide();
+                $("#GasExp").val('$0.00')
+                $("#GasExp").hide();
+                $("#WatExp").val('$0.00')
+                $("#WatExp").hide();
+            }
+            else if($(".form-select").val() == 'UtilitiesExpense')
+            {
+                $("#SalaryInput").hide();
+                $("#otherExpenseAmount").hide();
+                $("#ElecExp").show();
+                $("#GasExp").show();
+                $("#WatExp").show();
+            }
+            else{
+                $("#otherExpenseAmount").show();
+                $("#SalaryInput").hide();
+                $("#ElecExp").val('$0.00')
+                $("#ElecExp").hide();
+                $("#GasExp").val('$0.00')
+                $("#GasExp").hide();
+                $("#WatExp").val('$0.00')
+                $("#WatExp").hide();
+            }
+        })
+    </script>
     @endsection
     

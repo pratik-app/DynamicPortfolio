@@ -31,7 +31,7 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Business Income</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Sales Income</p>
                                 <h4 class="mb-2">
                                 <h4 >{{$totalBusinessIncome}}</h4>        
                                 </h4> 
@@ -118,14 +118,14 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <select class="form-select" name="IncomeRecord" alt="IncomeRecord" required>
-                                            <option name="JobLocation" value="" selected>Please Select Type of Income</option>
-                                            <option name="JobLocation" value="SalesIncome">Sales Income</option>
-                                            <option name="JobLocation" value="InterestIncome"> Interest Income</option>
-                                            <option name="JobLocation" value="RentalIncome"> Rental Income</option>
-                                            <option name="JobLocation" value="DividendIncome"> Dividend Income</option>
-                                            <option name="JobLocation" value="CapitalGains"> Capital Gains</option>
-                                            <option name="JobLocation" value="RoyaltyIncome"> Royalty Income</option>
-                                            <option name="JobLocation" value="CommissionIncome"> Commission Income</option>
+                                            <option value="" selected>Please Select Type of Income</option>
+                                            <option value="SalesIncome">Sales Income</option>
+                                            <option value="InterestIncome"> Interest Income</option>
+                                            <option value="RentalIncome"> Rental Income</option>
+                                            <option value="DividendIncome"> Dividend Income</option>
+                                            <option value="CapitalGains"> Capital Gains</option>
+                                            <option value="RoyaltyIncome"> Royalty Income</option>
+                                            <option value="CommissionIncome"> Commission Income</option>
                                         </select>
                                     </div>
                                 </div>
