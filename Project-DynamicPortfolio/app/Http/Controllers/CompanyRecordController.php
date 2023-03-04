@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\IncomeRecord;
 use App\Models\ExpenseRecord;
 use App\Models\InvestmentRecord;
+use App\Models\Projects;
 use Dompdf\Dompdf;
-
 class CompanyRecordController extends Controller
 {
     // Creating function to view Income Record
@@ -131,7 +131,7 @@ class CompanyRecordController extends Controller
         else
         {
             $IncomeType = $request->IncomeRecord;
-            if($IncomeType == "SalesIncome")
+            if($IncomeType == "Sales Income")
             {
                 $SalesIncome = $request->BusinessIncome;
                 IncomeRecord::insert([
@@ -173,7 +173,7 @@ class CompanyRecordController extends Controller
         else
         {
             $ExpenseType = $request->ExpenseRecord;
-            if($ExpenseType == "SalaryExpense")
+            if($ExpenseType == "Salary Expense")
             {
                 $SalaryExp = $request->SalaryExpense;
                 ExpenseRecord::insert([
@@ -187,7 +187,7 @@ class CompanyRecordController extends Controller
                 // redirecting back with notification
                 return redirect()->back()->with($notification);
             }
-            elseif($ExpenseType == "UtilitiesExpense")
+            elseif($ExpenseType == "Utilities Expense")
             {
                 $lightexp = $request->Electricity;
                 $gasexp = $request->Gas;
@@ -252,10 +252,13 @@ class CompanyRecordController extends Controller
         $incomeRecordData = IncomeRecord::all();
         $expenseRecordData = ExpenseRecord::all();
         $investmentRecordData = InvestmentRecord::all();
+        $projectOutstandings = Projects::all();
         $html = view('accountSummary', compact(
             'incomeRecordData',
             'expenseRecordData',
-            'investmentRecordData'));
+            'investmentRecordData',
+            'projectOutstandings'
+            ));
             $dompdf = new Dompdf();
             $dompdf->loadHtml($html);
             $dompdf->setPaper('A4','portrait');

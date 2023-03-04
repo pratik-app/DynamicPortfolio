@@ -123,14 +123,14 @@ $IncomeRecord = App\Models\IncomeRecord::all();
                                     <div class="col-sm-10">
                                         <select class="form-select" name="IncomeRecord" alt="IncomeRecord" required>
                                             <option value="" selected>Please Select Type of Income</option>
-                                            <option value="SalesIncome">Sales Income</option>
-                                            <option value="InterestIncome"> Interest Income</option>
-                                            <option value="RentalIncome"> Rental Income</option>
-                                            <option value="DividendIncome"> Dividend Income</option>
-                                            <option value="CapitalGains"> Capital Gains</option>
-                                            <option value="RoyaltyIncome"> Royalty Income</option>
-                                            <option value="CommissionIncome"> Commission Income</option>
-                                            <option value="CashIncome"> Cash Income</option>
+                                            <option value="Sales Income">Sales Income</option>
+                                            <option value="Interest Income"> Interest Income</option>
+                                            <option value="Rental Income"> Rental Income</option>
+                                            <option value="Dividend Income"> Dividend Income</option>
+                                            <option value="Capital Gains"> Capital Gains</option>
+                                            <option value="Royalty Income"> Royalty Income</option>
+                                            <option value="Commission Income"> Commission Income</option>
+                                            <option value="Cash Income"> Cash Income</option>
                                         </select>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ $IncomeRecord = App\Models\IncomeRecord::all();
         $("#totalBusinessIncome").hide();
         $("#OtherIncome").hide();
         $('.form-select').on('change', function(){
-            if($('.form-select').val() == 'SalesIncome')
+            if($('.form-select').val() == 'Sales Income')
             {
                 $("#OtherIncome").hide()
                 $("#totalBusinessIncome").show();

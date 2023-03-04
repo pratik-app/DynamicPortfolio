@@ -118,14 +118,14 @@ $total = 0;
                                     <div class="col-sm-10">
                                         <select class="form-select" name ="InvestmentRecord" alt="InvestmentRecord" required>
                                             <option value="" selected>Please Select Type of Investment</option>
-                                            <option value="EquityInvestment">Equity Investment</option>
-                                            <option value="DebtFinancing"> Debt Financing</option>
-                                            <option value="ConvertibleDebt"> Convertible Debt</option>
-                                            <option value="AngelInvestment"> Angel Investment</option>
-                                            <option value="VentureCapital"> Venture Capital</option>
-                                            <option value="Crowdfunding"> Crowd Funding</option>
+                                            <option value="Equity Investment">Equity Investment</option>
+                                            <option value="Debt Financing"> Debt Financing</option>
+                                            <option value="Convertible Debt"> Convertible Debt</option>
+                                            <option value="Angel Investment"> Angel Investment</option>
+                                            <option value="Venture Capital"> Venture Capital</option>
+                                            <option value="Crowd funding"> Crowd Funding</option>
                                             <option value="Grants"> Grants</option>
-                                            <option value="PropertyInvestments"> Property Investment</option>
+                                            <option value="Property Investments"> Property Investment</option>
                                         </select>
                                     </div>
                                 </div>

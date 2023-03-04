@@ -125,27 +125,27 @@
                                     <div class="col-sm-10">
                                         <select class="form-select" name = "ExpenseRecord" alt="ExpenseRecord" required>
                                             <option value="" selected>Please Select Type of Expense</option>
-                                            <option value="SalaryExpense">Salary Expense</option>
-                                            <option value="AccountingExpense"> Accounting Expense</option>
-                                            <option value="AdvertisingExpense"> Advertising Expense</option>
-                                            <option value="AmortizationExpense"> Amortization Expense</option>
-                                            <option value="AutoExpense"> Auto Expense</option>
-                                            <option value="InsuranceExpense"> Insurance Expense</option>
-                                            <option value="InterestExpense"> Interest Expense</option>
-                                            <option value="LegalExpense">Legal Expense</option>
-                                            <option value="OfficeExpense"> Office Expense</option>
-                                            <option value="RentExpense"> Rent Expense</option>
-                                            <option value="RepairandMaintenanceExpense"> Repair and Maintenance Expense</option>
-                                            <option value="OfficeSuppliesExpense"> Office Supplies Expense</option>
-                                            <option value="TelephoneExpense"> Telephone Expense</option>
-                                            <option value="TravelExpense"> Travel Expense</option>
-                                            <option value="UtilitiesExpense"> Utilities Expense</option>
+                                            <option value="Salary Expense">Salary Expense</option>
+                                            <option value="Accounting Expense"> Accounting Expense</option>
+                                            <option value="Advertising Expense"> Advertising Expense</option>
+                                            <option value="Amortization Expense"> Amortization Expense</option>
+                                            <option value="Auto Expense"> Auto Expense</option>
+                                            <option value="Insurance Expense"> Insurance Expense</option>
+                                            <option value="Interest Expense"> Interest Expense</option>
+                                            <option value="Legal Expense">Legal Expense</option>
+                                            <option value="Office Expense"> Office Expense</option>
+                                            <option value="Rent Expense"> Rent Expense</option>
+                                            <option value="Repair Maintenance Expense"> Repair and Maintenance Expense</option>
+                                            <option value="Office Supplies Expense"> Office Supplies Expense</option>
+                                            <option value="Telephone Expense"> Telephone Expense</option>
+                                            <option value="Travel Expense"> Travel Expense</option>
+                                            <option value="Utilities Expense"> Utilities Expense</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="SalaryExpense" id = "SalaryInput"class="form-control" value="{{$totalSalary}}" readonly/>
+                                        <input type="text" name="SalaryExpense" id = "SalaryInput"class="form-control" value="${{$totalSalary}}" readonly/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -185,7 +185,7 @@
         $("#WatExp").hide();
         $("#otherExpenseAmount").hide();
         $(".form-select").on('change',function(){
-            if($(".form-select").val() == 'SalaryExpense')
+            if($(".form-select").val() == 'Salary Expense')
             {
                 $("#SalaryInput").show();
                 $("#otherExpenseAmount").hide();
@@ -196,7 +196,7 @@
                 $("#WatExp").val('$0.00')
                 $("#WatExp").hide();
             }
-            else if($(".form-select").val() == 'UtilitiesExpense')
+            else if($(".form-select").val() == 'Utilities Expense')
             {
                 $("#SalaryInput").hide();
                 $("#otherExpenseAmount").hide();
