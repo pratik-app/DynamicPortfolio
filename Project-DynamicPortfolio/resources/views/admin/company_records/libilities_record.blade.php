@@ -6,7 +6,9 @@ $totalUnearnedRevenue = 0;
 
 $getallLibilitiesData = App\Models\LibilitiesRecord::all();
 $total = 0;
+$previousRecord = 0;
 @endphp
+
 
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -17,7 +19,7 @@ $total = 0;
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Libilities Records</h4>
+                    <h4 class="mb-sm-0">Liabilities Records</h4>
                 </div>
             </div>
         </div>
@@ -29,11 +31,13 @@ $total = 0;
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Business Libilities</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Liabilities</p>
                                 <h4 class="mb-2">
-                                <h4 ></h4>        
+                                    @foreach($getallLibilitiesData as $newData)
+                                    @php $previousRecord += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $newData->amount)); @endphp
+                                    @endforeach
+                                <h4>${{$previousRecord}}</h4>        
                                 </h4> 
-                                <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -41,7 +45,7 @@ $total = 0;
                                 </span>
                             </div>
                         </div></br>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#AddNewLibilities"><buttone type="button" class="btn form-control btn-primary">Add Another Libilitiess</buttone></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#AddNewLibilities"><buttone type="button" class="btn form-control btn-primary">Add Liabilities</buttone></a>
                     </div><!-- end cardbody -->
                 </div><!-- end card -->
             </div><!-- end col -->
@@ -59,20 +63,24 @@ $total = 0;
                             </div>
                         </div>
 
-                        <h4 class="card-title sm-4">Libilities Record</h4>
-
+                        <h4 class="card-title sm-4">Liabilities Record</h4>
                         <div class="table-responsive">
                             <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Type of Libilities</th>
+                                        <th>Type of Liabilities</th>
                                         <th style="width: 120px;">Amount</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
                                     @foreach($getallLibilitiesData as $data)
-                                    @php $total += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $data->amount)); @endphp
+                                    
+                                    @if($data != null)
+                                    
+                                        @php $total += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $data->amount)); @endphp
+                                    
+                                    @endif
                                     <tr>    
                                         <td>
                                             <h6 class="mb-0">{{$data->type_of_libilities}}</h6>
@@ -112,7 +120,7 @@ $total = 0;
         <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="myModalLabel">Add New Libilities Record</h5>
+                            <h5 class="modal-title" id="myModalLabel">Add New Liabilities Record</h5>
                         </div>
                         <div class="modal-body">
                             <form action="{{route('companyrecord.savenewLibilitiesRecord')}}" method="post">
@@ -120,7 +128,7 @@ $total = 0;
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <select class="form-select" name ="LibilitiesRecord" alt="LibilitiesRecord" required>
-                                            <option value="" selected>Please Select Type of Libilities</option>
+                                            <option value="" selected>Please Select Type of Liabilities</option>
                                             <option value="Accounts Payable">Accounts Payable</option>
                                             <option value="Notes Payable">Notes Payable</option>
                                             <option value="Salary Payable">Salary Payable</option>
@@ -132,7 +140,7 @@ $total = 0;
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" id="LibilitiesAmount" name="LibilitiesAmount" placeholder = "Enter the Invested Amount" class="form-control" required/>
+                                        <input type="text" id="LibilitiesAmount" name="LibilitiesAmount" placeholder = "Enter the Liabilities Amount" class="form-control" required/>
                                     </div>
                                 </div>
                                 @foreach($unearnedRevenueData as $newAmount)
@@ -146,9 +154,6 @@ $total = 0;
                                 
                                 <input class="btn btn-primary" name="AddThisRecord" type="submit" value="Add This Record"/>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <small style="color:red">To Update your Libilities Record of Business select Sales Libilities and submit</small>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

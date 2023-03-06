@@ -4,6 +4,7 @@
 
 $getallInvestmentData = App\Models\InvestmentRecord::all();
 $total = 0;
+$previousRecord = 0;
 @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -14,7 +15,7 @@ $total = 0;
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Investment Records</h4>
+                    <h4 class="mb-sm-0">Assets Records</h4>
                 </div>
             </div>
         </div>
@@ -26,11 +27,15 @@ $total = 0;
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Business Investment</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Assets</p>
                                 <h4 class="mb-2">
-                                <h4 ></h4>        
+                                <h4 >
+                                    @foreach($getallInvestmentData as $previoustotal)
+                                    @php $previousRecord += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $previoustotal->amount)); @endphp
+                                    @endforeach
+                                   ${{$previousRecord}} 
+                                </h4>        
                                 </h4> 
-                                <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -38,7 +43,7 @@ $total = 0;
                                 </span>
                             </div>
                         </div></br>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#AddNewInvestment"><buttone type="button" class="btn form-control btn-primary">Add Another Investments</buttone></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#AddNewInvestment"><buttone type="button" class="btn form-control btn-primary">Add Asset</buttone></a>
                     </div><!-- end cardbody -->
                 </div><!-- end card -->
             </div><!-- end col -->
@@ -109,7 +114,7 @@ $total = 0;
         <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="myModalLabel">Add New Investment Record</h5>
+                            <h5 class="modal-title" id="myModalLabel">Add New Asset Record</h5>
                         </div>
                         <div class="modal-body">
                             <form action="{{route('companyrecord.savenewInvestmentRecord')}}" method="post">
@@ -117,28 +122,32 @@ $total = 0;
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <select class="form-select" name ="InvestmentRecord" alt="InvestmentRecord" required>
-                                            <option value="" selected>Please Select Type of Investment</option>
-                                            <option value="Equity Investment">Equity Investment</option>
-                                            <option value="Debt Financing"> Debt Financing</option>
-                                            <option value="Convertible Debt"> Convertible Debt</option>
-                                            <option value="Angel Investment"> Angel Investment</option>
-                                            <option value="Venture Capital"> Venture Capital</option>
-                                            <option value="Crowd funding"> Crowd Funding</option>
-                                            <option value="Grants"> Grants</option>
-                                            <option value="Property Investments"> Property Investment</option>
+                                            <option value="" selected>Please Select Type of Asset</option>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Accounts Receivable"> Accounts Receivable</option>
+                                            <option value="Prepaid Insurance"> Prepaid Insurance</option>
+                                            <option value="Prepaid Rent"> Prepaid Rent</option>
+                                            <option value="Merchandise Inventory"> Merchandise Inventory</option>
+                                            <option value="Supplies"> Supplies</option>
+                                            <option value="Office equipment"> Office equipment</option>
+                                            <option value="Office Furniture"> Office Furniture</option>
+                                            <option value="Auto"> Auto </option>
+                                            <option value="Building"> Building</option>
+                                            <option value="Land"> Land</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="InvestmentAmount" placeholder = "Enter the Invested Amount" class="form-control" required/>
+                                        <input type="text" name="InvestmentAmount" placeholder = "Enter the Asset Amount" class="form-control" required/>
                                     </div>
                                 </div>
                                 <input class="btn btn-primary" name="AddThisRecord" type="submit" value="Add This Record"/>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <small style="color:red">To Update your Investment Record of Business select Sales Investment and submit</small>
+                            
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

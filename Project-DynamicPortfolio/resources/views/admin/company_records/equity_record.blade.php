@@ -4,6 +4,7 @@
 
 $getallEquityData = App\Models\EquityRecord::all();
 $total = 0;
+$previousRecord = 0;
 @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -26,9 +27,14 @@ $total = 0;
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Add Equities</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Equities</p>
                                 <h4 class="mb-2">
-                                <h4 ></h4>        
+                                <h4 >
+                                    @foreach($getallEquityData as $totalamount)
+                                    @php $previousRecord += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $totalamount->amount)); @endphp
+                                    @endforeach
+                                    ${{$previousRecord}}
+                                </h4>        
                                 </h4> 
                             </div>
                             <div class="avatar-sm">
@@ -71,7 +77,7 @@ $total = 0;
                                     @php $total += (preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $data->amount)); @endphp
                                     <tr>    
                                         <td>
-                                            <h6 class="mb-0">{{$data->type_of_Equity}}</h6>
+                                            <h6 class="mb-0">{{$data->type_of_equity}}</h6>
                                         </td>
                                         
                                         <td>
@@ -117,20 +123,14 @@ $total = 0;
                                     <div class="col-sm-10">
                                         <select class="form-select" name ="EquityRecord" alt="EquityRecord" required>
                                             <option value="" selected>Please Select Type of Equity</option>
-                                            <option value="Equity Equity">Equity Equity</option>
-                                            <option value="Debt Financing"> Debt Financing</option>
-                                            <option value="Convertible Debt"> Convertible Debt</option>
-                                            <option value="Angel Equity"> Angel Equity</option>
-                                            <option value="Venture Capital"> Venture Capital</option>
-                                            <option value="Crowd funding"> Crowd Funding</option>
-                                            <option value="Grants"> Grants</option>
-                                            <option value="Property Equitys"> Property Equity</option>
+                                            <option value="Owner Initial Capital">Owner Initial Capital</option>
+                                            <option value="Owner Withdrawal"> Owner Withdrawal</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
-                                        <input type="text" name="EquityAmount" placeholder = "Enter the Invested Amount" class="form-control" required/>
+                                        <input type="text" name="EquityAmount" placeholder = "Enter the Equity Amount" class="form-control" required/>
                                     </div>
                                 </div>
                                 <input class="btn btn-primary" name="AddThisRecord" type="submit" value="Add This Record"/>

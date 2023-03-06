@@ -105,8 +105,8 @@ $adminData = App\Models\User::find($id);
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('companyrecord.viewincomerecord')}}">Income Record</a></li>
                         <li><a href="{{route('companyrecord.viewexpenserecord')}}">Expense Record</a></li>
-                        <li><a href="{{route('companyrecord.viewinvestmentrecord')}}">Investment Record</a></li>
-                        <li><a href="{{route('companyrecord.viewlibilitiesrecord')}}">Libilities</a></li>
+                        <li><a href="{{route('companyrecord.viewinvestmentrecord')}}">Assets Record</a></li>
+                        <li><a href="{{route('companyrecord.viewlibilitiesrecord')}}">Liabilities</a></li>
                         <li><a href="{{route('companyrecord.viewequityrecord')}}">Equity</a>
                         <li><a href="{{route('companyrecord.viewaccountSummary')}}"><i class="fas fa-file-download"></i>Download Account Summary or Balance Sheet</a></li>
                     </ul>

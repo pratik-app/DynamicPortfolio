@@ -145,9 +145,10 @@ class CompanyRecordController extends Controller
     }
 
     // Creating function to Delete Equity Record 
-    
+
     public function DeleteEquityRecord(Request $request)
     {
+        
         if(Auth::guest())
         {
             return redirect('/login');
@@ -155,7 +156,7 @@ class CompanyRecordController extends Controller
         else
         {
             $id = $request->id;
-            LibilitiesRecord::findOrfail($id)->delete();
+            EquityRecord::findOrfail($id)->delete();
             $notification = array(
                 'message' => 'Record Deleted Successfully!',
                 'alert-type' =>'success'
@@ -395,13 +396,15 @@ class CompanyRecordController extends Controller
         $expenseRecordData = ExpenseRecord::all();
         $investmentRecordData = InvestmentRecord::all();
         $projectOutstandings = Projects::all();
-        $ownerdata = EmpRecord::where("emp_position","=","owner")->first();
+        $liabilitiesRecordData = LibilitiesRecord::all();
+        $equityRecordData = EquityRecord::all();
         $html = view('accountSummary', compact(
             'incomeRecordData',
             'expenseRecordData',
             'investmentRecordData',
             'projectOutstandings',
-            'ownerdata'
+            'liabilitiesRecordData',
+            'equityRecordData'
             ));
             $dompdf = new Dompdf();
             $dompdf->loadHtml($html);
