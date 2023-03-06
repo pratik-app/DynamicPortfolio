@@ -12,6 +12,7 @@
     $officeEquipment = 0;
     $officeFurniture = 0;
     $buildingCost = 0;
+    $totalAssets = 0;
     @endphp
     <div class="container-fluid">
 
@@ -89,29 +90,25 @@
                             <tr>
                                 <td>
                                     <table>
-                                        @foreach($incomeRecordData as $incomeRecord)
-                                        @if($incomeRecord->type_of_income == 'Cash Income')
-                                        <tr>
-                                            <td>Cash</td>
-                                            <td>{{$incomeRecord->amount}}</td>
-                                        </tr>
-                                        @endif
-                                        @endforeach
+                                        
                                         @foreach($projectOutstandings as $outstanding)
                                             @php $totalOutstanding += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $outstanding->client_outstandingAmount) ;@endphp
                                         @endforeach
                                         <tr>
                                             <td>Account Receivable</td>
                                             <td>$ {{$totalOutstanding}}</td>
+                                            @php $totalAssets += $totalOutstanding ;@endphp
                                         </tr>
                                         @foreach($expenseRecordData as $expenseRecord)
                                             @if($expenseRecord->type_of_expense == 'Insurance Expense')
+                                                @php $totalAssets += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $expenseRecord->amount) ;@endphp
                                                 <tr>
                                                     <td>Prepaid Insurance</td>
                                                     <td>{{$expenseRecord->amount}}</td>
                                                 </tr>
                                             @endif
                                             @if($expenseRecord->type_of_expense == 'Rent Expense')
+                                            @php $totalAssets += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $expenseRecord->amount) ;@endphp
                                             <tr>
                                                 <td>Prepaid Rent</td>
                                                 <td>{{$expenseRecord->amount}}</td>
@@ -124,6 +121,7 @@
                                         </tr>
                                         @foreach($expenseRecordData as $expenseRecord)
                                             @if($expenseRecord->type_of_expense == 'Office Supplies Expense')
+                                                @php $totalAssets += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $expenseRecord->amount) ;@endphp
                                                 <tr>
                                                     <td>Supplies</td>
                                                     <td>{{$expenseRecord->amount}}</td>
@@ -138,6 +136,7 @@
                                             <tr>
                                                 <td>Office Equipment</td>
                                                 <td>${{$officeEquipment}}</td>
+                                                @php $totalAssets += $officeEquipment ;@endphp
                                             </tr>
                                         @foreach($expenseRecordData as $expenseRecord)
                                             @if($expenseRecord->type_of_expense == 'Office Expense' || $expenseRecord->type_of_expense == 'Repair Maintenance Expense')
@@ -147,31 +146,15 @@
                                             <tr>
                                                 <td>Office Furniture</td>
                                                 <td>${{$officeFurniture}}</td>
+                                                @php $totalAssets += $officeFurniture ;@endphp
                                             </tr>
                                         @foreach($expenseRecordData as $expenseRecord)
                                             @if($expenseRecord->type_of_expense == 'Auto Expense')
+                                                @php $totalAssets += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $expenseRecord->amount) @endphp
                                                 <tr>
                                                     <td>Auto</td>
                                                     <td>{{$expenseRecord->amount}}</td>
                                                 </tr>
-                                            @endif
-                                        @endforeach
-                                        @foreach($expenseRecordData as $expenseRecord)
-                                            @if($expenseRecord->type_of_expense == 'Rent Expense' || $expenseRecord->type_of_expense == 'Office Expense' || $expenseRecord->type_of_expense == 'Repair Maintenance Expense' || $expenseRecord->type_of_expense == 'Utilities Expense')
-                                                @php $buildingCost += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $expenseRecord->amount) @endphp
-                                            @endif
-                                        @endforeach
-                                            <tr>
-                                                <td>Building</td>
-                                                <td>${{$buildingCost}}</td>
-                                            </tr>
-                                        @foreach($expenseRecordData as $expenseRecord)
-                                            
-                                            @if($expenseRecord->type_of_expense == "Utilities Expense")
-                                            <tr>
-                                                <td>Land</td>
-                                                <td>{{$expenseRecord->amount}}</td>
-                                            </tr>
                                             @endif
                                         @endforeach
                                     </table>
@@ -179,22 +162,65 @@
                             </tr>
                             <tr>
                                 <td style="border-bottom: 2px solid #000;"><h3>Total Assets</h3></td>
+                                <td><h3>{{$totalAssets}}</h3></td>
                             </tr>
                             <tr>
+                                <td style="border-top: 2px solid #000;"><h3> Libilities</h6></td>
+                            </tr>
+                            <tr>
+                                <td style="border-top: 2px solid #000;">Accounts Payable</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Notes Payable</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Salary Payable</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Interest Payable</td>
+                                <td>$0.00</td>                                
+                            </tr>
+                            <tr>
+                                <td>Loan Payable</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Unearned Revenue</td>
+                                <td>${{$totalOutstanding}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border-top: 2px solid #000;"><h3>Total Liabilities</h3></td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr style="border-top: 2px solid #000;">
+                                <td style="border-top: 2px solid #000;"><h3>Owner's Equity</h3></td>
+                            </tr>
+                            <tr>
+                                <td >Owner's Initial Capital</td>
+                                <td>${{$totalAssets}}</td>
+                            </tr>
+                            <tr>
+                                <td >Owner's Withdrawal</td>
                                 <td>
-                                    <table>
-                                        
-                                        <tr>
-                                            <td>Total Assests Here</td>
-                                            <td>Sub Part</td>
-                                        </tr>
-                                        
-                                    </table>
+                                {{$ownerdata->emp_salary}}
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border-top: 2px solid #000;"><h3> Extra Space</h6></td>
-                                <td> Total of Extra Space</td>
+                                <td >Net Income</td>
+                                <td>${{$totalIncome - $totalExpense}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border-top: 2px solid #000;">Total Owner's Equity</td>
+                                <td>${{$totalAssets - preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $ownerdata->emp_salary) + ($totalIncome - $totalExpense)}}</td>
+                            </tr>
+                            <tr style="border-top: 3px solid #000">
+                                <td style="border-top: 2px solid #000">Total Assets</td>
+                                <td>
+                                    total libilities - ${{(($totalExpense + $totalAssets) - preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $ownerdata->emp_salary)) + ($totalIncome - $totalExpense)}}
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -48,7 +48,7 @@
                     </div><!-- end cardbody -->
                 </div><!-- end card -->
             </div><!-- end col -->
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card" id = "ShowTeams">
                     <div class="card-body">
                         <div class="dropdown float-end">

@@ -128,10 +128,16 @@ Route::controller(JobBoardController::class)->group(function(){
 // Company Record Routes
 
 Route::controller(CompanyRecordController::class)->group(function(){
-    Route::get('CompnayRecord/IncomRecord','ViewIncomeRecord')->name('companyrecord.viewincomerecord');
-    Route::get('CompnayRecord/ExpenseRecord','ViewExpenseRecord')->name('companyrecord.viewexpenserecord');
-    Route::get('CompnayRecord/InvestmentRecord','ViewInvestmentRecord')->name('companyrecord.viewinvestmentrecord');
+    Route::get('CompanyRecord/IncomRecord','ViewIncomeRecord')->name('companyrecord.viewincomerecord');
+    Route::get('CompanyRecord/ExpenseRecord','ViewExpenseRecord')->name('companyrecord.viewexpenserecord');
+    Route::get('CompanyRecord/InvestmentRecord','ViewInvestmentRecord')->name('companyrecord.viewinvestmentrecord');
+    Route::get('CompanyRecord/LibilitiesRecord','LibilitiesRecord')->name('companyrecord.viewlibilitiesrecord');
+    Route::get('CompanyRecord/EquityRecord','EquityRecord')->name('companyrecord.viewequityrecord');
     Route::post('CompanyRecord/NewIncomeRecord','SaveNewIncomeRecord')->name('companyrecord.savenewIncomeRecord');
+    Route::post('CompanyRecord/NewLibilitiesRecord','SaveNewLibilitiesRecord')->name('companyrecord.savenewLibilitiesRecord');
+    Route::post('CompanyRecord/NewEquityRecord','SaveNewEquityRecord')->name('companyrecord.savenewEquityRecord');
+    Route::get('CompanyRecord/DeleteLibilitiesRecord/{id}','DeleteLibilitiesRecord')->name('companyrecord.deleteLibilitiesRecord');
+    Route::get('CompanyRecord/DeleteEquityRecord/{id}','DeleteEquityRecord')->name('companyrecord.deleteEquityRecord');
     Route::get('CompanyRecord/DeleteIncomeRecord/{id}','DeleteIncomeRecord')->name('companyrecord.deleteIncomeRecord');
     Route::post('CompanyRecord/NewExpenseRecord','SaveNewExpenseRecord')->name('companyrecord.savenewExpenseRecord');
     Route::get('CompanyRecord/DeleteExpenseRecord/{id}','DeleteExpenseRecord')->name('companyrecord.deleteExpenseRecord');
