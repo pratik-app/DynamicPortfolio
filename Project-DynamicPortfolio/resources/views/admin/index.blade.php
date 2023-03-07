@@ -12,7 +12,10 @@
     $otherSourceIncome = 0;
     $totalInvestment = 0;
 @endphp
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <div class="page-content">
                     <div class="container-fluid">
                         
@@ -199,7 +202,7 @@
                                         <!-- end row -->
 
                                         <div class="mt-4">
-                                            <div id= "chart_div"  style="width:100%; height:100%"></div>
+                                            <div id= "pieChart"  style="width:100%; height:100%"></div>
                                         </div>
                                     </div>
                                 </div><!-- end card -->
@@ -210,27 +213,36 @@
                     
                 </div>
                 <script type="text/javascript">
-                    google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+        var totExp = <?= $totalExpense ?>;
+        var totInc = <?= $totalIncome ?>;
+        var profit = (<?= $totalIncome ?> - <?= $totalExpense ?>);
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2013',  1000,      400],
-          ['2014',  1170,      460],
-          ['2015',  660,       1120],
-          ['2016',  1030,      540]
+            ['Task', 'Profit Calculator'],
+            ['Total Expense', totExp ],
+            ['Total Income', totInc],
+            ['Profit', profit]
         ]);
 
         var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+            chartArea: {
+                height: '100%',
+                width: '100%',
+
+            },
+            is3D: true,
+            legend: 'none',
+            pieHole: 0.4
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+        var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
 
-                </script>
+        chart.draw(data, options);
+    }
+</script>
                 @endsection
