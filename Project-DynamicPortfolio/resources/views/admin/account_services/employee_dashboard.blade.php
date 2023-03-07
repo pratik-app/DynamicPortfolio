@@ -2,9 +2,11 @@
 @section('admin')
 @php
 $listAllUsers = App\Models\ASC\EmpRecord::all();
+$getproject = App\Models\Projects::all();
 @endphp
 @php
     $newSalary = 0;
+    $totalpearnings = 0;
 @endphp
 @foreach($listAllUsers as $salary)
     @if($salary->emp_status != 0 )
@@ -108,8 +110,12 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Project Completed</p>
-                                <h4 class="mb-2">8246</h4>
+                                <p class="text-truncate font-size-14 mb-2">Total Project Earnings</p>
+                                    
+                                    @foreach($getproject as $projectprice)
+                                        @php $totalpearnings += preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $projectprice->projectPrice);@endphp
+                                    @endforeach
+                                <h4 class="mb-2">${{$totalpearnings}}</h4>
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
@@ -127,7 +133,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Total Earnings by Employees</p>
-                                <h4 class="mb-2">29670</h4>
+                                <h4 class="mb-2">${{$totalpearnings}}</h4>
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
@@ -212,21 +218,21 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                         <div class="row">
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>{{$newSalary}}</h5>
+                                    <h5>${{$newSalary}}</h5>
                                     <p class="mb-2 text-truncate">Spent on Employees</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>458</h5>
+                                    <h5>${{$totalpearnings}}</h5>
                                     <p class="mb-2 text-truncate">Total Earnings</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>25%</h5>
+                                    <h5>Negative</h5>
                                     <p class="mb-2 text-truncate">Total Profit</p>
                                 </div>
                             </div>
