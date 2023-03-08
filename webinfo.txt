@@ -5,6 +5,24 @@ email: developer@pratikmore.com
 LinkedIn: www.linkedin.com/in/pratikmore2796
 Description: Creating a new project various tech. The portfolio will consist of backend so this will be helpful in editing the website without coding.
 
+## Features ##
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) Modify portfolio without Coding skills using Admin Panel
+2) Login and Registration with Email varification
+3) Profile Creation and Modifications and change password 
+4) Get froms of portfolio and generate lead in Admin Panel
+5) Take action on lead such as assign lead, convert lead to client, and add project while converting lead to Client.
+6) Account and services have features like Employee Dashboard where profit from employees are shown, Employee Hub where you can add or update or 
+delete an employee, manage teams where you can send email and sms to all teams and you can have personal meetings with teams, Payroll where 
+you can generate payrolls of employees.
+7) Project Hub will have all projects that are assigned to developer team
+8) Client Hub will have all clients generated from leads
+9) Company jobs section will help you to generate a job and list on portfolio. You can also activate a job or de-activate or delete the Job posting
+10) Company Record section will have all company record such as Income from all sources, expense, Assets of company, libilities of company and equity of company
+Finally, you will have option to generate your Balance sheet of the company and Income statment by simply adding the record of company record and you can 
+download the pdf file of it.
+
 ## Tech Used ##
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 1) Laravel 9
