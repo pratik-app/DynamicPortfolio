@@ -87,7 +87,7 @@ Route::controller(AccountServicesController::class)->group(function(){
 
 // All Clients Route
 
-Route::controller(clientsController::class)->group(function(){
+Route::controller(ClientsController::class)->group(function(){
     Route::post('client/convertToClient', 'AddNewClient')->name('convert.leadToclient');
     Route::get('client/clientsDashboard','ShowAllClients')->name('clients.showclientshub');
 });
