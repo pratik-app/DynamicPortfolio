@@ -1,19 +1,21 @@
 @extends('admin.admin_master')
 @section('admin')
 @php
-$listAllUsers = App\Models\ASC\EmpRecord::all();
+$listAllClients = App\Models\Clients::all();
 @endphp
 @php
     $newSalary = 0;
+    $totalOutstanding = 0;
 @endphp
-@foreach($listAllUsers as $salary)
-    @if($salary->emp_status != 0 )
+@foreach($listAllClients as $projectPrice)
+    
     @php
-    $newSalary += (int)filter_var($salary->emp_salary, FILTER_SANITIZE_NUMBER_INT)
+    $newSalary += (int)filter_var($projectPrice->client_Project_Price, FILTER_SANITIZE_NUMBER_INT);
+    $totalOutstanding += (int)filter_var($projectPrice->client_outstanding_amount, FILTER_SANITIZE_NUMBER_INT);
     @endphp
-    @endif
+    
 @endforeach
-
+@php $earnings = ($newSalary - $totalOutstanding); @endphp
 <!-- Jquery 3.6 -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <!-- Google Charts Integration -->
@@ -27,10 +29,10 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Profit Calculator'],
-                ['Total Spent on Employees', <?= $newSalary ?>],
-                ['Total Earnings', 1000000],
-                ['Profit', 105000]
+                ['Task', 'Client Projection'],
+                ['Total Project Cost', <?= $newSalary ?>],
+                ['Total Earnings', <?= $earnings ?>],
+                ['Total Outstanding', <?= $totalOutstanding ?>]
             ]);
 
             var options = {
@@ -67,9 +69,9 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Employees</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Number of Clients</p>
                                 <h4 class="mb-2">
-                                <h4 >{{$listAllUsers->count()}}</h4>        
+                                <h4 >{{$listAllClients->count()}}</h4>        
                                 </h4> 
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>9.23%</span>from previous period</p>
                             </div>
@@ -87,7 +89,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Cost of Employees</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Clients Project Price</p>
                                 <h4 class="mb-2">
                                     
                                     {{$newSalary}}
@@ -108,9 +110,9 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Project Completed</p>
-                                <h4 class="mb-2">8246</h4>
-                                <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from previous period</p>
+                                <p class="text-truncate font-size-14 mb-2">Total Outstanding</p>
+                                <h4 class="mb-2">{{$totalOutstanding}}</h4>
+                                <p></p>
                             </div>
                             <div class="avatar-sm">
                                 <span class="avatar-title bg-light text-primary rounded-3">
@@ -126,8 +128,8 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-truncate font-size-14 mb-2">Total Earnings by Employees</p>
-                                <h4 class="mb-2">29670</h4>
+                                <p class="text-truncate font-size-14 mb-2">Total Earnings</p>
+                                <h4 class="mb-2">{{$earnings}}</h4>
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
@@ -148,7 +150,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Download ExcelSheet</a>
+                                <a href="{{route('clients.downloadClientRecord')}}" class="dropdown-item">Download ExcelSheet</a>
                                 
                             </div>
                         </div>
@@ -184,7 +186,7 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
                                             {{$client->client_mobile}}
                                         </td>  
                                         <td>
-                                            NULL
+                                            {{$client->client_Project_Price}}
                                         </td>  
                                     </tr>
                                     @endforeach
@@ -200,27 +202,27 @@ $listAllUsers = App\Models\ASC\EmpRecord::all();
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Profit from Employees</h4>
+                        <h4 class="card-title mb-4">Clients Projection</h4>
 
                         <div class="row">
                             <div class="col-4">
                                 <div class="text-center mt-4">
                                     <h5>{{$newSalary}}</h5>
-                                    <p class="mb-2 text-truncate">Spent on Employees</p>
+                                    <p class="mb-2 text-truncate">Total Project Cost</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>458</h5>
+                                    <h5>{{$earnings}}</h5>
                                     <p class="mb-2 text-truncate">Total Earnings</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>25%</h5>
-                                    <p class="mb-2 text-truncate">Total Profit</p>
+                                    <h5>0</h5>
+                                    <p class="mb-2 text-truncate">Project Completed</p>
                                 </div>
                             </div>
                             <!-- end col -->

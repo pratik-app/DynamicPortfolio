@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\ExportClients;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Models\Clients;
 
@@ -52,6 +53,21 @@ class ClientsController extends Controller
         }
     }
 
+    // Creating function to download Client Record
+
+    public function DownloadClientsRecord()
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else
+        {
+            
+            return Excel::download(new ExportClients, 'AllClientsRecord.xlsx');
+        }
+
+    }
     // function to display all clients
 
     public function ShowAllClients()
