@@ -197,6 +197,6 @@ class JobBoardController extends Controller
             return redirect('/login');
         }
         $allJobApplicants = JobApplicants::all();
-        return view('admin.job_portal.view_all_job_applicants', compact('allJobApplicants'));
+        return view('admin.job_portal.view_all_Job_applicants', compact('allJobApplicants'));
     }
 }

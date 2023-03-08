@@ -7,7 +7,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\About\AboutSliderController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ASC\AccountServicesController;
-use App\Http\Controllers\clientsController;
+use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CompanyRecordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\JobBoardController;
