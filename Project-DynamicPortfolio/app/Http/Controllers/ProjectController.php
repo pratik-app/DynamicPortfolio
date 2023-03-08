@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Projects;
+use App\Exports\ExportProjects;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Clients;
 
@@ -65,6 +67,20 @@ class ProjectController extends Controller
             $projectsData = Projects::all();
 
             return view('admin.project_hub.projectHub', compact('projectsData'));
+        }
+    }
+
+    // Creating function to Download Projects Record
+
+    public function DownloadProjectsRecord()
+    {
+        if(Auth::guest())
+        {
+            return redirect('/login');
+        }
+        else
+        {
+            return Excel::download(new ExportProjects, 'AllProjectsRecord.xlsx');
         }
     }
 }

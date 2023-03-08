@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\JobOpenings;
 use App\Models\JobApplicants;
 use Illuminate\Support\Facades\Auth;
+use Dompdf\Dompdf;
+
 
 class JobBoardController extends Controller
 {
@@ -132,9 +134,11 @@ class JobBoardController extends Controller
         {
             $applicant_id = $request->id;
             $applicant = JobApplicants::findOrfail($applicant_id)->first();
-            header('Content-Type: application/pdf');
-            header('Content-Disposition:attachment;filename='.$applicant->applicant_resume);
-            return readfile($applicant->applicant_resume);
+            
+            return redirect($applicant->applicant_resume);
+
+            
+            
         } 
     }
 

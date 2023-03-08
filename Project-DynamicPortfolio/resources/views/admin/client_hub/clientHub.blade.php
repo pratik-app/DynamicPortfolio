@@ -92,7 +92,7 @@ $listAllClients = App\Models\Clients::all();
                                 <p class="text-truncate font-size-14 mb-2">Total Clients Project Price</p>
                                 <h4 class="mb-2">
                                     
-                                    {{$newSalary}}
+                                    ${{$newSalary}}
                                 </h4>
                                 <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-12 me-2"><i class="ri-arrow-right-down-line me-1 align-middle"></i>1.09%</span>from previous period</p>
                             </div>
@@ -111,7 +111,7 @@ $listAllClients = App\Models\Clients::all();
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Total Outstanding</p>
-                                <h4 class="mb-2">{{$totalOutstanding}}</h4>
+                                <h4 class="mb-2">${{$totalOutstanding}}</h4>
                                 <p></p>
                             </div>
                             <div class="avatar-sm">
@@ -129,7 +129,7 @@ $listAllClients = App\Models\Clients::all();
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="text-truncate font-size-14 mb-2">Total Earnings</p>
-                                <h4 class="mb-2">{{$earnings}}</h4>
+                                <h4 class="mb-2">${{$earnings}}</h4>
                                 <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from previous period</p>
                             </div>
                             <div class="avatar-sm">
@@ -207,22 +207,22 @@ $listAllClients = App\Models\Clients::all();
                         <div class="row">
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>{{$newSalary}}</h5>
+                                    <h5>${{$newSalary}}</h5>
                                     <p class="mb-2 text-truncate">Total Project Cost</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>{{$earnings}}</h5>
+                                    <h5>${{$earnings}}</h5>
                                     <p class="mb-2 text-truncate">Total Earnings</p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-4">
                                 <div class="text-center mt-4">
-                                    <h5>0</h5>
-                                    <p class="mb-2 text-truncate">Project Completed</p>
+                                    <h5>${{$totalOutstanding}}</h5>
+                                    <p class="mb-2 text-truncate">Total Outstanding</p>
                                 </div>
                             </div>
                             <!-- end col -->

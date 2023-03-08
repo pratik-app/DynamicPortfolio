@@ -15,38 +15,38 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title text-center" style="padding:25px">!New Applicant</h4>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Applicant Name:</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Name:</label>
                                             <div class="col-sm-10">
                                                 {{$applicant->applicant_name}}
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Applicant Email:</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Email:</label>
                                             <div class="col-sm-10">
                                                 {{$applicant->applicant_email}}
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Applicant Mobile:</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Mobile:</label>
                                             <div class="col-sm-10">
                                                 {{$applicant->applicant_mobile}}
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Applicant applying for:</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Position:</label>
                                             <div class="col-sm-10">
                                                 {{$applicant->applicant_applying_for}}
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Download Resume:</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Resume:</label>
                                             <div class="col-sm-10">
                                                 <a href="{{route('companyjobs.downloadapplicantResume',['id' =>$applicant->id])}}"><i class="fas fa-file-pdf" style="font-size: xxx-large;"></i></a>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
-                                            <label for="Job title" class="col-sm-2 col-form-label">Applicant Message</label>
+                                        <div class="row mb-4">
+                                            <label for="Job title" class="col-sm-4 col-form-label">Message</label>
                                             <div class="col-sm-10">
                                                 {{$applicant->applicant_message}}
                                             </div>
